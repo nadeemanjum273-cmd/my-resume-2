@@ -11,7 +11,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
     role: "Founder / Executive",
     staffCount: "1 - 5 team members",
     contact: "",
-    pillar: "Pillar 1: 24/7 AI Chatbot (Web + WhatsApp)",
+    pillar: "TIER 1: STARTER ($350) — Web AI Chatbot",
     bottleneck: "",
   });
 
@@ -227,16 +227,16 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
 
                 <div className="flex flex-col gap-1.5">
                   <label className="font-mono text-xs text-slate-300">
-                    Target AI Pillar *
+                    Target AI Tier Package *
                   </label>
                   <select
                     value={formData.pillar}
                     onChange={(e) => setFormData({ ...formData, pillar: e.target.value })}
                     className="px-3.5 py-2.5 rounded-xl bg-[#080B11] border border-white/10 text-slate-200 text-xs sm:text-sm font-sans focus:outline-none focus:border-[#22d3ee] transition-colors"
                   >
-                    <option>Pillar 1: 24/7 AI Chatbot (Web + WhatsApp)</option>
-                    <option>Pillar 2: Autonomous Agent + RAG Policy Engine</option>
-                    <option>Pillar 3: n8n Lead Routing &amp; Sync Pipeline</option>
+                    <option>TIER 1: STARTER ($350) — Web AI Chatbot</option>
+                    <option>TIER 2: GROWTH ($650) ★ POPULAR — Web + WhatsApp AI Bot</option>
+                    <option>TIER 3: ENTERPRISE ($1,200) — Web + WhatsApp + n8n Sync Pipeline</option>
                   </select>
                 </div>
               </div>
@@ -256,19 +256,16 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
                 ></textarea>
               </div>
 
-              {/* Submit CTA Button */}
+              {/* Submit CTA Button: Exact Match to Screenshot 4 */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 px-4 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#a855f7] hover:from-[#38bdf8] hover:to-[#c084fc] text-[#080B11] font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2 text-center leading-tight"
+                className="w-full py-3.5 px-4 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#0ea5e9] hover:from-[#38bdf8] hover:to-[#0284c7] text-white font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.45)] hover:shadow-[0_0_32px_rgba(34,211,238,0.65)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2 text-center leading-tight"
               >
                 {isSubmitting ? (
                   <span>Syncing with Pipeline...</span>
                 ) : (
-                  <>
-                    <span className="material-symbols-outlined text-[16px] shrink-0">send</span>
-                    <span>Send request for your chatbot walkthrough video</span>
-                  </>
+                  <span>SEND REQUEST &amp; GET FREE 60-SEC DEMO WALKTHROUGH</span>
                 )}
               </button>
             </form>

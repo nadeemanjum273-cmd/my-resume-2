@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
   const navLinks = [
     { label: "About", href: "#hero", id: "about" },
     {
-      label: "Portfolio Assistant",
+      label: "Portfolio Chatbot",
       href: "#interactive-agent",
       id: "assistant",
       isAssistant: true,

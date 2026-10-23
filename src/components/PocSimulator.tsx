@@ -13,7 +13,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
   const initialMessages: Message[] = [
     {
       sender: "agent",
-      text: "Hello! 👋 I'm My Portfolio Assistant, an autonomous RAG agent trained on all of Nadeem Anjum's verified projects (including Mind_Dreams), Computer Science degree, AI skills, and delivery guarantees. Ask me anything or tap a prompt below!",
+      text: "Hello! 👋 I'm My Portfolio Chatbot, an autonomous RAG agent trained on all of Nadeem Anjum's verified projects (including Mind_Dreams), Computer Science degree, AI skills, and delivery guarantees. Ask me anything or tap a prompt below!",
     },
   ];
 
@@ -120,7 +120,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-display font-bold text-white text-base">
-                  My Portfolio Assistant
+                  My Portfolio Chatbot
                 </span>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               </div>

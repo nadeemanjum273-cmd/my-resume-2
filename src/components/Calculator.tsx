@@ -7,41 +7,42 @@ export const Calculator: React.FC = () => {
   const annualSavings = monthlySavings * 12;
 
   // Dynamic package details based on slider
+  // Dynamic package details based on slider - Exact Match to Screenshot 5
   const getPackageInfo = (h: number) => {
     if (h <= 10) {
       return {
         badge: "STARTER",
-        price: "$450",
-        name: "Tier 1: Essential Chatbot Suite",
-        desc: "24/7 web inquiry capture bot with automatic Google Sheets logging and alert dispatch.",
+        price: "$350",
+        name: "TIER 1: STARTER",
+        desc: "24/7 web inquiry capture chatbot trained on your company FAQs with automated spreadsheet sync.",
         features: [
-          "24/7 Web FAQ AI Concierge",
-          "Google Sheets Real-Time Sync",
-          "Instant Email & Telegram Notifications",
+          "Web AI Chatbot",
+          "FAQ Knowledge Training",
+          "Google Sheets Sync",
         ],
       };
     } else if (h <= 25) {
       return {
-        badge: "MOST POPULAR",
+        badge: "POPULAR",
         price: "$650",
-        name: "Tier 2: Growth Automation Suite",
-        desc: "Our high-ROI package: Web + WhatsApp Cloud bot with automatic CRM sync and real-time calendar booking.",
+        name: "TIER 2: GROWTH",
+        desc: "High-ROI omnichannel suite: Web + WhatsApp Cloud bot with automated lead qualification and instant webhook alerts.",
         features: [
-          "Web + WhatsApp AI Concierge",
-          "n8n Webhook CRM Sync (Sheets/HubSpot)",
-          "Real-Time Google Calendar Booking",
+          "Web + WhatsApp AI Bot",
+          "Lead Qualification Flow",
+          "n8n Slack / Email Alert",
         ],
       };
     } else {
       return {
         badge: "ENTERPRISE",
         price: "$1,200",
-        name: "Tier 3: Autonomous Operations Agent",
-        desc: "End-to-end multi-step autonomous agent with RAG vector search, Shopify/CRM sync, and API webhooks.",
+        name: "TIER 3: ENTERPRISE",
+        desc: "Full-scale custom autonomous agent pipeline with complete n8n synchronization and custom interactive Streamlit dashboard.",
         features: [
-          "Multi-Step ReAct LangChain Autonomous Agent",
-          "Full Vector Knowledge RAG with PDF Indexing",
-          "Two-Way Live CRM & Payment Gateway Sync",
+          "Web + WhatsApp AI Bot",
+          "Full n8n Sync Pipeline",
+          "Custom Streamlit Dash",
         ],
       };
     }
