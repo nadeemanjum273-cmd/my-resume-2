@@ -39,7 +39,7 @@ export const Resume: React.FC = () => {
               <span className="text-on-surface-variant font-code-terminal text-[10px]">&bull; Oct 2024</span>
             </div>
             <h3 className="font-headline-sm text-base text-on-surface font-bold">
-              Mind_Dreams — AI Customer Support &amp; RAG Agent
+              Mind_Dreams — AI Customer Support
             </h3>
             <p className="font-body-sm text-xs text-on-surface-variant leading-relaxed">
               Engineered end-to-end 24/7 AI customer support chatbot and RAG policy engine with Google Gemini, Next.js 14, and real-time 3-way Google Sheets sync for orders and refund verification.

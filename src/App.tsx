@@ -89,14 +89,6 @@ export default function App() {
               <p className="text-xs text-slate-400 max-w-sm leading-relaxed font-sans">
                 Applied AI, Agentic Workflows &amp; Autonomous LLM Architecture engineered for enterprise efficiency and measurable ROI.
               </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                <span className="px-2.5 py-0.5 rounded-full bg-white/5 font-mono text-[10px] text-slate-400 uppercase border border-white/10">
-                  ISO/IEC 42001 Audited
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 font-mono text-[10px] text-emerald-400 uppercase border border-emerald-500/30">
-                  Top Rated Architect
-                </span>
-              </div>
             </div>
 
             {/* Col 2: Quick Links */}

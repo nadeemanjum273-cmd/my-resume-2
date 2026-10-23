@@ -133,45 +133,6 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
               <span className="material-symbols-outlined text-[15px]">open_in_new</span>
             </a>
           </div>
-
-          {/* Google Sheets Live Sync Card */}
-          <div className="p-4 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-emerald-500/20 flex flex-col gap-2 shadow-xl">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-emerald-400 text-[20px]">table_chart</span>
-                <div className="flex flex-col">
-                  <span className="font-display font-bold text-white text-xs">
-                    Google Sheets Live Sync
-                  </span>
-                  <span className="font-mono text-[11px] text-slate-500">
-                    Tab 1: prospect_tracker_template
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <a
-                  href="#demo-form"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (onTriggerToast) onTriggerToast("Opening connected Google Sheets template...");
-                  }}
-                  className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 font-mono text-[11px] flex items-center gap-1 border border-white/10"
-                >
-                  <span>Open Sheet</span>
-                  <span className="material-symbols-outlined text-[12px]">open_in_new</span>
-                </a>
-                <button
-                  onClick={() => {
-                    if (onTriggerToast) onTriggerToast("Webhook sync active via n8n automation runtime.");
-                  }}
-                  className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 font-mono text-[11px] flex items-center gap-1 border border-white/10"
-                >
-                  <span>⚙ Sync Setup</span>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Right Column: Discovery Form (7 Cols) - Exact Match to Screenshot 3 */}

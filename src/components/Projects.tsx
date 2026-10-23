@@ -20,7 +20,7 @@ export const Projects: React.FC = () => {
       category: ["agent", "chatbot"],
       tag: "Gemini Powered + RAG Vector Index",
       type: "AGENT",
-      title: "Mind_Dreams AI Customer Support & RAG Agent",
+      title: "Mind_Dreams AI Customer Support",
       description:
         "Autonomous 24/7 customer support agent indexing company policy with Google Gemini and 3-way real-time Google Sheets sync for orders, refund eligibility, and bank payout logging.",
       roi: "Verified ROI: 100% Policy Compliance & Live Sync",

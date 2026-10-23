@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 interface Message {
   sender: "agent" | "user";
   text: string;
-  source?: string;
 }
 
 interface PocSimulatorProps {
@@ -15,7 +14,6 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
     {
       sender: "agent",
       text: "Hello! 👋 I'm My Resume Assistant, an autonomous RAG agent trained on all of Nadeem Anjum's verified projects (including Mind_Dreams), Computer Science degree, AI skills, and delivery guarantees. Ask me anything or tap a prompt below!",
-      source: "RAG Source: System Prompt • Nadeem Anjum Verified Profile",
     },
   ];
 
@@ -69,24 +67,19 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
     setTimeout(() => {
       let responseText =
         "Nadeem specializes in autonomous agentic workflows, VoiceFlow bots, and n8n webhook orchestration with verified client ROI.";
-      let sourceTag = "RAG Source: production_systems/architecture.json";
 
       if (q.includes("mind_dreams") || q.includes("mind")) {
         responseText =
-          "Mind_Dreams is an autonomous 24/7 AI Customer Support & RAG Agent built with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for orders, refund eligibility, and automated bank payout logging.";
-        sourceTag = "RAG Source: knowledge/projects/mind_dreams_rag.json";
+          "Mind_Dreams is an autonomous 24/7 AI Customer Support system built with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for orders, refund eligibility, and automated bank payout logging.";
       } else if (q.includes("education") || q.includes("degree")) {
         responseText =
           "Nadeem graduated in Computer Science from Multan, Pakistan with strong foundations in data structures, algorithms, and relational databases, alongside specialized AI Fellowships in Python ML, Scikit-Learn, and Vector RAG.";
-        sourceTag = "RAG Source: knowledge/credentials/education_rag.json";
       } else if (q.includes("whatsapp") || q.includes("contact")) {
         responseText =
           "You can reach Nadeem directly on WhatsApp at +92 307 7970277 or email nadeemanjum273@gmail.com. He delivers working 48-hour POCs under a 50% deposit safety rule with 100% IP transfer.";
-        sourceTag = "RAG Source: knowledge/contact/direct_channels.json";
       } else if (q.includes("pack") || q.includes("price") || q.includes("pricing")) {
         responseText =
           "Nadeem offers high-ROI packages: Tier 1 ($450 Fixed POC for 24/7 FAQ Chatbot), Tier 2 ($650 Most Popular: Web + WhatsApp Cloud Bot + n8n CRM Sync + Calendar Booking), and Full Custom Autonomous Agent Builds.";
-        sourceTag = "RAG Source: knowledge/pricing/packages_roi.json";
       }
 
       setMessages((prev) => [
@@ -94,7 +87,6 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
         {
           sender: "agent",
           text: responseText,
-          source: sourceTag,
         },
       ]);
       setIsTyping(false);
@@ -126,16 +118,11 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
               <div className="w-9 h-9 rounded-xl bg-[#22d3ee]/20 text-[#22d3ee] flex items-center justify-center border border-[#22d3ee]/30">
                 <span className="material-symbols-outlined text-[20px]">smart_toy</span>
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="font-display font-bold text-white text-base">
-                    My Resume Assistant
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                </div>
-                <span className="text-[11px] font-mono text-slate-400">
-                  Nadeem Anjum RAG Knowledge Agent &bull; Verified Profile
+              <div className="flex items-center gap-2">
+                <span className="font-display font-bold text-white text-base">
+                  My Resume Assistant
                 </span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               </div>
             </div>
 
@@ -160,12 +147,6 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
                     <p className="text-slate-200 text-xs sm:text-[13px] leading-relaxed font-sans">
                       {m.text}
                     </p>
-                    {m.source && (
-                      <span className="text-[11px] font-mono text-[#22d3ee] flex items-center gap-1 pt-1">
-                        <span className="material-symbols-outlined text-[13px]">description</span>
-                        <span>{m.source}</span>
-                      </span>
-                    )}
                   </div>
                 ) : (
                   <div className="self-end max-w-md p-3 rounded-2xl rounded-tr-sm bg-gradient-to-r from-[#22d3ee] to-[#38bdf8] text-[#080B11] text-xs sm:text-[13px] font-medium shadow-md">
@@ -188,10 +169,10 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
             <div className="flex items-center gap-2 overflow-x-auto text-xs font-mono text-slate-400">
               <span className="shrink-0 text-slate-500">Try Prompts:</span>
               <button
-                onClick={() => sendQuery("Can you explain your Mind_Dreams RAG Agent?")}
+                onClick={() => sendQuery("Can you explain your Mind_Dreams support build?")}
                 className="px-3 py-1 rounded-full bg-white/5 hover:bg-[#22d3ee]/20 hover:text-[#22d3ee] border border-white/10 text-slate-300 text-[11px] transition-colors whitespace-nowrap"
               >
-                Mind_Dreams RAG Agent?
+                Mind_Dreams Support?
               </button>
               <button
                 onClick={() => sendQuery("What is your education & degree?")}
