@@ -260,14 +260,14 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#a855f7] hover:from-[#38bdf8] hover:to-[#c084fc] text-[#080B11] font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2"
+                className="w-full py-3.5 px-4 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#a855f7] hover:from-[#38bdf8] hover:to-[#c084fc] text-[#080B11] font-mono font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:scale-[1.01] flex items-center justify-center gap-2 mt-2 text-center leading-tight"
               >
                 {isSubmitting ? (
                   <span>Syncing with Pipeline...</span>
                 ) : (
                   <>
-                    <span className="material-symbols-outlined text-[16px]">send</span>
-                    <span>SEND REQUEST</span>
+                    <span className="material-symbols-outlined text-[16px] shrink-0">send</span>
+                    <span>Send request for your chatbot walkthrough video</span>
                   </>
                 )}
               </button>
