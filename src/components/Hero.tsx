@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
             href="#interactive-agent"
             className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#22d3ee] to-[#a855f7] text-[#080B11] font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.5)] hover:scale-105 active:scale-100"
           >
-            Launch Resume Assistant
+            Launch Portfolio Assistant
           </a>
           <a
             href="#deployments"

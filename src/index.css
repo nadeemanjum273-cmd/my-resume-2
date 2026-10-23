@@ -84,3 +84,38 @@ body, * {
     color: black !important;
   }
 }
+
+/* Infinite Marquee Moving Right to Left ("average timer") */
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-left-alt {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-pause:hover .animate-marquee-left,
+.marquee-pause:hover .animate-marquee-left-alt {
+  animation-play-state: paused;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+

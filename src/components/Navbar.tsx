@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
   const navLinks = [
     { label: "About", href: "#hero", id: "about" },
     {
-      label: "Resume Assistant",
+      label: "Portfolio Assistant",
       href: "#interactive-agent",
       id: "assistant",
       isAssistant: true,
@@ -49,7 +49,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
     { label: "Projects", href: "#deployments", id: "projects" },
     { label: "Technical Arsenal", href: "#tech-arsenal", id: "arsenal" },
     { label: "ROI Calculator", href: "#roi-calculator", id: "roi" },
-    { label: "Resume & CV", href: "#experience", id: "resume" },
+    { label: "Portfolio & CV", href: "#experience", id: "resume" },
     { label: "Contact", href: "#demo-form", id: "contact" },
   ];
 

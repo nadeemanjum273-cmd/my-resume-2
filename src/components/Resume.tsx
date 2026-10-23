@@ -18,10 +18,10 @@ export const Resume: React.FC = () => {
         </div>
         <a
           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-code-terminal text-xs transition-colors shadow-sm border border-outline-variant/30 shrink-0"
-          href="mailto:nadeemanjum273@gmail.com?subject=Requesting%20Full%20Resume%20PDF"
+          href="mailto:nadeemanjum273@gmail.com?subject=Requesting%20Full%20Portfolio%20PDF"
         >
           <span className="material-symbols-outlined text-[16px]">download</span>
-          <span>Request CV (PDF)</span>
+          <span>Request Portfolio &amp; CV (PDF)</span>
         </a>
       </div>
 

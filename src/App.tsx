@@ -10,6 +10,7 @@ import { Resume } from "./components/Resume";
 import { Contact } from "./components/Contact";
 import { VideoModal } from "./components/VideoModal";
 import { JugnuBackground } from "./components/JugnuBackground";
+import { ScrollReveal } from "./components/ScrollReveal";
 
 export default function App() {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
@@ -46,28 +47,42 @@ export default function App() {
         <div className="flex flex-col w-full relative">
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-24 sm:gap-28">
             {/* 1. Hero & Profile Showcase (Screenshot 1: 0048jpg profile) */}
-            <Hero
-              onTriggerToast={triggerToast}
-              onOpenVideoModal={() => setVideoModalOpen(true)}
-            />
+            <ScrollReveal yOffset={30}>
+              <Hero
+                onTriggerToast={triggerToast}
+                onOpenVideoModal={() => setVideoModalOpen(true)}
+              />
+            </ScrollReveal>
 
-            {/* 2. Interactive AI Agent & RAG Demo Console (Screenshot 4: My Resume Assistant) */}
-            <PocSimulator onTriggerToast={triggerToast} />
+            {/* 2. Interactive AI Agent & RAG Demo Console (Screenshot 4: My Portfolio Assistant) */}
+            <ScrollReveal yOffset={45}>
+              <PocSimulator onTriggerToast={triggerToast} />
+            </ScrollReveal>
 
             {/* 3. Curated Production Deployments (Screenshot 5: 3-column bento) */}
-            <Projects />
+            <ScrollReveal yOffset={45}>
+              <Projects />
+            </ScrollReveal>
 
-            {/* 4. Technical Arsenal (16 Bento Cards) */}
-            <Skills />
+            {/* 4. Technical Arsenal (2-Row Moving Platforms Marquee) */}
+            <ScrollReveal yOffset={45}>
+              <Skills />
+            </ScrollReveal>
 
             {/* 5. Interactive ROI Savings Calculator (Screenshot 2: Estimate Your Monthly Savings) */}
-            <Calculator />
+            <ScrollReveal yOffset={45}>
+              <Calculator />
+            </ScrollReveal>
 
-            {/* 6. Experience & Qualifications Roadmap (Resume & CV) */}
-            <Resume />
+            {/* 6. Experience & Qualifications Roadmap (Portfolio & CV) */}
+            <ScrollReveal yOffset={45}>
+              <Resume />
+            </ScrollReveal>
 
             {/* 7. Request a 60-Sec Demo Walkthrough (Screenshot 3: Discovery Form) */}
-            <Contact onTriggerToast={triggerToast} />
+            <ScrollReveal yOffset={45}>
+              <Contact onTriggerToast={triggerToast} />
+            </ScrollReveal>
           </div>
         </div>
       </main>
@@ -104,7 +119,7 @@ export default function App() {
                 </li>
                 <li>
                   <a className="hover:text-white transition-colors" href="#interactive-agent">
-                    Resume Assistant
+                    Portfolio Assistant
                   </a>
                 </li>
                 <li>
@@ -124,7 +139,7 @@ export default function App() {
                 </li>
                 <li>
                   <a className="hover:text-white transition-colors" href="#experience">
-                    Resume &amp; CV
+                    Portfolio &amp; CV
                   </a>
                 </li>
                 <li>
