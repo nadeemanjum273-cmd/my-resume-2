@@ -1,268 +1,225 @@
 import React from "react";
-import { 
-  Printer, 
-  CheckCircle2, 
-  Briefcase, 
-  GraduationCap, 
-  ShieldCheck, 
-  MapPin, 
-  ExternalLink, 
-  Github, 
-  Sparkles,
-  Award,
-  Linkedin
-} from "lucide-react";
 
 export const Resume: React.FC = () => {
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
-    <section id="resume" className="scroll-mt-28 space-y-8">
-      {/* Header with Print CV Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
-        <div>
-          <div className="text-xs font-mono text-emerald-400 font-bold tracking-wider uppercase flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Curriculum Vitae &amp; Credentials</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight mt-1">
+    <section className="w-full flex flex-col gap-space-xl" id="experience">
+      {/* Section Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+        <div className="flex flex-col gap-space-xs">
+          <span className="font-code-terminal text-label-caps uppercase tracking-widest text-primary">
+            CURRICULUM VITAE &amp; CREDENTIALS
+          </span>
+          <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
             Experience &amp; Qualifications
           </h2>
-          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono text-slate-300">
-            <span className="text-white font-bold text-sm">Nadeem Anjum</span>
-            <span>&bull;</span>
-            <span className="flex items-center gap-1 font-semibold text-white">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-              66000 Multan, Punjab, Pakistan
-            </span>
-            <span>&bull;</span>
-            <span className="text-emerald-300 font-semibold">nadeemanjum273@gmail.com</span>
-            <span>&bull;</span>
-            <span className="text-teal-300 font-semibold">+92 307 7978277</span>
-          </div>
+          <p className="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            A proven trajectory from rigorous computer science theory to high-velocity autonomous pipeline engineering and enterprise frontend architecture.
+          </p>
         </div>
-
-        <button
-          onClick={handlePrint}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 hover:border-emerald-400 text-xs font-mono text-emerald-300 hover:text-white transition-all shadow-sm shrink-0 font-bold"
+        <a
+          className="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-code-terminal text-body-sm transition-colors shadow-sm border border-outline-variant/30"
+          href="mailto:nadeemanjum273@gmail.com?subject=Requesting%20Full%20Resume%20PDF"
         >
-          <Printer className="w-4 h-4" />
-          <span>Print / Save CV (PDF)</span>
-        </button>
+          <span className="material-symbols-outlined text-[18px]">download</span>
+          <span>Request Verified CV (PDF)</span>
+        </a>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Timeline Items */}
-        <div className="lg:col-span-8 space-y-8">
-          
-          {/* SPECIALIZATION HIGHLIGHT: DataCrumb */}
-          <div className="relative pl-8 border-l-2 border-emerald-500 space-y-3 group">
-            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0B0F12] border-2 border-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/50">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-[#0D1217] border border-emerald-500/30 shadow-xl shadow-emerald-950/20 space-y-3">
-              <div className="flex flex-wrap justify-between items-start gap-2">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1">
-                      <Award className="w-3 h-3 text-emerald-400" />
-                      <span>Specialization Completed</span>
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-300 text-[10px] font-mono font-bold">
-                      DataCrumb Alum
-                    </span>
-                  </div>
-
-                  <h3 className="font-display font-extrabold text-white text-xl mt-1.5 flex items-center gap-2">
-                    <span>Senior Frontend Engineer &amp; UI/UX Specialist</span>
-                  </h3>
-                  <div className="text-xs font-mono text-emerald-400 font-semibold mt-0.5">
-                    DataCrumb &bull; Applied AI &amp; Modern Web Specialization
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://www.datacrumbs.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 hover:text-white text-xs font-mono transition-colors font-medium"
-                  >
-                    <span>datacrumbs.org</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/datacrumbs/home/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-colors"
-                    title="DataCrumb LinkedIn"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-
-              <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-                Completed rigorous professional specialization at <strong className="text-white font-semibold">DataCrumb</strong>, mastering enterprise-grade front-end development, sleek UI/UX design systems, high-converting conversion architectures, and the orchestration of autonomous AI agents &amp; RAG vector systems.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono">
-                <span className="px-2.5 py-1 rounded-lg bg-[#090D10] border border-emerald-500/30 text-emerald-300 font-semibold">
-                  Next.js 14 App Router
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#090D10] border border-white/10 text-slate-300">
-                  Tailwind CSS
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#090D10] border border-white/10 text-slate-300">
-                  Framer Motion
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#090D10] border border-white/10 text-slate-300">
-                  Lucide-React
-                </span>
-                <span className="px-2.5 py-1 rounded-lg bg-[#090D10] border border-white/10 text-slate-300">
-                  Autonomous RAG Systems
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Project Highlight: Mind_Dreams AI Agent (Oct 2026) */}
-          <div className="relative pl-8 border-l-2 border-emerald-500/40 space-y-2 group">
-            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0B0F12] border-2 border-emerald-400 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-            </div>
-
-            <div className="flex flex-wrap justify-between items-center gap-2">
-              <h3 className="font-display font-extrabold text-white text-lg flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span>Mind_Dreams — AI Customer Support &amp; RAG Agent</span>
-              </h3>
-              <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-bold">
-                Oct 2026
+      {/* Timeline & Delivery Promises Split Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+        {/* 4-Phase Chronological Timeline (7 Cols) */}
+        <div className="lg:col-span-7 flex flex-col gap-space-lg relative pl-6 border-l-2 border-surface-container-highest">
+          {/* Phase 1: Mind_Dreams AI Support */}
+          <div className="relative flex flex-col gap-space-xs">
+            <span className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-background"></span>
+            <div className="flex items-center gap-space-xs">
+              <span className="font-code-terminal text-label-caps text-primary uppercase font-bold">
+                Flagship Production Build
               </span>
+              <span className="text-on-surface-variant font-code-terminal text-[11px]">&bull; Oct 2024</span>
             </div>
-
-            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-              Production-grade 24/7 AI customer support chatbot and RAG policy engine built with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for automated order lookups and refund validation.
+            <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
+              Mind_Dreams — AI Customer Support &amp; RAG Agent
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Engineered end-to-end 24/7 AI customer support chatbot and RAG policy engine with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for automated order lookups and refund validation.
             </p>
-
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] font-mono">
-              <span className="px-2.5 py-1 rounded-lg bg-[#0D1217] border border-emerald-500/30 text-emerald-300">
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
                 Next.js 14
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#0D1217] border border-white/10 text-slate-300">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
                 Google Gemini AI
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#0D1217] border border-white/10 text-slate-300">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
                 LangChain RAG
               </span>
-              <span className="px-2.5 py-1 rounded-lg bg-[#0D1217] border border-white/10 text-slate-300">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
                 Google Sheets API v4
               </span>
             </div>
+          </div>
 
-            <div className="pt-1">
+          {/* Phase 2: Independent Consultant */}
+          <div className="relative flex flex-col gap-space-xs">
+            <span className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-secondary ring-4 ring-background"></span>
+            <div className="flex items-center gap-space-xs">
+              <span className="font-code-terminal text-label-caps text-secondary uppercase font-bold">
+                Contractor &amp; Solutions Architect
+              </span>
+              <span className="text-on-surface-variant font-code-terminal text-[11px]">&bull; 2024 — Present</span>
+            </div>
+            <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
+              Independent AI Automation &amp; Frontend Consultant
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Architects and deploys production-ready 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3-20 staff). Integrated VoiceFlow with WhatsApp Cloud API to capture after-hours qualified inquiries (+42% conversion).
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                n8n Architecture
+              </span>
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                WhatsApp Cloud API
+              </span>
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                HubSpot / Airtable CRM
+              </span>
+            </div>
+          </div>
+
+          {/* Phase 3: DataCrumb Specialization */}
+          <div className="relative flex flex-col gap-space-xs p-space-md rounded-xl bg-surface-container-high/40 border border-primary/30">
+            <span className="absolute -left-[31px] top-3 w-4 h-4 rounded-full bg-primary ring-4 ring-background"></span>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-space-xs">
+                <span className="font-code-terminal text-label-caps text-primary uppercase font-bold">
+                  Specialization Completed
+                </span>
+                <span className="text-on-surface-variant font-code-terminal text-[11px]">&bull; DataCrumb Org</span>
+              </div>
+              <span className="px-2 py-0.5 rounded-full bg-primary/20 text-primary font-code-terminal text-[10px] font-bold">
+                VERIFIED ALUM
+              </span>
+            </div>
+            <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
+              Specialization &bull; Data Science &amp; AI Fellow at DataCrumb
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Completed advanced specialization in Data Science &amp; Generative AI systems at{" "}
               <a
-                href="https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent"
+                href="https://www.datacrumbs.org/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:text-white transition-colors"
+                className="text-primary hover:underline font-bold inline-flex items-center gap-0.5"
               >
-                <Github className="w-3.5 h-3.5" />
-                <span>github.com/nadeemanjum273-cmd/Mind_Dream-Agent ↗</span>
+                <span>DataCrumb (datacrumbs.org)</span>
+                <span className="material-symbols-outlined text-[13px]">open_in_new</span>
+              </a>
+              . Specialized in statistical model validation, Scikit-Learn (Trees &amp; KNN), LangChain vector embeddings, and autonomous agent design.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <a
+                href="https://www.datacrumbs.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs font-code-terminal text-primary hover:underline"
+              >
+                <span>Visit DataCrumb</span>
+                <span className="material-symbols-outlined text-[14px]">arrow_outward</span>
+              </a>
+              <span className="text-on-surface-variant">&bull;</span>
+              <a
+                href="https://www.linkedin.com/company/datacrumbs/home/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs font-code-terminal text-secondary hover:underline"
+              >
+                <span>DataCrumb LinkedIn</span>
+                <span className="material-symbols-outlined text-[14px]">arrow_outward</span>
               </a>
             </div>
-          </div>
-
-          {/* Experience Item: Independent AI Automation Consultant */}
-          <div className="relative pl-8 border-l-2 border-white/20 space-y-2 group">
-            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0B0F12] border-2 border-slate-500 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
-            </div>
-
-            <div className="flex flex-wrap justify-between items-center gap-2">
-              <h3 className="font-display font-bold text-white text-lg flex items-center gap-2">
-                <Briefcase className="w-4 h-4 text-slate-300" />
-                <span>Independent AI Automation Consultant</span>
-              </h3>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10">
-                2026 – Present
+            <div className="flex flex-wrap gap-1.5 pt-2">
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                Python (Pandas/NumPy)
+              </span>
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                Scikit-Learn (Trees &amp; KNN)
+              </span>
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                Vector RAG &amp; Embeddings
+              </span>
+              <span className="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant border border-outline-variant/20">
+                Next.js + Tailwind + Framer Motion
               </span>
             </div>
-
-            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-              Architects and deploys production-ready 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3–20 staff).
-            </p>
-
-            <ul className="text-xs font-mono text-slate-400 space-y-1 pt-1 list-disc list-inside">
-              <li>Integrated Voiceflow with WhatsApp Cloud API to capture after-hours qualified inquiries (+42% conversion).</li>
-              <li>Engineered n8n webhook pipelines orchestrating real-time lead routing and CRM synchronization.</li>
-              <li>Authored clean, documented deployment handoffs with 100% intellectual property transfer to clients.</li>
-            </ul>
           </div>
 
-          {/* Education: Graduation in Computer Science */}
-          <div className="relative pl-8 border-l-2 border-emerald-500/30 space-y-2 group">
-            <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#0B0F12] border-2 border-emerald-500/60 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>
-            </div>
-
-            <div className="flex flex-wrap justify-between items-center gap-2">
-              <h3 className="font-display font-bold text-white text-lg flex items-center gap-2">
-                <GraduationCap className="w-4 h-4 text-emerald-400" />
-                <span>Graduation in Computer Science</span>
-              </h3>
-              <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                66000 Multan, Pakistan
+          {/* Phase 4: BS Computer Science */}
+          <div className="relative flex flex-col gap-space-xs">
+            <span className="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-tertiary ring-4 ring-background"></span>
+            <div className="flex items-center gap-space-xs">
+              <span className="font-code-terminal text-label-caps text-tertiary uppercase font-bold">
+                Academic Foundation
               </span>
+              <span className="text-on-surface-variant font-code-terminal text-[11px]">&bull; 66000 Multan, Pakistan</span>
             </div>
-
-            <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
-              Completed formal graduation in Computer Science with rigorous foundations in software engineering, algorithms, databases, data structures, and distributed systems.
+            <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
+              Graduation in Computer Science
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Completed formal graduation in Computer Science with rigorous focus on software engineering, data structures, algorithms, relational databases, and applied computational systems.
             </p>
           </div>
         </div>
 
-        {/* Right Column: Client Delivery Promises Card */}
-        <div className="lg:col-span-4 rounded-2xl bg-[#0D1217] border border-white/10 p-6 space-y-5 shadow-xl">
-          <div className="flex items-center gap-2 border-b border-white/10 pb-3">
-            <ShieldCheck className="w-5 h-5 text-emerald-400" />
-            <h4 className="font-display font-bold text-white text-base">
+        {/* Client Delivery Promises Side-Panel (5 Cols) */}
+        <div className="lg:col-span-5 rounded-2xl bg-surface-container-low/90 backdrop-blur-xl p-space-lg shadow-2xl flex flex-col gap-space-md border border-outline-variant/30">
+          <div className="flex items-center gap-space-xs">
+            <span className="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+            <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold">
               Client Delivery Promises
-            </h4>
+            </h3>
           </div>
-
-          <div className="space-y-4 text-xs font-sans">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block font-mono text-xs">50% Deposit Rule:</strong>
-                <span className="text-slate-400 leading-relaxed">
+          <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Guaranteed principles baked into every architectural contract to eliminate agency friction and build long-term enterprise trust.
+          </p>
+          <div className="flex flex-col gap-space-md pt-space-xs">
+            {/* Promise 1 */}
+            <div className="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm border border-outline-variant/20">
+              <div className="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[18px]">payments</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-headline-sm text-body-md font-bold text-on-surface">50% Deposit Rule</span>
+                <span className="font-body-sm text-[12px] text-on-surface-variant">
                   50% upfront to initiate sprint kickoff; remaining 50% only upon live staging verification.
                 </span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block font-mono text-xs">100% IP Transfer:</strong>
-                <span className="text-slate-400 leading-relaxed">
+            {/* Promise 2 */}
+            <div className="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm border border-outline-variant/20">
+              <div className="w-8 h-8 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[18px]">key</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-headline-sm text-body-md font-bold text-on-surface">100% IP Transfer</span>
+                <span className="font-body-sm text-[12px] text-on-surface-variant">
                   You own all workflow code, system prompts, API keys, and documentation with zero vendor lock-in.
                 </span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-white block font-mono text-xs">4-Day Delivery SLA:</strong>
-                <span className="text-slate-400 leading-relaxed">
-                  Working prototype delivered in 48–96 hours for rapid testing and real-world deployment.
+            {/* Promise 3 */}
+            <div className="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm border border-outline-variant/20">
+              <div className="w-8 h-8 rounded-lg bg-tertiary/20 text-tertiary flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-[18px]">rocket_launch</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-headline-sm text-body-md font-bold text-on-surface">4-Day Delivery SLA</span>
+                <span className="font-body-sm text-[12px] text-on-surface-variant">
+                  Working prototype delivered in 48-96 hours for rapid testing and real-word deployment.
                 </span>
               </div>
             </div>

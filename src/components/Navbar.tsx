@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 interface NavbarProps {
   onTriggerToast?: (msg: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activePath, setActivePath] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const sections = [
+        { id: "home", path: "home" },
+        { id: "interactive-agent", path: "interactive-ai-agent" },
+        { id: "deployments", path: "case-studies" },
+        { id: "tech-arsenal", path: "tech-arsenal" },
+        { id: "roi-calculator", path: "roi-calculator" },
+        { id: "experience", path: "experience" },
+        { id: "demo-form", path: "contact" },
+      ];
 
-      const sections = ["hero", "tech-stack", "demo", "projects", "calculator", "resume", "contact"];
-      const scrollPosition = window.scrollY + 180;
-
-      for (const section of sections) {
-        const el = document.getElementById(section);
+      const scrollPos = window.scrollY + 200;
+      for (const s of sections) {
+        const el = document.getElementById(s.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActivePath(s.path);
             break;
           }
         }
@@ -34,148 +38,129 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "About", href: "#hero", id: "hero" },
-    { name: "Tech Stack", href: "#tech-stack", id: "tech-stack" },
-    { name: "RAG Assistant", href: "#demo", id: "demo", isLive: true },
-    { name: "Projects", href: "#projects", id: "projects" },
-    { name: "ROI Calculator", href: "#calculator", id: "calculator" },
-    { name: "Experience & CV", href: "#resume", id: "resume" },
-    { name: "Contact", href: "#contact", id: "contact" },
+  const navItems = [
+    { label: "Home", href: "#home", path: "home" },
+    { label: "Interactive AI Agent", href: "#interactive-agent", path: "interactive-ai-agent" },
+    { label: "Case Studies", href: "#deployments", path: "case-studies" },
+    { label: "Tech Arsenal", href: "#tech-arsenal", path: "tech-arsenal" },
+    { label: "ROI Calculator", href: "#roi-calculator", path: "roi-calculator" },
+    { label: "Experience", href: "#experience", path: "experience" },
+    { label: "Contact", href: "#demo-form", path: "contact" },
   ];
 
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-7xl z-50">
-      <nav
-        className={`transition-all duration-300 rounded-2xl px-5 sm:px-6 py-2.5 sm:py-3 border backdrop-blur-xl ${
-          isScrolled
-            ? "bg-black/85 border-white/15 shadow-2xl shadow-black/80"
-            : "bg-black/70 border-white/10 shadow-lg shadow-black/40"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          {/* Brand Logo & Glowing Avatar */}
-          <a
-            href="#hero"
-            className="group flex items-center gap-3 transition-transform hover:scale-[1.02]"
-          >
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-emerald-300 p-[1.5px] shadow-md shadow-emerald-500/20 group-hover:shadow-emerald-400/40 transition-shadow">
-                <div className="w-full h-full rounded-[10px] bg-[#0B0F12] flex items-center justify-center overflow-hidden">
-                  <img
-                    src="/profile.jpg"
-                    alt="Nadeem Anjum"
-                    className="w-full h-full object-cover object-top opacity-95 group-hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              </div>
-              <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#0B0F12] flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span className="absolute w-2 h-2 rounded-full bg-emerald-400"></span>
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+      <div className="h-20 max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between gap-space-md">
+        {/* Brand / Verified Architect Pill */}
+        <div className="flex items-center gap-space-sm">
+          <div className="flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-low shadow-[0_0_16px_rgba(16,185,129,0.15)]">
+            <div className="relative flex h-2 w-2 items-center justify-center">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">
+                Nadeem Anjum
+              </span>
+              <span className="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">
+                AI Solutions &amp; Automation Architect
               </span>
             </div>
-
-            <div>
-              <div className="font-display font-extrabold text-white text-sm tracking-tight flex items-center gap-2">
-                <span>Nadeem Anjum</span>
-                <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px] font-mono border border-emerald-500/30">
-                  <Sparkles className="w-2.5 h-2.5" />
-                  <span>DataCrumb Specialist</span>
-                </span>
-              </div>
-              <div className="text-[10px] font-mono tracking-wider text-slate-400 group-hover:text-emerald-400 transition-colors uppercase">
-                Senior Frontend &amp; UI/UX Specialist
-              </div>
-            </div>
-          </a>
-
-          {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-5 text-xs font-medium">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  className={`relative py-1 px-1 transition-all duration-200 flex items-center gap-1.5 ${
-                    link.isLive
-                      ? "text-emerald-400 font-semibold hover:text-white"
-                      : isActive
-                      ? "text-white font-semibold"
-                      : "text-slate-300 hover:text-white"
-                  }`}
-                >
-                  {link.isLive && (
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-                    </span>
-                  )}
-                  <span>{link.name}</span>
-
-                  {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full"></span>
-                  )}
-                </a>
-              );
-            })}
-          </div>
-
-          {/* Action Button & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <a
-              href="#contact"
-              className="group bg-emerald-500 hover:bg-emerald-400 text-black font-display font-bold text-xs uppercase tracking-wider rounded-full px-5 py-2 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-400/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-1.5"
-            >
-              <span>Hire Specialist</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </a>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle navigation menu"
-              className="lg:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white focus:outline-none"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
         </div>
 
-        {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 border-t border-white/10 space-y-1.5">
-            {navLinks.map((link) => (
+        {/* Center Capsule Nav (Stitch Style) */}
+        <nav className="hidden xl:flex items-center gap-space-xs p-space-xs rounded-full bg-surface-container-low">
+          {navItems.map((item) => {
+            const isActive = activePath === item.path;
+            return (
               <a
-                key={link.id}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-3.5 py-2 rounded-lg text-xs font-mono transition-colors ${
-                  activeSection === link.id
-                    ? "bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/30"
-                    : "text-slate-300 hover:bg-white/5 hover:text-white"
+                key={item.path}
+                href={item.href}
+                onClick={() => setActivePath(item.path)}
+                className={`px-space-md py-space-xs rounded-full font-body-sm text-body-sm transition-all ${
+                  isActive
+                    ? "bg-primary-container text-on-primary-container font-semibold shadow-sm"
+                    : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
                 }`}
               >
-                <span className="flex items-center gap-2">
-                  {link.isLive && <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>}
-                  {link.name}
-                </span>
-                <span className="text-[10px] text-slate-500">→</span>
+                {item.label}
               </a>
-            ))}
+            );
+          })}
+        </nav>
 
-            <div className="pt-2">
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 rounded-full bg-emerald-500 text-black font-display font-bold text-xs text-center uppercase tracking-wider block hover:bg-emerald-400 transition-colors"
-              >
-                Book Walkthrough / Demo
-              </a>
-            </div>
+        {/* Right Action Items */}
+        <div className="flex items-center gap-space-sm">
+          <a
+            className="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-terminal text-code-terminal transition-all"
+            href="https://wa.me/923077970277"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="font-label-caps text-label-caps uppercase text-secondary">WA:</span>
+            <span>+92 307 7970277</span>
+          </a>
+
+          <a
+            className="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-code-terminal text-code-terminal font-semibold shadow-[0_0_24px_-4px_rgba(16,185,129,0.35)] hover:bg-primary hover:text-on-primary transition-all group"
+            href="#demo-form"
+          >
+            <span>Book 60-Sec Demo</span>
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
+            <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
           </div>
-        )}
-      </nav>
+
+          {/* Mobile Menu Hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden p-2 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors"
+            aria-label="Toggle Navigation"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              {mobileMenuOpen ? "close" : "menu"}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="xl:hidden bg-surface-container-lowest/95 border-b border-surface-container-highest px-margin py-space-md flex flex-col gap-2">
+          {navItems.map((item) => (
+            <a
+              key={item.path}
+              href={item.href}
+              onClick={() => {
+                setActivePath(item.path);
+                setMobileMenuOpen(false);
+              }}
+              className={`px-4 py-2.5 rounded-lg text-body-sm font-code-terminal transition-colors flex items-center justify-between ${
+                activePath === item.path
+                  ? "bg-primary-container text-on-primary-container font-bold"
+                  : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
+              }`}
+            >
+              <span>{item.label}</span>
+              <span className="text-primary text-xs">→</span>
+            </a>
+          ))}
+          <div className="pt-2 border-t border-surface-container-highest flex items-center justify-between">
+            <a
+              href="https://wa.me/923077970277"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-secondary font-code-terminal text-body-sm flex items-center gap-1"
+            >
+              <span className="material-symbols-outlined text-[16px]">chat</span>
+              <span>+92 307 7970277</span>
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

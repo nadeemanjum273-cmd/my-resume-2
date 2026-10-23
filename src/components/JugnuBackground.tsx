@@ -1,244 +1,172 @@
 import React, { useEffect, useRef } from "react";
-
-interface Firefly {
-  x: number;
-  y: number;
-  radius: number;
-  vx: number;
-  vy: number;
-  alpha: number;
-  glowColor: string;
-  phase: number;
-}
-
-interface MovingStar {
-  x: number;
-  y: number;
-  radius: number;
-  alpha: number;
-  twinkleSpeed: number;
-  vx: number;
-  vy: number;
-}
-
-interface ShootingStar {
-  x: number;
-  y: number;
-  length: number;
-  speed: number;
-  angle: number;
-  alpha: number;
-  active: boolean;
-}
+import * as THREE from "three";
 
 export const JugnuBackground: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    let animationFrameId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    const width = container.clientWidth || window.innerWidth;
+    const height = container.clientHeight || window.innerHeight;
 
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      initMovingStars();
-      initFireflies();
-    };
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, width / height, 1, 2000);
+    camera.position.z = 600;
 
-    window.addEventListener("resize", handleResize);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
 
-    // 1. Initialize Moving Stars
-    const starCount = Math.floor((width * height) / 8000);
-    let movingStars: MovingStar[] = [];
-    const initMovingStars = () => {
-      movingStars = [];
-      for (let i = 0; i < starCount; i++) {
-        movingStars.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 1.3 + 0.3,
-          alpha: Math.random() * 0.7 + 0.3,
-          twinkleSpeed: Math.random() * 0.02 + 0.005,
-          vx: (Math.random() - 0.5) * 0.15 - 0.05, // slow cosmic drift
-          vy: Math.random() * 0.1 + 0.04,          // gentle downward cosmic drift
-        });
-      }
-    };
+    // Stars Geometry
+    const starsCount = 1800;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(starsCount * 3);
+    const colors = new Float32Array(starsCount * 3);
+    const scales = new Float32Array(starsCount);
 
-    // 2. Shooting Stars (Meteors)
-    const shootingStars: ShootingStar[] = [];
-    const spawnShootingStar = () => {
-      if (shootingStars.length < 2 && Math.random() < 0.015) {
-        shootingStars.push({
-          x: Math.random() * width * 0.8 + width * 0.1,
-          y: Math.random() * height * 0.4,
-          length: Math.random() * 80 + 50,
-          speed: Math.random() * 6 + 6,
-          angle: Math.PI / 4 + (Math.random() - 0.5) * 0.2, // ~45 degrees
-          alpha: 1,
-          active: true,
-        });
-      }
-    };
-
-    // 3. Initialize "Jugnu" (Bioluminescent Cosmic Particles)
-    const fireflyCount = Math.min(32, Math.max(18, Math.floor(width / 50)));
-    let fireflies: Firefly[] = [];
-    const glowColors = [
-      { r: 16, g: 185, b: 129 },  // DataCrumbs Emerald green
-      { r: 5, g: 150, b: 105 },   // Deep emerald
-      { r: 52, g: 211, b: 153 },  // Mint glow
-      { r: 0, g: 242, b: 254 },   // Subtle cyan
+    const starColorOptions = [
+      new THREE.Color(0x2dd4bf), // Teal accent (DataCrumbs)
+      new THREE.Color(0x38bdf8), // Sky Blue
+      new THREE.Color(0x818cf8), // Indigo
+      new THREE.Color(0xffffff), // Pure Crisp White
+      new THREE.Color(0xa7f3d0), // Mint light
     ];
 
-    const initFireflies = () => {
-      fireflies = [];
-      for (let i = 0; i < fireflyCount; i++) {
-        const color = glowColors[Math.floor(Math.random() * glowColors.length)];
-        fireflies.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 2.2 + 1.2,
-          vx: (Math.random() - 0.5) * 0.6,
-          vy: (Math.random() - 0.5) * 0.5 - 0.18, // upward floating drift
-          alpha: Math.random() * 0.8 + 0.2,
-          glowColor: `${color.r}, ${color.g}, ${color.b}`,
-          phase: Math.random() * Math.PI * 2,
-        });
-      }
+    for (let i = 0; i < starsCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 1600;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 1600;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 1200;
+
+      const col = starColorOptions[Math.floor(Math.random() * starColorOptions.length)];
+      colors[i * 3] = col.r;
+      colors[i * 3 + 1] = col.g;
+      colors[i * 3 + 2] = col.b;
+
+      scales[i] = Math.random() * 2.5 + 0.5;
+    }
+
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+    // Star particle texture
+    const canvas = document.createElement("canvas");
+    canvas.width = 32;
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+      grad.addColorStop(0, "rgba(255,255,255,1)");
+      grad.addColorStop(0.3, "rgba(255,255,255,0.8)");
+      grad.addColorStop(0.8, "rgba(255,255,255,0.1)");
+      grad.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(16, 16, 16, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    const texture = new THREE.CanvasTexture(canvas);
+
+    const material = new THREE.PointsMaterial({
+      size: 4,
+      vertexColors: true,
+      map: texture,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+
+    const starField = new THREE.Points(geometry, material);
+    scene.add(starField);
+
+    // Constellation / network lines connecting nearby key nodes
+    const clusterCount = 45;
+    const clusterGeo = new THREE.BufferGeometry();
+    const clusterPos = new Float32Array(clusterCount * 3);
+    for (let i = 0; i < clusterCount; i++) {
+      clusterPos[i * 3] = (Math.random() - 0.5) * 900;
+      clusterPos[i * 3 + 1] = (Math.random() - 0.5) * 900;
+      clusterPos[i * 3 + 2] = (Math.random() - 0.5) * 500;
+    }
+    clusterGeo.setAttribute("position", new THREE.BufferAttribute(clusterPos, 3));
+
+    const clusterMat = new THREE.PointsMaterial({
+      size: 6,
+      color: 0x2dd4bf,
+      map: texture,
+      transparent: true,
+      opacity: 0.85,
+    });
+    const clusterPoints = new THREE.Points(clusterGeo, clusterMat);
+    scene.add(clusterPoints);
+
+    // Mouse parallax tracking
+    let mouseX = 0;
+    let mouseY = 0;
+    const onMouseMove = (e: MouseEvent) => {
+      mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+      mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
     };
+    window.addEventListener("mousemove", onMouseMove);
 
-    initMovingStars();
-    initFireflies();
-
-    let time = 0;
-
-    const render = () => {
-      time += 0.02;
-      ctx.clearRect(0, 0, width, height);
-
-      // Render Moving Stars
-      for (let i = 0; i < movingStars.length; i++) {
-        const s = movingStars[i];
-        s.x += s.vx;
-        s.y += s.vy;
-
-        // Wrap around screen
-        if (s.x < 0) s.x = width;
-        if (s.x > width) s.x = 0;
-        if (s.y < 0) s.y = height;
-        if (s.y > height) s.y = 0;
-
-        const currentAlpha = s.alpha + Math.sin(time * 30 * s.twinkleSpeed) * 0.25;
-        ctx.fillStyle = `rgba(226, 232, 240, ${Math.max(0.15, Math.min(1, currentAlpha))})`;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Spawn & Render Shooting Stars
-      spawnShootingStar();
-      for (let i = shootingStars.length - 1; i >= 0; i--) {
-        const ss = shootingStars[i];
-        if (!ss.active) continue;
-
-        ss.x += Math.cos(ss.angle) * ss.speed;
-        ss.y += Math.sin(ss.angle) * ss.speed;
-        ss.alpha -= 0.015;
-
-        if (ss.alpha <= 0 || ss.x > width || ss.y > height) {
-          shootingStars.splice(i, 1);
-          continue;
-        }
-
-        // Draw meteor trail
-        const tailX = ss.x - Math.cos(ss.angle) * ss.length;
-        const tailY = ss.y - Math.sin(ss.angle) * ss.length;
-
-        const gradient = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
-        gradient.addColorStop(0, "rgba(0, 242, 254, 0)");
-        gradient.addColorStop(0.7, `rgba(168, 85, 247, ${ss.alpha * 0.6})`);
-        gradient.addColorStop(1, `rgba(255, 255, 255, ${ss.alpha})`);
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.8;
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(ss.x, ss.y);
-        ctx.stroke();
-
-        // Meteor head bright dot
-        ctx.fillStyle = `rgba(255, 255, 255, ${ss.alpha})`;
-        ctx.beginPath();
-        ctx.arc(ss.x, ss.y, 1.5, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Render Floating "Jugnu" (Fireflies)
-      for (let i = 0; i < fireflies.length; i++) {
-        const f = fireflies[i];
-
-        // Organic wandering motion
-        f.x += f.vx + Math.sin(time + f.phase) * 0.45;
-        f.y += f.vy + Math.cos(time + f.phase) * 0.35;
-
-        // Wrap around screen
-        if (f.x < -20) f.x = width + 20;
-        if (f.x > width + 20) f.x = -20;
-        if (f.y < -20) f.y = height + 20;
-        if (f.y > height + 20) f.y = -20;
-
-        // Firefly pulsation
-        f.alpha = 0.35 + 0.55 * (0.5 + 0.5 * Math.sin(time * 2 + f.phase));
-
-        // Firefly halo glow
-        const glowGrad = ctx.createRadialGradient(
-          f.x,
-          f.y,
-          0,
-          f.x,
-          f.y,
-          f.radius * 7
-        );
-        glowGrad.addColorStop(0, `rgba(${f.glowColor}, ${f.alpha * 0.9})`);
-        glowGrad.addColorStop(0.35, `rgba(${f.glowColor}, ${f.alpha * 0.4})`);
-        glowGrad.addColorStop(1, `rgba(${f.glowColor}, 0)`);
-
-        ctx.fillStyle = glowGrad;
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.radius * 7, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Firefly core
-        ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, f.alpha + 0.25)})`;
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      animationFrameId = requestAnimationFrame(render);
+    // Window resize handler
+    const onResize = () => {
+      const w = container.clientWidth || window.innerWidth;
+      const h = container.clientHeight || window.innerHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
     };
+    window.addEventListener("resize", onResize);
 
-    render();
+    // Animation Loop
+    let frameId: number;
+    const clock = new THREE.Clock();
+
+    function animate() {
+      frameId = requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      starField.rotation.y = elapsedTime * 0.02 + mouseX * 0.001;
+      starField.rotation.x = elapsedTime * 0.01 + mouseY * 0.001;
+
+      clusterPoints.rotation.y = -elapsedTime * 0.03;
+      clusterPoints.rotation.x = -elapsedTime * 0.015;
+
+      renderer.render(scene, camera);
+    }
+    animate();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(frameId);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("resize", onResize);
+      geometry.dispose();
+      material.dispose();
+      texture.dispose();
+      clusterGeo.dispose();
+      clusterMat.dispose();
+      renderer.dispose();
+      if (renderer.domElement && renderer.domElement.parentElement) {
+        renderer.domElement.parentElement.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed inset-0 pointer-events-none -z-10 w-full h-full"
-      style={{ opacity: 0.95 }}
-    />
+    <>
+      <div
+        ref={containerRef}
+        className="fixed inset-0 w-full h-full pointer-events-none z-0"
+        style={{ display: "block" }}
+      />
+      {/* Ambient Glow Core Blurs */}
+      <div className="fixed top-24 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="fixed top-[60vh] right-10 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[160px] pointer-events-none z-0" />
+      <div className="fixed bottom-10 left-1/3 w-[550px] h-[550px] bg-tertiary/10 rounded-full blur-[150px] pointer-events-none z-0" />
+    </>
   );
 };

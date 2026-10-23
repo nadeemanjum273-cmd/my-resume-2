@@ -1,162 +1,160 @@
 import React, { useState } from "react";
-import { Zap, CheckCircle2, ArrowRight, DollarSign, Calendar } from "lucide-react";
-import { TiltCard } from "./TiltCard";
 
 export const Calculator: React.FC = () => {
   const [hours, setHours] = useState<number>(15);
 
-  const hourlyRate = 30; // $30/hr industry benchmark for manual data entry & phone support
-  const monthlySavings = hours * 4 * hourlyRate;
+  // Hourly rate: $30/hr, 4 weeks/month
+  const monthlySavings = hours * 30 * 4;
   const annualSavings = monthlySavings * 12;
 
-  const getPackage = () => {
-    if (hours <= 10) {
+  // Dynamic Tier calculation
+  const getTier = (h: number) => {
+    if (h <= 10) {
       return {
-        name: "Tier 1: Starter FAQ & Qualification Bot",
-        price: "$350",
-        badge: "STARTER TIER",
-        desc: "Ideal for solo businesses losing leads after-hours. Deploys a smart conversational bot on your website syncing to email/Slack.",
-        deliverables: ["24/7 FAQ Lead Ingestion", "Instant Email/Slack Alerts", "4-Day Delivery SLA"],
+        cost: "$450 Fixed POC",
+        name: "Tier 1: Starter Bot & Webhook",
+        desc: "24/7 FAQ Chatbot + Google Sheets live logging.",
       };
-    } else if (hours <= 25) {
+    } else if (h <= 25) {
       return {
+        cost: "$650 Fixed POC",
         name: "Tier 2: Growth Automation Suite",
-        price: "$650",
-        badge: "★ MOST POPULAR",
-        desc: "Our high-ROI package: Web + WhatsApp Cloud bot with automatic CRM sync and real-time calendar booking.",
-        deliverables: ["Web + WhatsApp AI Concierge", "n8n Webhook CRM Sync (Sheets/HubSpot)", "Real-Time Google Calendar Booking"],
+        desc: "VoiceFlow WhatsApp Bot + n8n Webhook Sync + Live Spreadsheet Auditing.",
       };
     } else {
       return {
-        name: "Tier 3: Enterprise AI Agent Ecosystem",
-        price: "$1,200",
-        badge: "ENTERPRISE",
-        desc: "Custom multi-agent workflows, internal RAG document engine, and multi-platform automation pipelines.",
-        deliverables: ["Autonomous ReAct Agent Loop", "Custom RAG PDF / Docs Engine", "Full n8n Multi-App Orchestration"],
+        cost: "$1,200 Full System",
+        name: "Tier 3: Enterprise Autonomous Agent",
+        desc: "Multi-step ReAct LangChain agent + vector database RAG + CRM 2-way sync.",
       };
     }
   };
 
-  const currentPkg = getPackage();
+  const currentTier = getTier(hours);
 
   return (
     <section
-      id="calculator"
-      className="scroll-mt-28 rounded-3xl bg-[#0D1217] border border-white/10 p-6 sm:p-12 space-y-8 shadow-2xl shadow-black/80 relative overflow-hidden"
+      className="w-full rounded-3xl bg-surface-container-low/80 backdrop-blur-xl p-space-xl lg:p-space-2xl shadow-2xl relative overflow-hidden flex flex-col gap-space-xl border border-outline-variant/30"
+      id="roi-calculator"
     >
-      {/* Background radial glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        {/* Left Column: Interactive Slider */}
-        <div className="lg:col-span-6 space-y-5">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-            <Zap className="w-3.5 h-3.5 text-emerald-400" />
-            <span>INTERACTIVE ROI SAVINGS CALCULATOR</span>
+      {/* Header */}
+      <div className="flex flex-col gap-space-xs max-w-2xl">
+        <div className="inline-flex items-center gap-1.5 text-primary font-code-terminal text-label-caps">
+          <span className="material-symbols-outlined text-[14px]">calculate</span>
+          <span>ENTERPRISE METRIC GENERATOR</span>
+        </div>
+        <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
+          Estimate Your Monthly Automation Savings
+        </h2>
+        <p className="font-body-md text-body-md text-on-surface-variant">
+          Move the slider to estimate how many manual hours your staff spends weekly answering repetitive inquiries, routing leads, and copying data between tools.
+        </p>
+      </div>
+
+      {/* Interactive Calculator Body Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+        {/* Slider Input Controls (7 Cols) */}
+        <div className="lg:col-span-7 flex flex-col gap-space-lg">
+          <div className="flex items-center justify-between">
+            <span className="font-body-md text-body-md text-on-surface font-semibold">
+              Hours Wasted Weekly on Repetitive Work:
+            </span>
+            <div className="px-space-md py-1.5 rounded-lg bg-surface-container-highest text-primary font-code-terminal text-headline-sm font-bold shadow-inner border border-outline-variant/30">
+              <span>{hours}</span> hrs / week
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white tracking-tight">
-            Estimate Your Monthly Savings
-          </h2>
+          {/* Range Slider */}
+          <input
+            className="w-full h-2.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary"
+            max="60"
+            min="5"
+            step="1"
+            type="range"
+            value={hours}
+            onChange={(e) => setHours(parseInt(e.target.value, 10))}
+          />
 
-          <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-            Adjust the slider to estimate how many manual hours your staff wastes each week on repetitive inquiries, customer lookups, lead routing, and cross-tool data copying.
-          </p>
+          {/* Scale Anchors */}
+          <div className="flex justify-between font-code-terminal text-[11px] text-on-surface-variant">
+            <span>5 hrs (Small Team)</span>
+            <span>20 hrs (Growing Agency)</span>
+            <span>40 hrs (Full-Time Equivalent)</span>
+            <span>60 hrs (High-Volume Ops)</span>
+          </div>
 
-          {/* Range Slider Container */}
-          <div className="space-y-4 pt-3 p-5 rounded-2xl bg-[#090D10] border border-white/10">
-            <div className="flex justify-between items-center text-sm font-mono">
-              <span className="text-slate-400">Hours Wasted Weekly:</span>
-              <span className="font-bold text-emerald-400 text-xl px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                {hours} Hours / week
-              </span>
-            </div>
-
-            <input
-              type="range"
-              min="5"
-              max="40"
-              step="1"
-              value={hours}
-              onChange={(e) => setHours(parseInt(e.target.value))}
-              className="w-full h-2 bg-[#1A222B] rounded-lg appearance-none cursor-pointer accent-emerald-400"
-            />
-
-            <div className="flex justify-between text-[11px] text-slate-400 font-mono">
-              <span>5 hrs (Solo / Small)</span>
-              <span>20 hrs (Growing Agency)</span>
-              <span>40 hrs (High Volume Enterprise)</span>
-            </div>
+          {/* Formula Context Box */}
+          <div className="p-space-md rounded-xl bg-surface-container/40 flex items-center gap-space-sm text-on-surface-variant font-code-terminal text-body-sm border border-outline-variant/20">
+            <span className="material-symbols-outlined text-secondary text-[22px]">info</span>
+            <span>Based on conservative $30/hr blended labor cost + 30% reduction in lead leakage.</span>
           </div>
         </div>
 
-        {/* Right Column: Financial Returns & Package Recommendation */}
-        <div className="lg:col-span-6 rounded-2xl bg-[#090D10] border border-white/10 p-6 sm:p-7 space-y-6">
-          {/* Numbers Grid */}
-          <div className="grid grid-cols-2 gap-4 pb-5 border-b border-white/10">
-            <div>
-              <div className="text-xs text-slate-400 font-mono mb-1">Monthly Labor Recovered:</div>
-              <div className="text-2xl sm:text-3xl font-display font-extrabold text-emerald-400">
-                ${monthlySavings.toLocaleString()} <span className="text-xs font-mono text-emerald-500/80">USD/mo</span>
-              </div>
-            </div>
-
-            <div>
-              <div className="text-xs text-slate-400 font-mono mb-1">Annualized Lost Value:</div>
-              <div className="text-2xl sm:text-3xl font-display font-extrabold text-white">
-                ${annualSavings.toLocaleString()} <span className="text-xs font-mono text-slate-400">USD/yr</span>
-              </div>
-            </div>
+        {/* Calculated Savings Result Card (5 Cols) */}
+        <div className="lg:col-span-5 rounded-2xl bg-surface-container p-space-lg shadow-xl flex flex-col gap-space-md border border-outline-variant/30">
+          <div className="flex items-center justify-between pb-space-xs border-b border-surface-container-highest/40">
+            <span className="font-code-terminal text-label-caps text-on-surface-variant">
+              FINANCIAL IMPACT DELTA
+            </span>
+            <span className="font-code-terminal text-label-caps text-primary uppercase font-bold">
+              Calculated in Real-Time
+            </span>
           </div>
 
-          {/* Dynamic Package Card with 3D Tilt */}
-          <TiltCard
-            className="rounded-2xl"
-            maxTilt={8}
-            scale={1.02}
-            glowColor="rgba(16, 185, 129, 0.3)"
-          >
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#12181F] border border-emerald-500/40 space-y-4 shadow-xl shadow-black/80">
-              <div className="flex justify-between items-start">
-                <div>
-                  <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                    {currentPkg.badge}
-                  </span>
-                  <h4 className="font-display font-bold text-white text-base mt-1.5">
-                    {currentPkg.name}
-                  </h4>
-                </div>
+          {/* Monthly Recovered */}
+          <div className="flex flex-col">
+            <span className="font-code-terminal text-body-sm text-on-surface-variant">
+              Monthly Labor Recovered:
+            </span>
+            <span className="font-metric-huge text-metric-huge text-primary leading-tight font-bold">
+              ${monthlySavings.toLocaleString()}{" "}
+              <span className="font-body-sm text-body-sm font-normal text-on-surface-variant">
+                USD / mo
+              </span>
+            </span>
+          </div>
 
-                <div className="text-right">
-                  <div className="text-2xl font-display font-extrabold text-emerald-400">
-                    {currentPkg.price}
-                  </div>
-                  <div className="text-[10px] text-slate-400 font-mono">Fixed &bull; 50% Deposit</div>
-                </div>
-              </div>
+          {/* Annualized Value */}
+          <div className="flex flex-col">
+            <span className="font-code-terminal text-body-sm text-on-surface-variant">
+              Annualized Recovered Value:
+            </span>
+            <span className="font-headline-md text-headline-md text-secondary font-bold">
+              ${annualSavings.toLocaleString()}{" "}
+              <span className="font-body-sm text-body-sm font-normal text-on-surface-variant">
+                USD / yr
+              </span>
+            </span>
+          </div>
 
-              <p className="text-xs text-slate-300 font-sans leading-relaxed">
-                {currentPkg.desc}
-              </p>
-
-              <div className="space-y-1.5 pt-1 text-xs font-mono text-slate-300">
-                {currentPkg.deliverables.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="#contact"
-                className="mt-2 w-full py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-md shadow-emerald-500/25"
-              >
-                <span>Lock In This Package ({currentPkg.price})</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+          {/* Recommended System Tier */}
+          <div className="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-1 mt-space-xs border border-outline-variant/30">
+            <div className="flex items-center justify-between">
+              <span className="font-code-terminal text-label-caps text-tertiary font-bold">
+                SUGGESTED DEPLOYMENT
+              </span>
+              <span className="font-code-terminal text-body-sm font-bold text-on-surface">
+                {currentTier.cost}
+              </span>
             </div>
-          </TiltCard>
+            <span className="font-body-sm text-body-sm text-on-surface font-semibold">
+              {currentTier.name}
+            </span>
+            <p className="font-code-terminal text-[11px] text-on-surface-variant">
+              {currentTier.desc}
+            </p>
+          </div>
+
+          {/* Lock in Price CTA */}
+          <a
+            className="w-full py-3 rounded-xl bg-primary text-on-primary font-code-terminal text-body-sm font-bold text-center hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-1"
+            href="#demo-form"
+          >
+            <span>Lock in This ROI Architecture</span>
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
         </div>
       </div>
     </section>
