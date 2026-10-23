@@ -199,8 +199,8 @@ export const Resume: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column (5 Cols): Client Delivery Promises Card */}
-        <div className="lg:col-span-5 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl p-5 sm:p-7 shadow-2xl flex flex-col gap-5 border border-white/10">
+        {/* Right Column (5 Cols): Client Delivery Promises Card with Shining Emerald Edges */}
+        <div className="lg:col-span-5 shining-card-emerald p-5 sm:p-7 flex flex-col gap-5">
           {/* Card Header with Green Checkmark Icon */}
           <div className="flex items-center gap-2.5 pb-2 border-b border-white/10">
             <span className="material-symbols-outlined text-emerald-400 text-[22px]">

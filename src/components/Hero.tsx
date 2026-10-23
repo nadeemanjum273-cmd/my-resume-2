@@ -42,49 +42,49 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
           </a>
         </div>
 
-        {/* 4 Metric KPI Cards: Exact Match to Screenshot 1 */}
+        {/* 4 Metric KPI Cards: Exact Match to Screenshot with Stunning Shining Edges */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
-          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-white leading-none">
+          <div className="shining-card p-3.5 flex flex-col gap-1">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-white leading-none relative z-10">
               15+
             </span>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-400 relative z-10">
               Automations Built
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#38bdf8] leading-none">
+          <div className="shining-card p-3.5 flex flex-col gap-1">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#38bdf8] leading-none relative z-10">
               6+
             </span>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-400 relative z-10">
               Production Builds
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#34d399] leading-none">
+          <div className="shining-card p-3.5 flex flex-col gap-1">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#34d399] leading-none relative z-10">
               &lt; 48h
             </span>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-400 relative z-10">
               POC Turnaround
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#c084fc] leading-none">
+          <div className="shining-card p-3.5 flex flex-col gap-1">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#c084fc] leading-none relative z-10">
               100%
             </span>
-            <span className="text-[11px] font-mono text-slate-400">
+            <span className="text-[11px] font-mono text-slate-400 relative z-10">
               IP Client Transfer
             </span>
           </div>
         </div>
       </div>
 
-      {/* Right Column (5 Cols) Profile Bento Card: Exact Match to Screenshot 1 */}
+      {/* Right Column (5 Cols) Profile Bento Card: Exact Match to Screenshot with Shining Edges */}
       <div className="lg:col-span-5 flex flex-col">
-        <div className="relative rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl p-6 shadow-2xl border border-white/10 flex flex-col items-center gap-4 text-center">
+        <div className="shining-card p-6 flex flex-col items-center gap-4 text-center">
           {/* Portrait Photo Container with Vibrant Blue Border Frame */}
           <div className="w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border-2 border-[#38bdf8] shadow-[0_0_35px_rgba(56,189,248,0.35)] bg-gradient-to-b from-[#38bdf8] to-[#0284c7] relative group">
             <img

@@ -124,20 +124,20 @@ export const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* 3-Column Grid of Cards: Exact Match to Screenshot 5 */}
+      {/* 3-Column Grid of Cards: Exact Match to Screenshot with Stunning Shining Edges */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((p) => (
           <div
             key={p.id}
-            className="rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-6 flex flex-col justify-between shadow-xl hover:border-[#22d3ee]/40 transition-all duration-300 hover:-translate-y-1 group"
+            className="shining-card p-6 flex flex-col justify-between group cursor-pointer"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 relative z-10">
               {/* Category Pill and Type Tag */}
               <div className="flex items-center justify-between gap-2">
-                <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/30 bg-[#22d3ee]/5 truncate max-w-[210px]">
+                <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 shadow-[0_0_12px_rgba(34,211,238,0.2)] truncate max-w-[210px] font-medium">
                   {p.tag}
                 </span>
-                <span className="text-[11px] font-mono text-slate-400 shrink-0">
+                <span className="text-[11px] font-mono text-slate-400 shrink-0 font-semibold tracking-wider">
                   {p.type}
                 </span>
               </div>
@@ -153,9 +153,9 @@ export const Projects: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 pt-6">
-              {/* Verified ROI Badge */}
-              <div className="p-2.5 rounded-xl bg-[#080B11] border border-emerald-500/30 text-emerald-400 font-mono text-xs flex items-center gap-2">
+            <div className="flex flex-col gap-4 pt-6 relative z-10">
+              {/* Verified ROI Badge with Glowing Emerald Border */}
+              <div className="p-2.5 rounded-xl bg-[#080B11]/90 border border-emerald-400/50 shadow-[0_0_14px_rgba(52,211,153,0.2)] text-emerald-400 font-mono text-xs flex items-center gap-2 group-hover:border-emerald-400 transition-colors">
                 <span className="material-symbols-outlined text-[16px] text-emerald-400 shrink-0">
                   check_circle
                 </span>
@@ -163,11 +163,11 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Stack & Details Link */}
-              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pt-1 border-t border-white/5">
+              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pt-1 border-t border-white/10">
                 <span className="truncate max-w-[170px]">{p.stack}</span>
                 <a
                   href="#demo-form"
-                  className="text-[#22d3ee] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-0.5 transition-transform shrink-0"
+                  className="text-[#22d3ee] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform shrink-0"
                 >
                   <span>Details</span>
                   <span>&rarr;</span>

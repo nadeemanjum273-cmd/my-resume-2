@@ -110,8 +110,8 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
     <section className="w-full flex flex-col gap-6" id="interactive-agent">
       {/* 2-Column Split Frame: Exact Match to Screenshot 4 */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-        {/* Left Card: My Resume Assistant (7 Cols) */}
-        <div className="lg:col-span-7 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-5 sm:p-6 flex flex-col justify-between shadow-2xl min-h-[460px]">
+        {/* Left Card: My Portfolio Assistant (7 Cols) */}
+        <div className="lg:col-span-7 shining-card p-5 sm:p-6 flex flex-col justify-between min-h-[460px]">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
         </div>
 
         {/* Right Card: Live RAG Vector Retrieval Engine (5 Cols) */}
-        <div className="lg:col-span-5 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-5 sm:p-6 flex flex-col justify-between shadow-2xl">
+        <div className="lg:col-span-5 shining-card p-5 sm:p-6 flex flex-col justify-between">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-white/10">
             <div className="flex items-center gap-2.5">

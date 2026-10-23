@@ -61,8 +61,8 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
           </div>
 
           {/* WhatsApp Card */}
-          <div className="p-4 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-emerald-500/30 flex items-center justify-between shadow-xl">
-            <div className="flex items-center gap-3">
+          <div className="shining-card p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3 relative z-10">
               <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
                 <span className="material-symbols-outlined text-[20px]">chat</span>
               </div>
@@ -85,7 +85,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
               href="https://wa.me/923077970277"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-full border border-white/20 hover:border-emerald-400 text-slate-300 hover:text-emerald-400 font-mono text-xs transition-colors flex items-center gap-1"
+              className="px-3.5 py-1.5 rounded-full border border-white/20 hover:border-emerald-400 text-slate-300 hover:text-emerald-400 font-mono text-xs transition-colors flex items-center gap-1 relative z-10"
             >
               <span>Chat Now</span>
               <span>&rarr;</span>
@@ -93,8 +93,8 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
           </div>
 
           {/* Email Card */}
-          <div className="p-4 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 flex items-center justify-between shadow-xl">
-            <div className="flex items-center gap-3">
+          <div className="shining-card p-4 flex items-center justify-between">
+            <div className="flex items-center gap-3 relative z-10">
               <div className="w-9 h-9 rounded-xl bg-sky-500/20 text-[#38bdf8] flex items-center justify-center border border-sky-500/30">
                 <span className="material-symbols-outlined text-[20px]">mail</span>
               </div>
@@ -105,7 +105,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
 
             <button
               onClick={copyEmail}
-              className="px-3.5 py-1.5 rounded-full border border-white/20 hover:border-[#38bdf8] text-slate-300 hover:text-[#38bdf8] font-mono text-xs transition-colors"
+              className="px-3.5 py-1.5 rounded-full border border-white/20 hover:border-[#38bdf8] text-slate-300 hover:text-[#38bdf8] font-mono text-xs transition-colors relative z-10"
             >
               Copy Email
             </button>
@@ -135,8 +135,8 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
           </div>
         </div>
 
-        {/* Right Column: Discovery Form (7 Cols) - Exact Match to Screenshot 3 */}
-        <div className="lg:col-span-7 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-6 flex flex-col gap-4 shadow-2xl">
+        {/* Right Column: Discovery Form (7 Cols) - Exact Match to Screenshot with Shining Edges */}
+        <div className="lg:col-span-7 shining-card p-6 flex flex-col gap-4">
           {/* Top Form Header */}
           <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
             <span className="text-slate-400 font-bold tracking-wider">

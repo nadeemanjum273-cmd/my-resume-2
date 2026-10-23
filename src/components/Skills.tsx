@@ -55,14 +55,14 @@ export const Skills: React.FC = () => {
           {row1Doubled.map((p, i) => (
             <div
               key={`row1-${i}`}
-              className={`w-[270px] sm:w-[290px] shrink-0 p-3.5 sm:p-4 rounded-2xl bg-[#0B0F17]/90 hover:bg-[#111827] transition-all duration-300 border border-white/10 ${p.border} flex items-center gap-3.5 shadow-md hover:-translate-y-1 hover:shadow-xl group cursor-pointer`}
+              className={`w-[270px] sm:w-[290px] shrink-0 p-3.5 sm:p-4 shining-card ${p.border} flex items-center gap-3.5 group cursor-pointer`}
             >
-              <div className="w-11 h-11 rounded-xl bg-[#080B11] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="w-11 h-11 rounded-xl bg-[#080B11] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform relative z-10 shadow-inner">
                 <span className={`material-symbols-outlined text-[24px] ${p.color}`}>
                   {p.icon}
                 </span>
               </div>
-              <div className="flex flex-col min-w-0">
+              <div className="flex flex-col min-w-0 relative z-10">
                 <span className="font-display font-bold text-sm text-white truncate group-hover:text-[#22d3ee] transition-colors">
                   {p.name}
                 </span>
@@ -79,14 +79,14 @@ export const Skills: React.FC = () => {
           {row2Doubled.map((p, i) => (
             <div
               key={`row2-${i}`}
-              className={`w-[270px] sm:w-[290px] shrink-0 p-3.5 sm:p-4 rounded-2xl bg-[#0B0F17]/90 hover:bg-[#111827] transition-all duration-300 border border-white/10 ${p.border} flex items-center gap-3.5 shadow-md hover:-translate-y-1 hover:shadow-xl group cursor-pointer`}
+              className={`w-[270px] sm:w-[290px] shrink-0 p-3.5 sm:p-4 shining-card ${p.border} flex items-center gap-3.5 group cursor-pointer`}
             >
-              <div className="w-11 h-11 rounded-xl bg-[#080B11] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <div className="w-11 h-11 rounded-xl bg-[#080B11] border border-white/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform relative z-10 shadow-inner">
                 <span className={`material-symbols-outlined text-[24px] ${p.color}`}>
                   {p.icon}
                 </span>
               </div>
-              <div className="flex flex-col min-w-0">
+              <div className="flex flex-col min-w-0 relative z-10">
                 <span className="font-display font-bold text-sm text-white truncate group-hover:text-[#22d3ee] transition-colors">
                   {p.name}
                 </span>
