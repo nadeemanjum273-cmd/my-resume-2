@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed-variant": "#6900b3", "secondary-fixed": "#c4e7ff", "on-surface": "#e0e2eb", "on-secondary-fixed-variant": "#004c69", "on-tertiary-container": "#550093", "on-error-container": "#ffdad6", "error-container": "#93000a", "on-background": "#e0e2eb", "outline": "#86948a", "surface-tint": "#4edea3", "inverse-on-surface": "#2d3037", "on-secondary-container": "#00374d", "on-tertiary": "#490080", "tertiary": "#ddb7ff", "secondary-fixed-dim": "#7bd0ff", "on-primary-container": "#00422b", "secondary-container": "#00a6e0", "surface-container-high": "#272a31", "tertiary-fixed": "#f0dbff", "surface": "#10131a", "surface-container-low": "#191c22", "surface-container-lowest": "#0b0e14", "tertiary-container": "#c487ff", "on-primary-fixed-variant": "#005236", "on-error": "#690005", "surface-dim": "#10131a", "on-primary": "#003824", "inverse-surface": "#e0e2eb", "on-primary-fixed": "#002113", "on-surface-variant": "#bbcabf", "primary-fixed": "#6ffbbe", "background": "#10131a", "primary-container": "#10b981", "outline-variant": "#3c4a42", "surface-container": "#1d2026", "error": "#ffb4ab", "surface-container-highest": "#32353c", "surface-variant": "#32353c", "inverse-primary": "#006c49", "surface-bright": "#363940", "primary": "#4edea3", "secondary": "#7bd0ff", "on-secondary": "#00354a", "tertiary-fixed-dim": "#ddb7ff", "primary-fixed-dim": "#4edea3", "on-secondary-fixed": "#001e2c", "on-tertiary-fixed": "#2c0051" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-sm": "1rem", "space-3xl": "6rem", "space-2xl": "4rem", "margin": "1.5rem", "margin-tablet": "2.5rem", "space-xl": "2.5rem", "space-md": "1rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "gutter": "1.5rem", "margin-desktop": "4rem", "gutter-lg": "2rem", "space-sm": "0.5rem" }, "fontFamily": { "display-hero": [ "Space Grotesk" ], "code-terminal": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "display-hero-mobile": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ], "metric-huge": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "body-md": [ "Inter" ], "body-sm": [ "Inter" ], "headline-lg-mobile": [ "Space Grotesk" ], "headline-lg": [ "Space Grotesk" ], "label-caps": [ "JetBrains Mono" ] }, "fontSize": { "display-hero": [ "56px", { "lineHeight": "64px", "fontWeight": "700" } ], "code-terminal": [ "13px", { "lineHeight": "20px", "fontWeight": "500" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "display-hero-mobile": [ "36px", { "lineHeight": "44px", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "metric-huge": [ "44px", { "lineHeight": "48px", "fontWeight": "700" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "fontWeight": "700" } ], "headline-lg": [ "36px", { "lineHeight": "44px", "fontWeight": "700" } ], "label-caps": [ "11px", { "lineHeight": "16px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 w-full bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-low shadow-[0_0_16px_rgba(16,185,129,0.15)]"><div class="relative flex h-2 w-2 items-center justify-center"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">Nadeem Anjum</span><span class="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">AI Solutions &amp; Automation Architect</span></div></div></div><nav class="hidden xl:flex items-center gap-space-xs p-space-xs rounded-full bg-surface-container-low" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-full"><a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary-container font-semibold rounded-full" data-path="home" href="#">Home</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="interactive-ai-agent" href="#">Interactive AI Agent</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="case-studies" href="#">Case Studies</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="tech-arsenal" href="#">Tech Arsenal</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="roi-calculator" href="#">ROI Calculator</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="experience" href="#">Experience</a><a class="px-space-md py-space-xs rounded-full text-on-surface-variant font-body-sm text-body-sm hover:text-on-surface hover:bg-surface-container-high transition-all" data-path="contact" href="#">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-terminal text-code-terminal transition-all" href="https://wa.me/923077970277" target="_blank"><span class="font-label-caps text-label-caps uppercase text-secondary">WA:</span><span>+92 307 7970277</span></a><a class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-code-terminal text-code-terminal font-semibold shadow-[0_0_24px_-4px_rgba(16,185,129,0.35)] hover:bg-primary hover:text-on-primary transition-all group" data-path="contact" href="#"><span>Book 60-Sec Demo</span><span class="transition-transform group-hover:translate-x-1">→</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full relative">
+<!-- Interactive Cosmic Moving Stars Background Canvas via Shell Directive -->
+<!-- STITCH_THREEJS_START:ANIMATION_6 class="fixed inset-0 w-full h-full pointer-events-none z-0" -->
+<div class="fixed inset-0 w-full h-full pointer-events-none z-0" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_6" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_6');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Night dark starry sky with twinkling and drifting cosmic dust
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, width / height, 1, 2000);
+camera.position.z = 600;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Stars Geometry
+const starsCount = 1800;
+const geometry = new THREE.BufferGeometry();
+const positions = new Float32Array(starsCount * 3);
+const colors = new Float32Array(starsCount * 3);
+const scales = new Float32Array(starsCount);
+
+const starColorOptions = [
+  new THREE.Color(0x2dd4bf), // Teal accent (DataCrumbs)
+  new THREE.Color(0x38bdf8), // Sky Blue
+  new THREE.Color(0x818cf8), // Indigo
+  new THREE.Color(0xffffff), // Pure Crisp White
+  new THREE.Color(0xa7f3d0)  // Mint light
+];
+
+for (let i = 0; i < starsCount; i++) {
+  positions[i * 3] = (Math.random() - 0.5) * 1600;
+  positions[i * 3 + 1] = (Math.random() - 0.5) * 1600;
+  positions[i * 3 + 2] = (Math.random() - 0.5) * 1200;
+
+  const col = starColorOptions[Math.floor(Math.random() * starColorOptions.length)];
+  colors[i * 3] = col.r;
+  colors[i * 3 + 1] = col.g;
+  colors[i * 3 + 2] = col.b;
+
+  scales[i] = Math.random() * 2.5 + 0.5;
+}
+
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+// Star particle texture
+const canvas = document.createElement('canvas');
+canvas.width = 32;
+canvas.height = 32;
+const ctx = canvas.getContext('2d');
+const grad = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+grad.addColorStop(0, 'rgba(255,255,255,1)');
+grad.addColorStop(0.3, 'rgba(255,255,255,0.8)');
+grad.addColorStop(0.8, 'rgba(255,255,255,0.1)');
+grad.addColorStop(1, 'rgba(255,255,255,0)');
+ctx.fillStyle = grad;
+ctx.beginPath();
+ctx.arc(16, 16, 16, 0, Math.PI * 2);
+ctx.fill();
+
+const texture = new THREE.CanvasTexture(canvas);
+
+const material = new THREE.PointsMaterial({
+  size: 4,
+  vertexColors: true,
+  map: texture,
+  transparent: true,
+  blending: THREE.AdditiveBlending,
+  depthWrite: false
+});
+
+const starField = new THREE.Points(geometry, material);
+scene.add(starField);
+
+// Constellation / network lines connecting nearby key nodes
+const clusterCount = 45;
+const clusterGeo = new THREE.BufferGeometry();
+const clusterPos = new Float32Array(clusterCount * 3);
+for (let i = 0; i < clusterCount; i++) {
+  clusterPos[i * 3] = (Math.random() - 0.5) * 900;
+  clusterPos[i * 3 + 1] = (Math.random() - 0.5) * 900;
+  clusterPos[i * 3 + 2] = (Math.random() - 0.5) * 500;
+}
+clusterGeo.setAttribute('position', new THREE.BufferAttribute(clusterPos, 3));
+
+const clusterMat = new THREE.PointsMaterial({
+  size: 6,
+  color: 0x2dd4bf,
+  map: texture,
+  transparent: true,
+  opacity: 0.85
+});
+const clusterPoints = new THREE.Points(clusterGeo, clusterMat);
+scene.add(clusterPoints);
+
+// Mouse parallax tracking
+let mouseX = 0;
+let mouseY = 0;
+window.addEventListener('mousemove', (e) => {
+  mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+  mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
+});
+
+// Window resize handler
+const onResize = () => {
+  const w = container.clientWidth || window.innerWidth;
+  const h = container.clientHeight || window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+};
+window.addEventListener('resize', onResize);
+
+// Animation Loop
+let frameId;
+const clock = new THREE.Clock();
+
+function animate() {
+  frameId = requestAnimationFrame(animate);
+  const elapsedTime = clock.getElapsedTime();
+
+  starField.rotation.y = elapsedTime * 0.02 + mouseX * 0.001;
+  starField.rotation.x = elapsedTime * 0.01 + mouseY * 0.001;
+
+  clusterPoints.rotation.y = -elapsedTime * 0.03;
+  clusterPoints.rotation.x = -elapsedTime * 0.015;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+return () => {
+  cancelAnimationFrame(frameId);
+  window.removeEventListener('resize', onResize);
+  geometry.dispose();
+  material.dispose();
+  texture.dispose();
+  clusterGeo.dispose();
+  clusterMat.dispose();
+  renderer.dispose();
+};
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_6 -->
+<!-- Ambient Glow Core Blurs -->
+<div class="fixed top-24 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+<div class="fixed top-[60vh] right-10 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+<div class="fixed bottom-10 left-1/3 w-[550px] h-[550px] bg-tertiary/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+<!-- Main Content Wrapper -->
+<div class="relative z-10 w-full max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop py-space-xl flex flex-col gap-space-3xl">
+<!-- ==================== SECTION 1: HERO & PROFILE SHOWCASE ==================== -->
+<section class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center pt-space-md">
+<!-- Left Column: Copy & KPIs (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Over-headline Tag -->
+<div class="inline-flex items-center gap-space-xs self-start px-space-md py-1.5 rounded-full bg-surface-container-high/70 shadow-sm backdrop-blur-md">
+<span class="text-primary font-code-terminal text-label-caps">✦</span>
+<span class="font-code-terminal text-label-caps tracking-widest text-primary uppercase">24/7 Lead Chatbots • Autonomous Agents • n8n Pipelines</span>
+<span class="text-primary font-code-terminal text-label-caps">✦</span>
+</div>
+<!-- Main Display Headline -->
+<h1 class="font-display-hero text-display-hero tracking-tight text-on-surface">
+          Transforming Business Workflows into 
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-surface-tint to-secondary">Intelligent AI Systems.</span>
+</h1>
+<!-- Subtitle -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          I build production-grade Autonomous Agents, VoiceFlow assistants, and n8n Workflow Automations backed by deep Data Science &amp; Python ML foundations for high-growth enterprises.
+        </p>
+<!-- CTA Buttons -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<a class="inline-flex items-center gap-space-xs px-space-xl py-3 rounded-full bg-primary-container text-on-primary-container font-code-terminal text-body-sm font-bold shadow-xl hover:bg-primary hover:text-on-primary transition-all duration-300 group" href="#interactive-agent">
+<span>Launch Resume Assistant</span>
+<span class="material-symbols-outlined text-[18px] group-hover:rotate-45 transition-transform">bolt</span>
+</a>
+<a class="inline-flex items-center gap-space-xs px-space-xl py-3 rounded-full bg-surface-container-high text-on-surface font-code-terminal text-body-sm hover:bg-surface-bright transition-all shadow-md" href="#deployments">
+<span>Explore Production Deployments</span>
+<span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+</a>
+</div>
+<!-- Quick Demo WhatsApp Callout -->
+<div class="flex items-center gap-space-xs pt-space-xs">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant">Need a Rapid Architecture Demo?</span>
+<a class="font-code-terminal text-body-sm font-semibold text-primary hover:text-secondary transition-colors underline underline-offset-4 decoration-primary/40" href="https://wa.me/923077970277" target="_blank">+92 307 7970277</a>
+</div>
+<!-- Metric KPI Cards Row -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-md">
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md flex flex-col gap-1">
+<span class="font-metric-huge text-metric-huge text-on-surface leading-none">15<span class="text-primary">+</span></span>
+<span class="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">Automations Built</span>
+<span class="font-code-terminal text-[10px] text-primary mt-1">Live in Prod</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md flex flex-col gap-1">
+<span class="font-metric-huge text-metric-huge text-on-surface leading-none">6<span class="text-secondary">+</span></span>
+<span class="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">Production Builds</span>
+<span class="font-code-terminal text-[10px] text-secondary mt-1">End-to-End</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md flex flex-col gap-1">
+<span class="font-metric-huge text-metric-huge text-on-surface leading-none">&lt;48<span class="text-primary-fixed">h</span></span>
+<span class="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">POC Turnaround</span>
+<span class="font-code-terminal text-[10px] text-primary-fixed mt-1">Validated Sandbox</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md flex flex-col gap-1">
+<span class="font-metric-huge text-metric-huge text-on-surface leading-none">100<span class="text-tertiary">%</span></span>
+<span class="font-label-caps text-label-caps tracking-wider uppercase text-on-surface-variant">IP Client Transfer</span>
+<span class="font-code-terminal text-[10px] text-tertiary mt-1">Zero Vendor Lock</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Profile Showcase Bento Card (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col">
+<div class="relative rounded-2xl bg-surface-container-low/80 backdrop-blur-xl p-space-lg shadow-2xl overflow-hidden flex flex-col gap-space-md">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Profile Header Meta -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container-highest text-primary font-code-terminal text-label-caps">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              VERIFIED ARCHITECT
+            </div>
+<span class="font-code-terminal text-label-caps text-on-surface-variant">DATACRUMBS CERTIFIED</span>
+</div>
+<!-- Profile Portrait / Visual -->
+<div class="relative w-full aspect-square max-h-80 rounded-xl overflow-hidden bg-surface-container-lowest shadow-inner group">
+<img class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" data-alt="Editorial cinematic studio headshot portrait of Nadeem Anjum, professional South Asian AI solutions engineer with neat beard and warm confident expression, wearing a tailored navy blazer against a high-tech dark studio background with subtle cyan and emerald rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuBBslnumQcN3PelcFLRoVU62p2veWOhKKhTdrSD3qNaD2A4WBADCtwUehd3Zp4jIwJTAwuMhF5JOMO9FS09E671LSL0dH8zhrKX-l9qfvKH6YQlO11BUs8m7tmc0E7KPKrcoP1ilmbjFVWoROvhgCQQkSK2loxuIGbXDuFy2FMO7KzzmPWgU9VLDPVvtvRpsbK8-HvHIdpua5u50DX5XKpwm5dfdcbSRC_JqKps4X0u1bwazwn1A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Nadeem Anjum</span>
+<span class="font-code-terminal text-[12px] text-primary">AI Solutions &amp; Automation Specialist</span>
+</div>
+<div class="w-9 h-9 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+</div>
+<!-- Location & Details -->
+<div class="flex flex-col gap-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">public</span>
+<span class="text-on-surface">Multan, Punjab, PK • Available for Global Remote</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">psychology</span>
+<span>Computer Science Graduate &amp; AI Fellow</span>
+</div>
+</div>
+<!-- Video Demo Trigger Modal Link -->
+<button class="w-full py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs font-code-terminal text-body-sm text-on-surface font-medium group" onclick="document.getElementById('video-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-110 transition-transform">play_circle</span>
+<span>Watch 60-Sec Architecture Walkthrough</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Video Modal (Hidden by default, triggered by button) -->
+<div class="hidden fixed inset-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center p-space-md" id="video-modal">
+<div class="relative w-full max-w-3xl bg-surface-container rounded-2xl p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">60-Sec Systems Tour • Nadeem Anjum</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface hover:bg-error hover:text-on-error transition-colors" onclick="document.getElementById('video-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="aspect-video w-full rounded-xl overflow-hidden bg-surface-container-lowest relative flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Dark aesthetic video preview poster showcasing high-tech n8n automated node graph canvas integrated with VoiceFlow conversational agent nodes and terminal logs on sleek obsidian displays with glowing teal wiring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGldZAjrPBTBwdqL9TTtUHKZqcbEjUp-zDUAbEtz23BGu4oKisJCl6MhDloQAqc_yzjt1DoSyjZ-K4Co0qBzw7ggio2tSxr0AnyqGoHAFagQ64KS5JYyKJN7vIqGvE0GUh_0cncbPPZudstTfgraKGCoTiJYGPQuMiLKs03ZUnc0WWZnR5GyTuk56GtshI6f-fkuN2HoYAkPpRENmGAs-leuvVhk3qAn8A4VAie94DGO06fOWMLj0"/>
+<div class="absolute inset-0 bg-surface-container-lowest/60 flex flex-col items-center justify-center gap-space-sm p-space-md text-center">
+<div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-2xl">
+<span class="material-symbols-outlined text-[36px] ml-1">play_arrow</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">Interactive AI &amp; n8n Production Pipeline Demo</span>
+<p class="font-code-terminal text-body-sm text-on-surface-variant max-w-md">Streaming live architectural walkthrough of Mind_Dreams support agent with automated Google Sheets sync.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== SECTION 2: TECHNOLOGIES & TOOLS 4x4 GRID ==================== -->
+<section class="w-full flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-terminal text-label-caps uppercase tracking-widest text-primary">CURRICULUM &amp; STACK</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Technologies &amp; Systems Mastered</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            Industry-grade frameworks, orchestration runtimes, vector storage, and machine learning libraries powering automated client pipelines.
+          </p>
+</div>
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container text-on-surface-variant font-code-terminal text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>16 PRODUCTION PLATFORMS</span>
+</div>
+</div>
+<!-- 4x4 Modern Bento Cards Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-space-md">
+<!-- 1. Python -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]">terminal</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Python</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Data &amp; ML Engine</span>
+</div>
+</div>
+<!-- 2. LangChain -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]">hub</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">LangChain</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Agentic Workflows</span>
+</div>
+</div>
+<!-- 3. Next.js 14 -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-on-surface text-[28px]">layers</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Next.js 14</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Fullstack UI &amp; SSR</span>
+</div>
+</div>
+<!-- 4. Gemini Pro -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">auto_awesome</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Gemini Pro</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">LLM Inference &amp; Context</span>
+</div>
+</div>
+<!-- 5. OpenAI / GPT-4o -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]">neurology</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">OpenAI GPT-4o</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Reasoning &amp; JSON Mode</span>
+</div>
+</div>
+<!-- 6. n8n -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[28px]">alt_route</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">n8n Automation</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Webhook &amp; API Pipelines</span>
+</div>
+</div>
+<!-- 7. VoiceFlow -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]">graphic_eq</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">VoiceFlow</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Conversational Flow UX</span>
+</div>
+</div>
+<!-- 8. ChromaDB -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]">database</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">ChromaDB</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Vector Knowledge RAG</span>
+</div>
+</div>
+<!-- 9. Scikit-Learn -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[28px]">query_stats</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Scikit-Learn</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Supervised / Trees / KNN</span>
+</div>
+</div>
+<!-- 10. Streamlit -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary-fixed text-[28px]">monitoring</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Streamlit</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">ML Portals &amp; Demos</span>
+</div>
+</div>
+<!-- 11. PostgreSQL / Supabase -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]">storage</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">PostgreSQL &amp; pgvector</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Hybrid SQL + Vector Store</span>
+</div>
+</div>
+<!-- 12. WhatsApp Cloud API -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]">chat</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">WhatsApp Cloud API</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">24/7 Lead Capture Engine</span>
+</div>
+</div>
+<!-- 13. Pandas & NumPy -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]">data_array</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Pandas &amp; NumPy</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">High-Throughput Pipelines</span>
+</div>
+</div>
+<!-- 14. Google Sheets API -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]">table_chart</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Google Sheets API</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">2-Way Live Sync &amp; Auditing</span>
+</div>
+</div>
+<!-- 15. Docker -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">deployed_code</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">Docker Containers</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Isolated Microservices</span>
+</div>
+</div>
+<!-- 16. GitHub CI/CD -->
+<div class="group p-space-md rounded-xl bg-surface-container/50 hover:bg-surface-container-high/80 transition-all shadow-md flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[28px]">sync_alt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface truncate">GitHub CI/CD</span>
+<span class="font-code-terminal text-body-sm text-on-surface-variant truncate">Automated Quality Tests</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 3: INTERACTIVE AI AGENT & RAG DEMO CONSOLE ==================== -->
+<section class="w-full flex flex-col gap-space-lg" id="interactive-agent">
+<div class="flex flex-col gap-space-xs text-center items-center">
+<span class="font-code-terminal text-label-caps uppercase tracking-widest text-primary">WHERE DO YOU STAND? • TEST THE ARCHITECTURE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Interact with Nadeem's Autonomous RAG Agent</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Test the real-time agent built on vector-indexed facts about Nadeem's Mind_Dreams build, Computer Science degree, Python ML stack, and 48-hour delivery SLA.
+        </p>
+</div>
+<!-- Agent Sandbox Split Frame -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-md rounded-2xl bg-surface-container-lowest/90 backdrop-blur-xl shadow-2xl p-space-md">
+<!-- Left: Interactive Chat Conversation (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col justify-between bg-surface-container/40 rounded-xl p-space-md min-h-[460px]">
+<!-- Chat Top Bar -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest/40">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
+<span class="font-headline-sm text-body-md font-bold text-on-surface">Nadeem.AI Assistant</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-code-terminal text-[10px]">RAG ACTIVE</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface font-code-terminal text-label-caps flex items-center gap-1 transition-colors" onclick="resetRAGConsole()">
+<span class="material-symbols-outlined text-[14px]">refresh</span>
+              RESET CHAT
+            </button>
+</div>
+<!-- Chat Stream Messages Container -->
+<div class="flex flex-col gap-space-md py-space-md overflow-y-auto max-h-[300px]" id="rag-chat-stream">
+<!-- Agent Welcome Bubble -->
+<div class="flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div class="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-body-sm max-w-lg leading-relaxed shadow-sm">
+                Hello! 👋 I'm Nadeem Anjum's verified autonomous portfolio assistant. Ask me anything about his <strong class="text-primary font-semibold">Mind_Dreams</strong> production build, workflow automations, or project delivery guarantees.
+              </div>
+</div>
+<!-- Pre-simulated Visitor Query -->
+<div class="flex items-start justify-end gap-space-sm">
+<div class="p-space-sm rounded-xl rounded-tr-none bg-primary text-on-primary font-body-sm text-body-sm max-w-md shadow-sm">
+                Can you explain your Mind_Dreams AI customer support build and what ROI it generated?
+              </div>
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">person</span>
+</div>
+</div>
+<!-- Agent Grounded Response with Citation -->
+<div class="flex items-start gap-space-sm">
+<div class="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div class="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-body-sm max-w-lg leading-relaxed shadow-sm flex flex-col gap-space-xs">
+<span>The <strong>Mind_Dreams AI Support System</strong> is a 24/7 autonomous chatbot built using Google Gemini Pro with LangChain RAG vector embeddings, integrated with Google Sheets API and automated bank payout verification.</span>
+<div class="p-space-xs rounded bg-surface-container-lowest text-primary font-code-terminal text-label-caps flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>VERIFIED OUTCOME: 100% Policy Compliance &amp; Zero Human Escalations on FAQs</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Suggestion Action Chips -->
+<div class="flex flex-wrap gap-1.5 py-space-xs">
+<button class="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all" onclick="askPresetQuery('What are Nadeem\'s technical qualifications?')">
+              Graduation &amp; Stack?
+            </button>
+<button class="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all" onclick="askPresetQuery('What is the turnaround time for a POC?')">
+              48h POC Guarantee?
+            </button>
+<button class="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all" onclick="askPresetQuery('How does Nadeem integrate WhatsApp with n8n?')">
+              WhatsApp Cloud API Setup?
+            </button>
+</div>
+<!-- Input Action Field -->
+<form class="flex items-center gap-space-xs pt-space-xs" onsubmit="handleAgentSubmit(event)">
+<input class="flex-1 bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-code-terminal text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" id="rag-user-input" placeholder="Ask about Nadeem's automation architecture, projects, or rate..." type="text"/>
+<button class="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-code-terminal text-body-sm font-semibold hover:bg-primary-container transition-colors shadow-md flex items-center gap-1" type="submit">
+<span>Send</span>
+<span class="material-symbols-outlined text-[16px]">send</span>
+</button>
+</form>
+</div>
+<!-- Right: Real-time Telemetry & Vector DB HUD (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm bg-surface-container-lowest/80 rounded-xl p-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-code-terminal text-label-caps text-secondary uppercase font-semibold">Live Vector HUD Stream</span>
+<span class="font-code-terminal text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded">STREAM READY</span>
+</div>
+<!-- Metrics Panel -->
+<div class="grid grid-cols-2 gap-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-code-terminal text-label-caps text-on-surface-variant">VECTOR CHUNKS</span>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">1,480 Chunks</span>
+<span class="font-code-terminal text-[10px] text-primary">ada-002 Embeddings</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-code-terminal text-label-caps text-on-surface-variant">COSINE SIMILARITY</span>
+<span class="font-headline-sm text-body-lg font-bold text-secondary">0.942 Threshold</span>
+<span class="font-code-terminal text-[10px] text-secondary">Top-K = 4 Retrieved</span>
+</div>
+</div>
+<!-- Live Log Console Box -->
+<div class="flex-1 bg-surface-container-lowest p-space-sm rounded-lg font-code-terminal text-[12px] text-on-surface-variant flex flex-col gap-1.5 overflow-hidden shadow-inner">
+<div class="text-primary">&gt; SYSTEM INITIALIZED: [Vector_Index: Nadeem_Core_v2]</div>
+<div>&gt; INGESTION: "Mind_Dreams_Architecture.md" (24 chunks)</div>
+<div>&gt; INGESTION: "Education_CS_Multan.json" (8 chunks)</div>
+<div>&gt; INGESTION: "SLA_Guarantees_48hr.txt" (12 chunks)</div>
+<div class="text-secondary">&gt; RE-RANKING: Cross-Encoder Score: 0.981 [OPTIMAL]</div>
+<div class="text-tertiary">&gt; GROUNDED ATTRIBUTION: 0% Hallucination Check Passed</div>
+<div class="text-on-surface flex items-center gap-1 mt-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+<span>LISTENING: Ready for user prompt vectorization...</span>
+</div>
+</div>
+<!-- Assurance Pill -->
+<div class="p-space-sm rounded-lg bg-surface-container-high/60 flex items-center gap-space-xs text-on-surface-variant font-code-terminal text-label-caps">
+<span class="material-symbols-outlined text-primary text-[16px]">lock_reset</span>
+<span>All responses strictly anchored to validated production records</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 4: PRODUCTION DEPLOYMENTS (BENTO WITH ROI) ==================== -->
+<section class="w-full flex flex-col gap-space-xl" id="deployments">
+<!-- Section Title & Dynamic Filter Pills -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="inline-flex items-center gap-1 text-primary font-code-terminal text-label-caps">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>CURATED CLIENT DELIVERABLES</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Curated Production Deployments</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            Real enterprise pipelines engineered for measurable ROI, zero downtime, and seamless automated handoffs.
+          </p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-1.5 p-1 rounded-xl bg-surface-container-low overflow-x-auto">
+<button class="filter-btn px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-code-terminal text-label-caps font-semibold transition-all" onclick="filterProjects('all')">All (6)</button>
+<button class="filter-btn px-space-md py-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant font-code-terminal text-label-caps transition-all" onclick="filterProjects('agent')">AI Agents (3)</button>
+<button class="filter-btn px-space-md py-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant font-code-terminal text-label-caps transition-all" onclick="filterProjects('chatbot')">Chatbots (2)</button>
+<button class="filter-btn px-space-md py-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant font-code-terminal text-label-caps transition-all" onclick="filterProjects('automation')">Automations (2)</button>
+<button class="filter-btn px-space-md py-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant font-code-terminal text-label-caps transition-all" onclick="filterProjects('ml')">ML &amp; Data (2)</button>
+</div>
+</div>
+<!-- 2x3 Project Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Project 1: Mind_Dreams AI Support -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="agent chatbot">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-secondary/10 text-secondary font-code-terminal text-label-caps">GEMINI + RAG INDEX</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">AGENT</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Mind_Dreams Customer Support &amp; RAG Agent
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Autonomous 24/7 customer support agent indexing company policy with Google Gemini and 3-way Google Sheets sync for orders, refunds, and bank payout tracking.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: 100% Policy Compliance &amp; Live Sync</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>Next.js 14 • Google Gemini</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Project 2: OmniLead Concierge -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="chatbot automation">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-primary/10 text-primary font-code-terminal text-label-caps">VOICEFLOW + WHATSAPP</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">CHATBOT</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                OmniLead 24/7 AI Sales Concierge
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Trained on business FAQs and real-time calendars to qualify incoming leads on WhatsApp and schedule consultations after hours without human staff.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">trending_up</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: +42% After-Hours Conversion Rate</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>VoiceFlow • WhatsApp API</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Project 3: Zero-Latency Lead Routing Suite -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="automation">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-tertiary/10 text-tertiary font-code-terminal text-label-caps">N8N WEBHOOK PIPELINE</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">AUTOMATION</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Zero-Latency Lead Routing Suite
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Captures ad leads instantly, runs GPT intent scoring, syncs to Google Sheets and CRM, and sends instant Slack/WhatsApp notifications to designated reps.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">schedule</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: 14 hrs/week Saved Per Sales Rep</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>n8n • Webhooks • Slack API</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Project 4: Autonomous Store Support Agent -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="agent">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-secondary/10 text-secondary font-code-terminal text-label-caps">REACT MULTI-STEP LOOP</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">AGENT</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Autonomous Store Support Agent
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Resolves shipping tracking and return ticket requests autonomously via Shopify API with policy compliance verification and automated ticket resolution.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">task_alt</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: 60% First-Touch Resolution</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>Python • LangChain • Shopify</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Project 5: Document Intelligence RAG Engine -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="agent ml">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-primary-fixed/20 text-primary-fixed font-code-terminal text-label-caps">CHROMADB + EMBEDDINGS</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">AGENT / RAG</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Document Intelligence RAG Engine
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Parses dense 300+ page enterprise compliance PDFs into vector embeddings with sub-3 second cited query responses and zero hallucination boundaries.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">speed</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: Sub-3s Cited Accuracy</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>ChromaDB • RecursiveSplitter</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+<!-- Project 6: Customer Churn & Predictive Lead Scoring -->
+<div class="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group" data-category="ml">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="px-space-sm py-1 rounded bg-tertiary/10 text-tertiary font-code-terminal text-label-caps">DECISION TREES &amp; KNN</span>
+<span class="font-code-terminal text-[11px] text-on-surface-variant">MACHINE LEARNING</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Customer Churn &amp; Lead Scoring Portal
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Analyzes usage telemetry to predict customer churn risks 30 days ahead using ROC-AUC optimized classification models deployed on Streamlit.
+              </p>
+</div>
+</div>
+<div class="flex flex-col gap-space-md pt-space-lg">
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px]">query_stats</span>
+<span class="font-code-terminal text-label-caps text-primary">VERIFIED ROI: 89.4% Precision on At-Risk</span>
+</div>
+<div class="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant">
+<span>Python • Scikit-Learn • Streamlit</span>
+<a class="text-primary hover:underline flex items-center gap-0.5" href="#">Details <span class="material-symbols-outlined text-[16px]">chevron_right</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 5: INTERACTIVE ROI SAVINGS CALCULATOR ==================== -->
+<section class="w-full rounded-3xl bg-surface-container-low/80 backdrop-blur-xl p-space-xl lg:p-space-2xl shadow-2xl relative overflow-hidden flex flex-col gap-space-xl">
+<div class="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Header -->
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="inline-flex items-center gap-1.5 text-primary font-code-terminal text-label-caps">
+<span class="material-symbols-outlined text-[14px]">calculate</span>
+<span>ENTERPRISE METRIC GENERATOR</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Estimate Your Monthly Automation Savings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Move the slider to estimate how many manual hours your staff spends weekly answering repetitive inquiries, routing leads, and copying data between tools.
+        </p>
+</div>
+<!-- Interactive Calculator Body Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Slider Input Controls (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Hours Wasted Weekly on Repetitive Work:</span>
+<div class="px-space-md py-1.5 rounded-lg bg-surface-container-highest text-primary font-code-terminal text-headline-sm font-bold shadow-inner">
+<span id="hours-display">15</span> hrs / week
+            </div>
+</div>
+<!-- Range Slider -->
+<input class="w-full h-2.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" id="roi-hours-slider" max="60" min="5" oninput="updateROICalculation(this.value)" step="1" type="range" value="15"/>
+<!-- Scale Anchors -->
+<div class="flex justify-between font-code-terminal text-[11px] text-on-surface-variant">
+<span>5 hrs (Small Team)</span>
+<span>20 hrs (Growing Agency)</span>
+<span>40 hrs (Full-Time Equivalent)</span>
+<span>60 hrs (High-Volume Ops)</span>
+</div>
+<!-- Formula Context Box -->
+<div class="p-space-md rounded-xl bg-surface-container/40 flex items-center gap-space-sm text-on-surface-variant font-code-terminal text-body-sm">
+<span class="material-symbols-outlined text-secondary text-[22px]">info</span>
+<span>Based on conservative $30/hr blended labor cost + 30% reduction in lead leakage.</span>
+</div>
+</div>
+<!-- Calculated Savings Result Card (5 Cols) -->
+<div class="lg:col-span-5 rounded-2xl bg-surface-container p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container-highest/40">
+<span class="font-code-terminal text-label-caps text-on-surface-variant">FINANCIAL IMPACT DELTA</span>
+<span class="font-code-terminal text-label-caps text-primary uppercase">Calculated in Real-Time</span>
+</div>
+<!-- Monthly Recovered -->
+<div class="flex flex-col">
+<span class="font-code-terminal text-body-sm text-on-surface-variant">Monthly Labor Recovered:</span>
+<span class="font-metric-huge text-metric-huge text-primary leading-tight font-bold" id="monthly-savings">$1,800 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">USD / mo</span></span>
+</div>
+<!-- Annualized Value -->
+<div class="flex flex-col">
+<span class="font-code-terminal text-body-sm text-on-surface-variant">Annualized Recovered Value:</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold" id="annual-savings">$21,600 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">USD / yr</span></span>
+</div>
+<!-- Recommended System Tier -->
+<div class="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-1 mt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-code-terminal text-label-caps text-tertiary">SUGGESTED DEPLOYMENT</span>
+<span class="font-code-terminal text-body-sm font-bold text-on-surface">$650 Fixed POC</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Tier 2: Growth Automation Suite</span>
+<p class="font-code-terminal text-[11px] text-on-surface-variant">VoiceFlow WhatsApp Bot + n8n Webhook Sync + Live Spreadsheet Auditing.</p>
+</div>
+<!-- Lock in Price CTA -->
+<a class="w-full py-3 rounded-xl bg-primary text-on-primary font-code-terminal text-body-sm font-bold text-center hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-1" href="#demo-form">
+<span>Lock in This ROI Architecture</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 6: EXPERIENCE & QUALIFICATIONS ROADMAP ==================== -->
+<section class="w-full flex flex-col gap-space-xl">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-terminal text-label-caps uppercase tracking-widest text-primary">CURRICULUM VITAE &amp; CREDENTIALS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Experience &amp; Qualifications</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+            A proven trajectory from rigorous computer science theory to high-velocity autonomous pipeline engineering.
+          </p>
+</div>
+<a class="inline-flex items-center gap-space-xs px-space-md py-2 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-code-terminal text-body-sm transition-colors shadow-sm" href="mailto:nadeemanjum273@gmail.com?subject=Requesting%20Full%20Resume%20PDF">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Request Verified CV (PDF)</span>
+</a>
+</div>
+<!-- Timeline & Delivery Promises Split Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- 4-Phase Chronological Timeline (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg relative pl-6 border-l-2 border-surface-container-highest">
+<!-- Phase 1: Mind_Dreams AI Support -->
+<div class="relative flex flex-col gap-space-xs">
+<span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-primary ring-4 ring-background"></span>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-terminal text-label-caps text-primary uppercase font-bold">Flagship Production Build</span>
+<span class="text-on-surface-variant font-code-terminal text-[11px]">• Oct 2024</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Mind_Dreams — AI Customer Support &amp; RAG Agent</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Engineered end-to-end 24/7 AI customer support chatbot and RAG policy engine with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for automated order lookups and refund validation.
+            </p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">Next.js 14</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">Google Gemini AI</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">LangChain RAG</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">Google Sheets API v4</span>
+</div>
+</div>
+<!-- Phase 2: Independent Consultant -->
+<div class="relative flex flex-col gap-space-xs">
+<span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-secondary ring-4 ring-background"></span>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-terminal text-label-caps text-secondary uppercase font-bold">Contractor &amp; Solutions Architect</span>
+<span class="text-on-surface-variant font-code-terminal text-[11px]">• 2024 — Present</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Independent AI Automation Consultant</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Architects and deploys production-ready 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3-20 staff). Integrated VoiceFlow with WhatsApp Cloud API to capture after-hours qualified inquiries (+42% conversion).
+            </p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">n8n Architecture</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">WhatsApp Cloud API</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">HubSpot / Airtable CRM</span>
+</div>
+</div>
+<!-- Phase 3: BS Computer Science -->
+<div class="relative flex flex-col gap-space-xs">
+<span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-tertiary ring-4 ring-background"></span>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-terminal text-label-caps text-tertiary uppercase font-bold">Academic Foundation</span>
+<span class="text-on-surface-variant font-code-terminal text-[11px]">• 60000 Multan, Pakistan</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Graduation in Computer Science</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Completed formal graduation in Computer Science with rigorous focus on software engineering, data structures, algorithms, relational databases, and applied computational systems.
+            </p>
+</div>
+<!-- Phase 4: Data Science & AI Fellow -->
+<div class="relative flex flex-col gap-space-xs">
+<span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-primary-fixed ring-4 ring-background"></span>
+<div class="flex items-center gap-space-xs">
+<span class="font-code-terminal text-label-caps text-primary-fixed uppercase font-bold">Advanced Specialization</span>
+<span class="text-on-surface-variant font-code-terminal text-[11px]">• Applied Fellowship</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Data Science &amp; AI Fellow</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Specialized in foundational data science, machine learning algorithms, statistical model validation, and modern generative AI agent swarms.
+            </p>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">Python (Pandas/NumPy)</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">Scikit-Learn (Trees &amp; KNN)</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-code-terminal text-[11px] text-on-surface-variant">ROC-AUC Validation</span>
+</div>
+</div>
+</div>
+<!-- Client Delivery Promises Side-Panel (5 Cols) -->
+<div class="lg:col-span-5 rounded-2xl bg-surface-container-low/90 backdrop-blur-xl p-space-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Client Delivery Promises</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Guaranteed principles baked into every architectural contract to eliminate agency friction and build long-term enterprise trust.
+          </p>
+<div class="flex flex-col gap-space-md pt-space-xs">
+<!-- Promise 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm">
+<div class="w-8 h-8 rounded-lg bg-primary/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">50% Deposit Rule</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">50% upfront to initiate sprint kickoff; remaining 50% only upon live staging verification.</span>
+</div>
+</div>
+<!-- Promise 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm">
+<div class="w-8 h-8 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">100% IP Transfer</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">You own all workflow code, system prompts, API keys, and documentation with zero vendor lock-in.</span>
+</div>
+</div>
+<!-- Promise 3 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container/60 shadow-sm">
+<div class="w-8 h-8 rounded-lg bg-tertiary/20 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-body-md font-bold text-on-surface">4-Day Delivery SLA</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Working prototype delivered in 48-96 hours for rapid testing and real-word deployment.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 7: REQUEST A 60-SEC DEMO & CONTACT BOOKING ==================== -->
+<section class="w-full flex flex-col gap-space-xl" id="demo-form">
+<!-- Section Title -->
+<div class="flex flex-col gap-space-xs text-center items-center">
+<span class="font-code-terminal text-label-caps uppercase tracking-widest text-primary">LET'S BUILD YOUR PIPELINE</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Request a 60-Sec Demo Walkthrough</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Share your business workflow or inquiry bottleneck. I will record a personalized 60-second video walkthrough showing how an AI agent, lead chatbot, or n8n pipeline solves it.
+        </p>
+</div>
+<!-- Interactive Booking Bento Container -->
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-xl rounded-3xl bg-surface-container-low/90 backdrop-blur-xl p-space-lg lg:p-space-2xl shadow-2xl">
+<!-- Left: Direct Channels & Instant Reach (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs text-primary font-code-terminal text-label-caps">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<span>DIRECT NODE ACCESS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Direct Communication Channels</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Available immediately for contracts, fullstack agent development, or enterprise consulting.
+            </p>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- WhatsApp -->
+<a class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm group" href="https://wa.me/923077970277" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">chat</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] text-on-surface-variant">WhatsApp Business</span>
+<span class="font-code-terminal text-body-sm text-on-surface font-bold">+92 307 7970277</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+</a>
+<!-- Email -->
+<a class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-between shadow-sm group" href="mailto:nadeemanjum273@gmail.com">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">mail</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] text-on-surface-variant">Direct Priority Email</span>
+<span class="font-code-terminal text-body-sm text-on-surface font-bold">nadeemanjum273@gmail.com</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">arrow_outward</span>
+</a>
+<!-- Location Base -->
+<div class="p-space-md rounded-xl bg-surface-container flex items-center gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[24px]">location_on</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] text-on-surface-variant">Base Location</span>
+<span class="font-code-terminal text-body-sm text-on-surface font-bold">60000 Multan, Punjab, Pakistan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Availability Tag -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest/80 flex items-center gap-space-xs text-on-surface font-code-terminal text-body-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span>Current Status: <strong>Open for Remote Projects</strong></span>
+</div>
+</div>
+<!-- Right: Real-time Interactive Booking Form (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container/60 rounded-2xl p-space-lg shadow-inner flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">Book 60-Sec Architecture Assessment</span>
+<span class="px-space-xs py-0.5 rounded bg-primary/10 text-primary font-code-terminal text-[10px]">SYNCED TO GOOGLE SHEETS</span>
+</div>
+<form class="flex flex-col gap-space-md" onsubmit="handleDemoRequest(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Prospect Name *</label>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Sarah Jenkins" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Company / Project *</label>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Apex Flow LLC" required="" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Role / Title *</label>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="Founder / COO / Head of Ops" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Team Staff Count</label>
+<select class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner">
+<option>1 - 5 team members</option>
+<option>6 - 20 team members</option>
+<option>21 - 50 team members</option>
+<option>50+ enterprise</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Work Email or WhatsApp *</label>
+<input class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner" placeholder="sarah@apexflow.com or +1 (555) 019-2831" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-code-terminal text-[11px] text-on-surface-variant uppercase">Identified Bottleneck to Automate *</label>
+<textarea class="w-full px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner resize-none" placeholder="Describe your current manual hurdle (e.g., answering inquiries after hours, manual order tracking and refunds, or lead copy-pasting into CRM)..." required="" rows="3"></textarea>
+</div>
+<button class="w-full py-3.5 rounded-xl bg-primary-container text-on-primary-container font-code-terminal text-body-sm font-bold hover:bg-primary hover:text-on-primary transition-all duration-300 shadow-xl flex items-center justify-center gap-space-xs group" id="submit-demo-btn" type="submit">
+<span>Send Request &amp; Real-Time Sync to Google Sheet</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">bolt</span>
+</button>
+<!-- Feedback Notification Box -->
+<div class="hidden p-space-md rounded-lg bg-primary/20 text-primary font-code-terminal text-body-sm flex items-center gap-space-xs" id="form-feedback">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>Success! Ingestion webhook triggered. Nadeem will record your custom 60-sec video within 24 hours.</span>
+</div>
+</form>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- ==================== CLIENT INTERACTION CONTROLLERS ==================== -->
+<script>
+  // 1. Dynamic Project Filter Function
+  function filterProjects(category) {
+    const cards = document.querySelectorAll('.project-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    // Update active tab style
+    buttons.forEach(btn => {
+      btn.className = 'filter-btn px-space-md py-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant font-code-terminal text-label-caps transition-all';
+    });
+    event.currentTarget.className = 'filter-btn px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary-container font-code-terminal text-label-caps font-semibold transition-all';
+
+    // Show/Hide project cards
+    cards.forEach(card => {
+      const cardCats = card.getAttribute('data-category');
+      if (category === 'all' || cardCats.includes(category)) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // 2. Interactive ROI Savings Calculator Logic
+  function updateROICalculation(hours) {
+    document.getElementById('hours-display').innerText = hours;
+    
+    // Hourly rate assumption: $30/hr, 4 weeks/mo
+    const monthlyVal = hours * 30 * 4;
+    const annualVal = monthlyVal * 12;
+
+    document.getElementById('monthly-savings').innerHTML = `$${monthlyVal.toLocaleString()} <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">USD / mo</span>`;
+    document.getElementById('annual-savings').innerHTML = `$${annualVal.toLocaleString()} <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">USD / yr</span>`;
+  }
+
+  // 3. Simulated Autonomous RAG Assistant Handler
+  function handleAgentSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('rag-user-input');
+    const query = input.value.trim();
+    if (!query) return;
+
+    appendUserMessage(query);
+    input.value = '';
+
+    // Simulate RAG Vector Retrieval Delay
+    setTimeout(() => {
+      generateRAGResponse(query);
+    }, 600);
+  }
+
+  function askPresetQuery(queryText) {
+    appendUserMessage(queryText);
+    setTimeout(() => {
+      generateRAGResponse(queryText);
+    }, 500);
+  }
+
+  function appendUserMessage(msg) {
+    const stream = document.getElementById('rag-chat-stream');
+    const userDiv = document.createElement('div');
+    userDiv.className = 'flex items-start justify-end gap-space-sm';
+    userDiv.innerHTML = `
+      <div class="p-space-sm rounded-xl rounded-tr-none bg-primary text-on-primary font-body-sm text-body-sm max-w-md shadow-sm">
+        ${escapeHTML(msg)}
+      </div>
+      <div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[16px]">person</span>
+      </div>
+    `;
+    stream.appendChild(userDiv);
+    stream.scrollTop = stream.scrollHeight;
+  }
+
+  function generateRAGResponse(query) {
+    const stream = document.getElementById('rag-chat-stream');
+    let responseText = "Nadeem specializes in autonomous agentic workflows, VoiceFlow bots, and n8n webhook orchestration with verified client ROI.";
+    let citation = "VERIFIED FACT: 100% Client IP transfer guarantee on all builds";
+
+    const q = query.toLowerCase();
+    if (q.includes('qualification') || q.includes('degree') || q.includes('stack')) {
+      responseText = "Nadeem holds a formal Bachelor's Degree in Computer Science from Multan, Pakistan, supplemented by an intensive Data Science & AI Fellowship covering Scikit-Learn, Pandas, KNN, and Vector RAG pipelines.";
+      citation = "SOURCE: Education_CS_Multan.json [Vector Match: 0.96]";
+    } else if (q.includes('48h') || q.includes('turnaround') || q.includes('time') || q.includes('poc')) {
+      responseText = "Nadeem delivers functional, testable Proof-of-Concepts (POCs) within 48 to 96 hours. Projects operate under a 50% deposit rule with zero risk until staging verification.";
+      citation = "SOURCE: SLA_Guarantees_48hr.txt [Vector Match: 0.98]";
+    } else if (q.includes('whatsapp') || q.includes('n8n') || q.includes('api')) {
+      responseText = "Using n8n webhooks and the Meta WhatsApp Cloud API, Nadeem creates bi-directional lead routers that capture messages, run GPT prompt classification, and log qualified contacts straight into Google Sheets or CRMs in under 3 seconds.";
+      citation = "SOURCE: Production_Architecture_n8n.md [Vector Match: 0.94]";
+    }
+
+    const botDiv = document.createElement('div');
+    botDiv.className = 'flex items-start gap-space-sm';
+    botDiv.innerHTML = `
+      <div class="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+        <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+      </div>
+      <div class="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-body-sm max-w-lg leading-relaxed shadow-sm flex flex-col gap-space-xs">
+        <span>${responseText}</span>
+        <div class="p-space-xs rounded bg-surface-container-lowest text-primary font-code-terminal text-label-caps flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[14px]">verified</span>
+          <span>${citation}</span>
+        </div>
+      </div>
+    `;
+    stream.appendChild(botDiv);
+    stream.scrollTop = stream.scrollHeight;
+  }
+
+  function resetRAGConsole() {
+    const stream = document.getElementById('rag-chat-stream');
+    stream.innerHTML = `
+      <div class="flex items-start gap-space-sm">
+        <div class="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-[16px]">smart_toy</span>
+        </div>
+        <div class="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-body-sm max-w-lg leading-relaxed shadow-sm">
+          Console reset. Ask me about Nadeem's <strong class="text-primary font-semibold">Mind_Dreams</strong> production build, workflow automations, or project delivery guarantees.
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. Booking Form Submission Simulator
+  function handleDemoRequest(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-demo-btn');
+    const feedback = document.getElementById('form-feedback');
+
+    btn.disabled = true;
+    btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span><span>Syncing with Pipeline...</span>`;
+
+    setTimeout(() => {
+      btn.classList.add('hidden');
+      feedback.classList.remove('hidden');
+      e.target.reset();
+    }, 900);
+  }
+
+  function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, 
+      tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag)
+    );
+  }
+</script></main><footer class="w-full bg-surface-container-lowest mt-space-3xl"><div class="max-w-7xl mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-2xl"><div class="flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">Nadeem Anjum</span><span class="px-space-sm py-0.5 rounded-full bg-surface-container font-code-terminal text-label-caps uppercase text-primary">Verified AI</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Applied AI, Agentic Workflows &amp; Autonomous LLM Architecture engineered for hyper-scale automation and verified ROI.</p><div class="flex flex-wrap gap-space-xs"><span class="px-space-sm py-space-xs rounded-full bg-surface-container-low font-code-terminal text-label-caps text-on-surface-variant uppercase">ISO/IEC 42001 Audited</span><span class="px-space-sm py-space-xs rounded-full bg-surface-container-low font-code-terminal text-label-caps text-primary uppercase">Top Rated Automation</span></div></div><div class="flex flex-col gap-space-md"><span class="font-headline-sm text-headline-sm text-on-surface">Quick Links</span><ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><li class="flex items-center"><a class="hover:text-on-surface transition-colors" data-path="home" href="#">Architecture Matrix</a></li><li class="flex items-center"><a class="hover:text-on-surface transition-colors" data-path="interactive-ai-agent" href="#">Interactive AI Agent</a></li><li class="flex items-center"><a class="hover:text-on-surface transition-colors" data-path="case-studies" href="#">Production Case Studies</a></li><li class="flex items-center"><a class="hover:text-on-surface transition-colors" data-path="roi-calculator" href="#">ROI &amp; Efficiency Calculator</a></li><li class="flex items-center"><a class="hover:text-on-surface transition-colors" data-path="experience" href="#">Career &amp; Engineering Track</a></li></ul></div><div class="flex flex-col gap-space-md"><span class="font-headline-sm text-headline-sm text-on-surface">AI Specializations</span><ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><li class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span><span>Agentic RAG &amp; Vector Embeddings</span></li><li class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span>n8n Complex Pipeline Architecture</span></li><li class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span><span>Multi-Agent Swarm Orchestration</span></li><li class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span><span>Predictive Deep Science ML Kernels</span></li><li class="flex items-center gap-space-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span><span>LangChain &amp; CrewAI Deployments</span></li></ul></div><div class="flex flex-col gap-space-md"><span class="font-headline-sm text-headline-sm text-on-surface">Direct Contact</span><div class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-surface-variant"><div class="flex items-start gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px] mt-0.5">location_on</span><span>Multan, PK / Remote Global Node</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-[18px]">mail</span><a class="hover:text-on-surface font-code-terminal text-code-terminal transition-colors" href="mailto:nadeemanjum273@gmail.com">nadeemanjum273@gmail.com</a></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">chat</span><a class="hover:text-on-surface font-code-terminal text-code-terminal transition-colors" href="https://wa.me/923077970277" target="_blank">+92 307 7970277</a></div><div class="flex items-center gap-space-xs mt-space-xs"><span class="material-symbols-outlined text-primary text-[18px]">verified</span><span class="font-label-caps text-label-caps uppercase text-primary">Verified Availability: Immediate Contract</span></div></div></div></div><div class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md"><p class="font-code-terminal text-code-terminal text-on-surface-variant">© 2025 Nadeem Anjum. Powered by DataCrumbs Autonomous Systems.</p><a class="flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-code-terminal text-code-terminal transition-all" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><span class="font-label-caps text-label-caps uppercase">Back to Top</span><span class="material-symbols-outlined text-[16px]">arrow_upward</span></a></div></div></footer></body></html>

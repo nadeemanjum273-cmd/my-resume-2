@@ -15,7 +15,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
   const initialMessages: Message[] = [
     {
       sender: "agent",
-      text: "Hello! 👋 I'm Nadeem Anjum's verified autonomous portfolio assistant. Ask me anything about his Mind_Dreams production build, workflow automations, or project delivery guarantees.",
+      text: "Hello! 👋 I'm Nadeem Anjum's autonomous portfolio assistant. Ask me about his Mind_Dreams build, workflow automations, or project delivery guarantees.",
     },
     {
       sender: "user",
@@ -23,7 +23,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
     },
     {
       sender: "agent",
-      text: "The Mind_Dreams AI Support System is a 24/7 autonomous chatbot built using Google Gemini Pro with LangChain RAG vector embeddings, integrated with Google Sheets API and automated bank payout verification.",
+      text: "Mind_Dreams AI Support is a 24/7 autonomous chatbot built using Google Gemini Pro with LangChain RAG vector embeddings, integrated with Google Sheets API and automated bank payout verification.",
       verifiedOutcome: "VERIFIED OUTCOME: 100% Policy Compliance & Zero Human Escalations on FAQs",
     },
   ];
@@ -35,7 +35,6 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
     "> SYSTEM INITIALIZED: [Vector_Index: Nadeem_Core_v2]",
     '> INGESTION: "Mind_Dreams_Architecture.md" (24 chunks)',
     '> INGESTION: "Education_CS_Multan.json" (8 chunks)',
-    '> INGESTION: "DataCrumb_Specialization.json" (16 chunks)',
     '> INGESTION: "SLA_Guarantees_48hr.txt" (12 chunks)',
     "> RE-RANKING: Cross-Encoder Score: 0.981 [OPTIMAL]",
     "> GROUNDED ATTRIBUTION: 0% Hallucination Check Passed",
@@ -52,16 +51,14 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
   const sendQuery = (query: string) => {
     if (!query.trim()) return;
 
-    // Add user message
     setMessages((prev) => [...prev, { sender: "user", text: query }]);
     setInputValue("");
     setIsTyping(true);
 
-    // Update telemetry HUD
     setLiveLogs((prev) => [
-      ...prev.slice(-5),
-      `> QUERY EMBEDDING: "${query.slice(0, 32)}..." [ada-002]`,
-      "> VECTOR MATCH: Cosine similarity 0.964 [Top-K=4]",
+      ...prev.slice(-4),
+      `> QUERY: "${query.slice(0, 30)}..." [ada-002]`,
+      "> MATCH: Cosine similarity 0.964 [Top-K=4]",
     ]);
 
     setTimeout(() => {
@@ -70,10 +67,10 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
       let citation = "VERIFIED FACT: 100% Client IP transfer guarantee on all builds";
 
       const q = query.toLowerCase();
-      if (q.includes("qualification") || q.includes("degree") || q.includes("stack") || q.includes("datacrumb")) {
+      if (q.includes("qualification") || q.includes("degree") || q.includes("stack")) {
         responseText =
-          "Nadeem completed formal graduation in Computer Science from Multan, Pakistan, alongside an applied Data Science & AI Fellowship at DataCrumb (datacrumbs.org), specializing in Scikit-Learn, Pandas, KNN, and LangChain Vector RAG pipelines.";
-        citation = "SOURCE: DataCrumb_Specialization.json [Vector Match: 0.98]";
+          "Nadeem holds a Bachelor's Degree in Computer Science from Multan, Pakistan, supplemented by advanced Machine Learning specializations covering Scikit-Learn, Pandas, KNN, and LangChain Vector RAG pipelines.";
+        citation = "SOURCE: Education_CS_Multan.json [Vector Match: 0.98]";
       } else if (q.includes("48h") || q.includes("turnaround") || q.includes("time") || q.includes("poc")) {
         responseText =
           "Nadeem delivers functional, testable Proof-of-Concepts (POCs) within 48 to 96 hours. Projects operate under a 50% deposit rule with zero risk until staging verification.";
@@ -99,9 +96,9 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
       setIsTyping(false);
 
       if (onTriggerToast) {
-        onTriggerToast("Vector response retrieved & validated!");
+        onTriggerToast("Vector response retrieved & verified!");
       }
-    }, 650);
+    }, 600);
   };
 
   const handleAgentSubmit = (e: React.FormEvent) => {
@@ -116,86 +113,81 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
         text: "Console reset. Ask me about Nadeem's Mind_Dreams production build, workflow automations, or project delivery guarantees.",
       },
     ]);
-    setLiveLogs([
-      "> SYSTEM REBOOT: [Vector_Index: Nadeem_Core_v2]",
-      "> VECTOR STORE: 1,480 Chunks Active",
-      "> READY: Waiting for user prompt...",
-    ]);
   };
 
   return (
-    <section className="w-full flex flex-col gap-space-lg" id="interactive-agent">
-      <div className="flex flex-col gap-space-xs text-center items-center">
+    <section className="w-full flex flex-col gap-space-md" id="interactive-agent">
+      <div className="flex flex-col gap-1 text-center items-center">
         <span className="font-code-terminal text-label-caps uppercase tracking-widest text-primary">
-          WHERE DO YOU STAND? &bull; TEST THE ARCHITECTURE
+          TEST THE ARCHITECTURE
         </span>
-        <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
+        <h2 className="font-headline-lg text-2xl sm:text-3xl text-on-surface font-bold">
           Interact with Nadeem's Autonomous RAG Agent
         </h2>
-        <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-          Test the real-time agent built on vector-indexed facts about Nadeem's Mind_Dreams build, Computer Science degree, Python ML stack, and 48-hour delivery SLA.
+        <p className="font-body-sm text-body-sm text-on-surface-variant max-w-xl">
+          Real-time agent vector-indexed on Nadeem's Mind_Dreams build, CS degree, Python ML stack, and 48-hour delivery SLA.
         </p>
       </div>
 
       {/* Agent Sandbox Split Frame */}
       <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-md rounded-2xl bg-surface-container-lowest/90 backdrop-blur-xl shadow-2xl p-space-md border border-outline-variant/30">
         {/* Left: Interactive Chat Conversation (7 Cols) */}
-        <div className="lg:col-span-7 flex flex-col justify-between bg-surface-container/40 rounded-xl p-space-md min-h-[460px] border border-outline-variant/20">
+        <div className="lg:col-span-7 flex flex-col justify-between bg-surface-container/40 rounded-xl p-space-md min-h-[420px] border border-outline-variant/20">
           {/* Chat Top Bar */}
-          <div className="flex items-center justify-between pb-space-sm border-b border-surface-container-highest/40">
+          <div className="flex items-center justify-between pb-space-xs border-b border-surface-container-highest/40">
             <div className="flex items-center gap-space-xs">
-              <span className="w-3 h-3 rounded-full bg-primary animate-pulse"></span>
-              <span className="font-headline-sm text-body-md font-bold text-on-surface">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+              <span className="font-headline-sm text-sm font-bold text-on-surface">
                 Nadeem.AI Assistant
               </span>
-              <span className="px-space-xs py-0.5 rounded bg-surface-container-highest text-primary font-code-terminal text-[10px]">
+              <span className="px-1.5 py-0.5 rounded bg-surface-container-highest text-primary font-code-terminal text-[10px]">
                 RAG ACTIVE
               </span>
             </div>
             <button
-              className="text-on-surface-variant hover:text-on-surface font-code-terminal text-label-caps flex items-center gap-1 transition-colors"
+              className="text-on-surface-variant hover:text-on-surface font-code-terminal text-[11px] flex items-center gap-1 transition-colors"
               onClick={resetRAGConsole}
             >
               <span className="material-symbols-outlined text-[14px]">refresh</span>
-              <span>RESET CHAT</span>
+              <span>RESET</span>
             </button>
           </div>
 
           {/* Chat Stream Messages Container */}
           <div
-            className="flex flex-col gap-space-md py-space-md overflow-y-auto max-h-[300px] pr-1"
+            className="flex flex-col gap- space-sm py-2 overflow-y-auto max-h-[260px] pr-1"
             ref={chatStreamRef}
           >
             {messages.map((m, idx) => (
               <React.Fragment key={idx}>
                 {m.sender === "agent" ? (
-                  <div className="flex items-start gap-space-sm">
-                    <div className="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="material-symbols-outlined text-[16px]">smart_toy</span>
+                  <div className="flex items-start gap-2 my-1">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="material-symbols-outlined text-[14px]">smart_toy</span>
                     </div>
-                    <div className="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-body-sm max-w-lg leading-relaxed shadow-sm flex flex-col gap-space-xs border border-outline-variant/20">
+                    <div className="p-2.5 rounded-xl rounded-tl-none bg-surface-container text-on-surface font-body-sm text-xs max-w-lg leading-relaxed shadow-sm flex flex-col gap-1 border border-outline-variant/20">
                       <span>{m.text}</span>
                       {m.verifiedOutcome && (
-                        <div className="p-space-xs rounded bg-surface-container-lowest text-primary font-code-terminal text-label-caps flex items-center gap-1.5 border border-primary/20">
-                          <span className="material-symbols-outlined text-[14px]">verified</span>
+                        <div className="p-1 rounded bg-surface-container-lowest text-primary font-code-terminal text-[10px] flex items-center gap-1 border border-primary/20">
+                          <span className="material-symbols-outlined text-[12px]">verified</span>
                           <span>{m.verifiedOutcome}</span>
                         </div>
                       )}
                       {m.citation && (
-                        <div className="p-space-xs rounded bg-surface-container-lowest text-primary font-code-terminal text-label-caps flex items-center gap-1.5 border border-primary/20">
-                          <span className="material-symbols-outlined text-[14px]">verified</span>
+                        <div className="p-1 rounded bg-surface-container-lowest text-primary font-code-terminal text-[10px] flex items-center gap-1 border border-primary/20">
+                          <span className="material-symbols-outlined text-[12px]">verified</span>
                           <span>{m.citation}</span>
                         </div>
                       )}
                     </div>
                   </div>
                 ) : (
-                  <div className="flex items-start justify-end gap-space-sm">
-                    <div className="p-space-sm rounded-xl rounded-tr-none bg-primary text-on-primary font-body-sm text-body-sm max-w-md shadow-sm">
+                  <div className="flex items-start justify-end gap-2 my-1">
+                    <div className="p-2.5 rounded-xl rounded-tr-none bg-primary text-on-primary font-body-sm text-xs max-w-md shadow-sm">
                       {m.text}
                     </div>
-                    <div className="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="material-symbols-outlined text-[16px]">person</span>
+                    <div className="w-6 h-6 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="material-symbols-outlined text-[14px]">person</span>
                     </div>
                   </div>
                 )}
@@ -203,34 +195,34 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
             ))}
 
             {isTyping && (
-              <div className="flex items-start gap-space-sm">
-                <div className="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
-                  <span className="material-symbols-outlined text-[16px]">smart_toy</span>
+              <div className="flex items-start gap-2 my-1">
+                <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="material-symbols-outlined text-[14px]">smart_toy</span>
                 </div>
-                <div className="p-space-sm rounded-xl rounded-tl-none bg-surface-container text-on-surface font-code-terminal text-body-sm flex items-center gap-1.5 border border-outline-variant/20">
-                  <span className="w-2 h-2 rounded-full bg-primary animate-ping"></span>
-                  <span className="text-on-surface-variant">Searching vector chunks &amp; verifying facts...</span>
+                <div className="p-2 rounded-xl rounded-tl-none bg-surface-container text-on-surface font-code-terminal text-xs flex items-center gap-1.5 border border-outline-variant/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+                  <span className="text-on-surface-variant">Searching vector chunks...</span>
                 </div>
               </div>
             )}
           </div>
 
           {/* Quick Suggestion Action Chips */}
-          <div className="flex flex-wrap gap-1.5 py-space-xs">
+          <div className="flex flex-wrap gap-1.5 py-1">
             <button
-              className="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all border border-outline-variant/30"
-              onClick={() => sendQuery("What are Nadeem's technical qualifications and DataCrumb specialization?")}
+              className="px-2.5 py-0.5 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[10px] transition-all border border-outline-variant/30"
+              onClick={() => sendQuery("What are Nadeem's technical qualifications?")}
             >
               Graduation &amp; Stack?
             </button>
             <button
-              className="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all border border-outline-variant/30"
+              className="px-2.5 py-0.5 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[10px] transition-all border border-outline-variant/30"
               onClick={() => sendQuery("What is the turnaround time for a POC?")}
             >
               48h POC Guarantee?
             </button>
             <button
-              className="px-space-sm py-1 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[11px] transition-all border border-outline-variant/30"
+              className="px-2.5 py-0.5 rounded-full bg-surface-container-highest hover:bg-primary-container hover:text-on-primary-container text-on-surface-variant font-code-terminal text-[10px] transition-all border border-outline-variant/30"
               onClick={() => sendQuery("How does Nadeem integrate WhatsApp with n8n?")}
             >
               WhatsApp Cloud API Setup?
@@ -238,9 +230,9 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
           </div>
 
           {/* Input Action Field */}
-          <form className="flex items-center gap-space-xs pt-space-xs" onSubmit={handleAgentSubmit}>
+          <form className="flex items-center gap-1.5 pt-1" onSubmit={handleAgentSubmit}>
             <input
-              className="flex-1 bg-surface-container-lowest text-on-surface px-space-md py-2.5 rounded-lg font-code-terminal text-body-sm focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-outline-variant/30"
+              className="flex-1 bg-surface-container-lowest text-on-surface px-3 py-2 rounded-lg font-code-terminal text-xs focus:outline-none focus:ring-1 focus:ring-primary shadow-inner border border-outline-variant/30"
               id="rag-user-input"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -248,42 +240,42 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
               type="text"
             />
             <button
-              className="px-space-md py-2.5 rounded-lg bg-primary text-on-primary font-code-terminal text-body-sm font-semibold hover:bg-primary-container transition-colors shadow-md flex items-center gap-1"
+              className="px-3.5 py-2 rounded-lg bg-primary text-on-primary font-code-terminal text-xs font-semibold hover:bg-primary-container transition-colors shadow-md flex items-center gap-1"
               type="submit"
             >
               <span>Send</span>
-              <span className="material-symbols-outlined text-[16px]">send</span>
+              <span className="material-symbols-outlined text-[14px]">send</span>
             </button>
           </form>
         </div>
 
         {/* Right: Real-time Telemetry & Vector DB HUD (5 Cols) */}
-        <div className="lg:col-span-5 flex flex-col gap-space-sm bg-surface-container-lowest/80 rounded-xl p-space-md border border-outline-variant/20">
-          <div className="flex items-center justify-between pb-space-xs">
-            <span className="font-code-terminal text-label-caps text-secondary uppercase font-semibold">
+        <div className="lg:col-span-5 flex flex-col gap-2 bg-surface-container-lowest/80 rounded-xl p-space-md border border-outline-variant/20">
+          <div className="flex items-center justify-between pb-1">
+            <span className="font-code-terminal text-[11px] text-secondary uppercase font-semibold">
               Live Vector HUD Stream
             </span>
-            <span className="font-code-terminal text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
+            <span className="font-code-terminal text-[9px] text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">
               STREAM READY
             </span>
           </div>
 
           {/* Metrics Panel */}
-          <div className="grid grid-cols-2 gap-space-xs">
-            <div className="p-space-sm rounded-lg bg-surface-container-low flex flex-col border border-outline-variant/20">
-              <span className="font-code-terminal text-label-caps text-on-surface-variant">VECTOR CHUNKS</span>
-              <span className="font-headline-sm text-body-lg font-bold text-on-surface">1,480 Chunks</span>
-              <span className="font-code-terminal text-[10px] text-primary">ada-002 Embeddings</span>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="p-2.5 rounded-lg bg-surface-container-low flex flex-col border border-outline-variant/20">
+              <span className="font-code-terminal text-[10px] text-on-surface-variant">VECTOR CHUNKS</span>
+              <span className="font-headline-sm text-base font-bold text-on-surface">1,480 Chunks</span>
+              <span className="font-code-terminal text-[9px] text-primary">ada-002 Embeddings</span>
             </div>
-            <div className="p-space-sm rounded-lg bg-surface-container-low flex flex-col border border-outline-variant/20">
-              <span className="font-code-terminal text-label-caps text-on-surface-variant">COSINE SIMILARITY</span>
-              <span className="font-headline-sm text-body-lg font-bold text-secondary">0.942 Threshold</span>
-              <span className="font-code-terminal text-[10px] text-secondary">Top-K = 4 Retrieved</span>
+            <div className="p-2.5 rounded-lg bg-surface-container-low flex flex-col border border-outline-variant/20">
+              <span className="font-code-terminal text-[10px] text-on-surface-variant">COSINE SIMILARITY</span>
+              <span className="font-headline-sm text-base font-bold text-secondary">0.942 Threshold</span>
+              <span className="font-code-terminal text-[9px] text-secondary">Top-K = 4 Retrieved</span>
             </div>
           </div>
 
           {/* Live Log Console Box */}
-          <div className="flex-1 bg-surface-container-lowest p-space-sm rounded-lg font-code-terminal text-[12px] text-on-surface-variant flex flex-col gap-1.5 overflow-hidden shadow-inner border border-outline-variant/20">
+          <div className="flex-1 bg-surface-container-lowest p-2.5 rounded-lg font-code-terminal text-[11px] text-on-surface-variant flex flex-col gap-1 overflow-hidden shadow-inner border border-outline-variant/20 min-h-[140px]">
             {liveLogs.map((log, i) => (
               <div
                 key={i}
@@ -300,16 +292,16 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
                 {log}
               </div>
             ))}
-            <div className="text-on-surface flex items-center gap-1 mt-2">
+            <div className="text-on-surface flex items-center gap-1 mt-1">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
-              <span>LISTENING: Ready for user prompt vectorization...</span>
+              <span>LISTENING: Ready for query vectorization...</span>
             </div>
           </div>
 
           {/* Assurance Pill */}
-          <div className="p-space-sm rounded-lg bg-surface-container-high/60 flex items-center gap-space-xs text-on-surface-variant font-code-terminal text-label-caps border border-outline-variant/20">
-            <span className="material-symbols-outlined text-primary text-[16px]">lock_reset</span>
-            <span>All responses strictly anchored to validated production records</span>
+          <div className="p-2 rounded-lg bg-surface-container-high/60 flex items-center gap-1.5 text-on-surface-variant font-code-terminal text-[10px] border border-outline-variant/20">
+            <span className="material-symbols-outlined text-primary text-[14px]">lock_reset</span>
+            <span>Responses strictly anchored to verified records</span>
           </div>
         </div>
       </div>
