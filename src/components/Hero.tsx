@@ -7,170 +7,113 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) => {
   return (
-    <section className="w-full grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center pt-space-sm" id="home">
-      {/* Left Column: Copy & KPIs (7 Cols) */}
-      <div className="lg:col-span-7 flex flex-col gap-space-md">
-        {/* Over-headline Tag */}
-        <div className="inline-flex items-center gap-space-xs self-start px-3 py-1 rounded-full bg-surface-container-high/70 shadow-sm backdrop-blur-md border border-outline-variant/30">
-          <span className="text-primary font-code-terminal text-label-caps">✦</span>
-          <span className="font-code-terminal text-[11px] tracking-wider text-primary uppercase font-semibold">
-            Autonomous Agents &bull; VoiceFlow &bull; n8n Pipelines
-          </span>
-          <span className="text-primary font-code-terminal text-label-caps">✦</span>
-        </div>
-
+    <section className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-4" id="hero">
+      {/* Left Column (7 Cols): Exact wording and layout from Screenshot 1 */}
+      <div className="lg:col-span-7 flex flex-col gap-6">
         {/* Main Display Headline */}
-        <h1 className="font-display-hero text-display-hero-mobile md:text-display-hero tracking-tight text-on-surface">
-          Transforming Business Workflows into{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-surface-tint to-secondary">
+        <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-display font-extrabold text-white tracking-tight leading-[1.12]">
+          Transforming Business <br />
+          Workflows into <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-[#38bdf8] to-[#a855f7]">
             Intelligent AI Systems.
           </span>
         </h1>
 
-        {/* Subtitle - Short, clean, minimalist */}
-        <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
-          Production-grade Autonomous Agents, VoiceFlow Assistants, and n8n Workflow Automations backed by deep Data Science &amp; Python ML foundations.
+        {/* Subtitle with exact bold highlights */}
+        <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl font-sans">
+          I build production-grade <strong className="text-white font-bold">24/7 Lead Chatbots</strong>,{" "}
+          <strong className="text-white font-bold">Autonomous Agents</strong>, and{" "}
+          <strong className="text-white font-bold">n8n Workflow Automations</strong> backed by deep Data Science &amp; Python ML foundations.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center gap-3 pt-1">
+        <div className="flex flex-wrap items-center gap-4 pt-1">
           <a
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-primary-container text-on-primary-container font-code-terminal text-xs font-bold shadow-xl hover:bg-primary hover:text-on-primary transition-all duration-300 group"
             href="#interactive-agent"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#22d3ee] to-[#a855f7] text-[#080B11] font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.5)] hover:scale-105 active:scale-100"
           >
-            <span>Launch Resume Assistant</span>
-            <span className="material-symbols-outlined text-[16px] group-hover:rotate-45 transition-transform">bolt</span>
+            Launch Resume Assistant
           </a>
           <a
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-surface-container-high text-on-surface font-code-terminal text-xs hover:bg-surface-bright transition-all shadow-md border border-outline-variant/40"
             href="#deployments"
+            className="px-6 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-white font-mono font-medium text-xs tracking-wider transition-all border border-white/20 hover:border-white/40 shadow-sm"
           >
-            <span>Explore Deployments</span>
-            <span className="material-symbols-outlined text-[16px]">arrow_downward</span>
+            Explore Projects
           </a>
         </div>
 
-        {/* Quick Demo WhatsApp Callout */}
-        <div className="flex items-center gap-2 pt-1 text-xs font-code-terminal text-on-surface-variant">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          <span>Rapid Architecture Demo?</span>
-          <a
-            className="font-semibold text-primary hover:text-secondary transition-colors underline underline-offset-4 decoration-primary/40"
-            href="https://wa.me/923077970277"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            +92 307 7970277
-          </a>
-        </div>
-
-        {/* Metric KPI Cards Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3">
-          <div className="p-3 rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md border border-outline-variant/20 flex flex-col gap-0.5">
-            <span className="font-metric-huge text-2xl sm:text-3xl text-on-surface font-bold">
-              15<span className="text-primary">+</span>
+        {/* 4 Metric KPI Cards: Exact Match to Screenshot 1 */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-white leading-none">
+              15+
             </span>
-            <span className="font-label-caps text-[10px] tracking-wider uppercase text-on-surface-variant">
+            <span className="text-[11px] font-mono text-slate-400">
               Automations Built
             </span>
-            <span className="font-code-terminal text-[10px] text-primary">Live in Prod</span>
           </div>
 
-          <div className="p-3 rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md border border-outline-variant/20 flex flex-col gap-0.5">
-            <span className="font-metric-huge text-2xl sm:text-3xl text-on-surface font-bold">
-              6<span className="text-secondary">+</span>
+          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#38bdf8] leading-none">
+              6+
             </span>
-            <span className="font-label-caps text-[10px] tracking-wider uppercase text-on-surface-variant">
+            <span className="text-[11px] font-mono text-slate-400">
               Production Builds
             </span>
-            <span className="font-code-terminal text-[10px] text-secondary">End-to-End</span>
           </div>
 
-          <div className="p-3 rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md border border-outline-variant/20 flex flex-col gap-0.5">
-            <span className="font-metric-huge text-2xl sm:text-3xl text-on-surface font-bold">
-              &lt;48<span className="text-primary-fixed">h</span>
+          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#34d399] leading-none">
+              &lt; 48h
             </span>
-            <span className="font-label-caps text-[10px] tracking-wider uppercase text-on-surface-variant">
+            <span className="text-[11px] font-mono text-slate-400">
               POC Turnaround
             </span>
-            <span className="font-code-terminal text-[10px] text-primary-fixed">Validated</span>
           </div>
 
-          <div className="p-3 rounded-xl bg-surface-container/60 backdrop-blur-md shadow-md border border-outline-variant/20 flex flex-col gap-0.5">
-            <span className="font-metric-huge text-2xl sm:text-3xl text-on-surface font-bold">
-              100<span className="text-tertiary">%</span>
+          <div className="p-3.5 rounded-xl bg-[#0B0F17]/80 backdrop-blur-md border border-white/10 flex flex-col gap-1 shadow-md">
+            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#c084fc] leading-none">
+              100%
             </span>
-            <span className="font-label-caps text-[10px] tracking-wider uppercase text-on-surface-variant">
-              IP Transfer
+            <span className="text-[11px] font-mono text-slate-400">
+              IP Client Transfer
             </span>
-            <span className="font-code-terminal text-[10px] text-tertiary">Zero Lock-In</span>
           </div>
         </div>
       </div>
 
-      {/* Right Column: Profile Showcase Bento Card (5 Cols) with user's real IMG_0048.JPG */}
+      {/* Right Column (5 Cols) Profile Bento Card: Exact Match to Screenshot 1 */}
       <div className="lg:col-span-5 flex flex-col">
-        <div className="relative rounded-2xl bg-surface-container-low/80 backdrop-blur-xl p-space-md shadow-2xl overflow-hidden flex flex-col gap-space-sm border border-outline-variant/30">
-          <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl pointer-events-none"></div>
-
-          {/* Profile Header Meta (Removed DataCrumb mentions) */}
-          <div className="flex items-center justify-between">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-highest text-primary font-code-terminal text-label-caps">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              VERIFIED ARCHITECT
-            </div>
-            <span className="font-code-terminal text-[11px] text-secondary flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
-              AVAILABLE WORLDWIDE
-            </span>
-          </div>
-
-          {/* Profile Portrait / Visual - Setting user's real 0048jpg picture */}
-          <div className="relative w-full aspect-square max-h-80 rounded-xl overflow-hidden bg-surface-container-lowest shadow-inner group border border-outline-variant/20">
+        <div className="relative rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl p-6 shadow-2xl border border-white/10 flex flex-col items-center gap-4 text-center">
+          {/* Portrait Photo Container with Vibrant Blue Border Frame */}
+          <div className="w-full max-w-[320px] aspect-[4/5] rounded-2xl overflow-hidden border-2 border-[#38bdf8] shadow-[0_0_35px_rgba(56,189,248,0.35)] bg-gradient-to-b from-[#38bdf8] to-[#0284c7] relative group">
             <img
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-              alt="Nadeem Anjum"
               src="/IMG_0048.JPG"
+              alt="Nadeem Anjum"
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = "/profile.jpg";
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-              <div className="flex flex-col">
-                <span className="font-headline-sm text-base text-on-surface font-bold">Nadeem Anjum</span>
-                <span className="font-code-terminal text-[11px] text-primary">AI Solutions &amp; Automation Architect</span>
-              </div>
-              <div className="w-8 h-8 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center text-primary">
-                <span className="material-symbols-outlined text-[18px]">verified</span>
-              </div>
-            </div>
           </div>
 
-          {/* Location & Details (Clean minimalist, no datacrumb text) */}
-          <div className="flex flex-col gap-1 text-on-surface-variant font-code-terminal text-xs pt-1">
-            <div className="flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-secondary text-[16px]">public</span>
-              <span className="text-on-surface">66000 Multan, Punjab, PK &bull; Available for Global Remote</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-primary text-[16px]">school</span>
-              <span>Computer Science Graduate &bull; AI Systems Architect</span>
-            </div>
+          {/* Identity Titles */}
+          <div className="flex flex-col gap-1 pt-1">
+            <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight">
+              Nadeem Anjum
+            </h2>
+            <p className="font-mono text-xs sm:text-[13px] text-[#22d3ee] font-semibold tracking-wide uppercase">
+              AI Solutions Architect &amp; Automation Specialist
+            </p>
           </div>
 
-          {/* Video Demo Trigger Modal Link */}
+          {/* Watch 60-Sec Intro / Video Demo Button */}
           <button
-            className="w-full py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors flex items-center justify-center gap-2 font-code-terminal text-xs text-on-surface font-medium group border border-outline-variant/30 shadow-sm mt-1"
             onClick={onOpenVideoModal}
+            className="w-full max-w-[320px] py-2.5 rounded-xl bg-[#080B11] hover:bg-[#22d3ee]/10 text-[#22d3ee] border border-[#22d3ee]/40 font-mono text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
           >
-            <span className="material-symbols-outlined text-primary text-[18px] group-hover:scale-110 transition-transform">
-              play_circle
-            </span>
-            <span>Watch 60-Sec Architecture Walkthrough</span>
+            <span>▶</span>
+            <span>Watch 60-Sec Intro / Video Demo</span>
           </button>
         </div>
       </div>

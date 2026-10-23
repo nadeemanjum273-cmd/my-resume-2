@@ -3,158 +3,180 @@ import React, { useState } from "react";
 export const Calculator: React.FC = () => {
   const [hours, setHours] = useState<number>(15);
 
-  // Hourly rate: $30/hr, 4 weeks/month
   const monthlySavings = hours * 30 * 4;
   const annualSavings = monthlySavings * 12;
 
-  // Dynamic Tier calculation
-  const getTier = (h: number) => {
+  // Dynamic package details based on slider
+  const getPackageInfo = (h: number) => {
     if (h <= 10) {
       return {
-        cost: "$450 Fixed POC",
-        name: "Tier 1: Starter Bot & Webhook",
-        desc: "24/7 FAQ Chatbot + Google Sheets live logging.",
+        badge: "STARTER",
+        price: "$450",
+        name: "Tier 1: Essential Chatbot Suite",
+        desc: "24/7 web inquiry capture bot with automatic Google Sheets logging and alert dispatch.",
+        features: [
+          "24/7 Web FAQ AI Concierge",
+          "Google Sheets Real-Time Sync",
+          "Instant Email & Telegram Notifications",
+        ],
       };
     } else if (h <= 25) {
       return {
-        cost: "$650 Fixed POC",
+        badge: "MOST POPULAR",
+        price: "$650",
         name: "Tier 2: Growth Automation Suite",
-        desc: "VoiceFlow WhatsApp Bot + n8n Webhook Sync + Live Spreadsheet Auditing.",
+        desc: "Our high-ROI package: Web + WhatsApp Cloud bot with automatic CRM sync and real-time calendar booking.",
+        features: [
+          "Web + WhatsApp AI Concierge",
+          "n8n Webhook CRM Sync (Sheets/HubSpot)",
+          "Real-Time Google Calendar Booking",
+        ],
       };
     } else {
       return {
-        cost: "$1,200 Full System",
-        name: "Tier 3: Enterprise Autonomous Agent",
-        desc: "Multi-step ReAct LangChain agent + vector database RAG + CRM 2-way sync.",
+        badge: "ENTERPRISE",
+        price: "$1,200",
+        name: "Tier 3: Autonomous Operations Agent",
+        desc: "End-to-end multi-step autonomous agent with RAG vector search, Shopify/CRM sync, and API webhooks.",
+        features: [
+          "Multi-Step ReAct LangChain Autonomous Agent",
+          "Full Vector Knowledge RAG with PDF Indexing",
+          "Two-Way Live CRM & Payment Gateway Sync",
+        ],
       };
     }
   };
 
-  const currentTier = getTier(hours);
+  const currentPkg = getPackageInfo(hours);
 
   return (
-    <section
-      className="w-full rounded-3xl bg-surface-container-low/80 backdrop-blur-xl p-space-xl lg:p-space-2xl shadow-2xl relative overflow-hidden flex flex-col gap-space-xl border border-outline-variant/30"
-      id="roi-calculator"
-    >
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      {/* Header */}
-      <div className="flex flex-col gap-space-xs max-w-2xl">
-        <div className="inline-flex items-center gap-1.5 text-primary font-code-terminal text-label-caps">
-          <span className="material-symbols-outlined text-[14px]">calculate</span>
-          <span>ENTERPRISE METRIC GENERATOR</span>
+    <section className="w-full flex flex-col gap-6" id="roi-calculator">
+      {/* Header Tag & Title: Exact Match to Screenshot 2 */}
+      <div className="flex flex-col gap-2">
+        <div className="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full bg-[#22d3ee]/10 text-[#22d3ee] border border-[#22d3ee]/30 font-mono text-xs font-bold">
+          <span>⚡</span>
+          <span>INTERACTIVE ROI SAVINGS CALCULATOR</span>
         </div>
-        <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
-          Estimate Your Monthly Automation Savings
+
+        <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+          Estimate Your Monthly Savings
         </h2>
-        <p className="font-body-md text-body-md text-on-surface-variant">
+
+        <p className="text-slate-300 text-sm sm:text-base max-w-2xl font-sans">
           Move the slider to estimate how many manual hours your staff spends weekly answering repetitive inquiries, routing leads, and copying data between tools.
         </p>
       </div>
 
-      {/* Interactive Calculator Body Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
-        {/* Slider Input Controls (7 Cols) */}
-        <div className="lg:col-span-7 flex flex-col gap-space-lg">
+      {/* Calculator Body 2-Column Split: Exact Match to Screenshot 2 */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left Column: Hours Slider Box (6 Cols) */}
+        <div className="lg:col-span-6 rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-6 flex flex-col justify-between shadow-2xl gap-8">
           <div className="flex items-center justify-between">
-            <span className="font-body-md text-body-md text-on-surface font-semibold">
-              Hours Wasted Weekly on Repetitive Work:
+            <span className="text-white text-base font-display font-bold">
+              Hours Wasted Weekly:
             </span>
-            <div className="px-space-md py-1.5 rounded-lg bg-surface-container-highest text-primary font-code-terminal text-headline-sm font-bold shadow-inner border border-outline-variant/30">
-              <span>{hours}</span> hrs / week
+            <div className="px-4 py-2 rounded-xl bg-[#080B11] border border-[#22d3ee]/40 text-[#22d3ee] font-mono text-lg font-bold shadow-inner">
+              {hours} Hours / week
             </div>
           </div>
 
-          {/* Range Slider */}
-          <input
-            className="w-full h-2.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary"
-            max="60"
-            min="5"
-            step="1"
-            type="range"
-            value={hours}
-            onChange={(e) => setHours(parseInt(e.target.value, 10))}
-          />
-
-          {/* Scale Anchors */}
-          <div className="flex justify-between font-code-terminal text-[11px] text-on-surface-variant">
-            <span>5 hrs (Small Team)</span>
-            <span>20 hrs (Growing Agency)</span>
-            <span>40 hrs (Full-Time Equivalent)</span>
-            <span>60 hrs (High-Volume Ops)</span>
+          <div className="flex flex-col gap-3">
+            <input
+              type="range"
+              min="5"
+              max="40"
+              step="1"
+              value={hours}
+              onChange={(e) => setHours(parseInt(e.target.value, 10))}
+              className="w-full h-2.5 bg-[#080B11] rounded-lg appearance-none cursor-pointer accent-[#22d3ee] border border-white/10"
+            />
+            <div className="flex justify-between text-xs font-mono text-slate-400">
+              <span>5 hrs (Small Team)</span>
+              <span>20 hrs (Growing Agency)</span>
+              <span>40 hrs (High Volume)</span>
+            </div>
           </div>
 
-          {/* Formula Context Box */}
-          <div className="p-space-md rounded-xl bg-surface-container/40 flex items-center gap-space-sm text-on-surface-variant font-code-terminal text-body-sm border border-outline-variant/20">
-            <span className="material-symbols-outlined text-secondary text-[22px]">info</span>
+          <div className="p-4 rounded-xl bg-[#080B11]/80 border border-white/5 text-xs font-mono text-slate-400 flex items-center gap-2">
+            <span className="material-symbols-outlined text-[#22d3ee] text-[18px]">info</span>
             <span>Based on conservative $30/hr blended labor cost + 30% reduction in lead leakage.</span>
           </div>
         </div>
 
-        {/* Calculated Savings Result Card (5 Cols) */}
-        <div className="lg:col-span-5 rounded-2xl bg-surface-container p-space-lg shadow-xl flex flex-col gap-space-md border border-outline-variant/30">
-          <div className="flex items-center justify-between pb-space-xs border-b border-surface-container-highest/40">
-            <span className="font-code-terminal text-label-caps text-on-surface-variant">
-              FINANCIAL IMPACT DELTA
-            </span>
-            <span className="font-code-terminal text-label-caps text-primary uppercase font-bold">
-              Calculated in Real-Time
-            </span>
-          </div>
-
-          {/* Monthly Recovered */}
-          <div className="flex flex-col">
-            <span className="font-code-terminal text-body-sm text-on-surface-variant">
-              Monthly Labor Recovered:
-            </span>
-            <span className="font-metric-huge text-metric-huge text-primary leading-tight font-bold">
-              ${monthlySavings.toLocaleString()}{" "}
-              <span className="font-body-sm text-body-sm font-normal text-on-surface-variant">
-                USD / mo
+        {/* Right Column: Calculated Savings + Package Card (6 Cols) */}
+        <div className="lg:col-span-6 flex flex-col gap-4">
+          {/* Top Metrics Row */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl bg-[#0B0F17]/90 border border-white/10 flex flex-col shadow-md">
+              <span className="text-xs font-mono text-slate-400">
+                Monthly Labor Recovered:
               </span>
-            </span>
-          </div>
-
-          {/* Annualized Value */}
-          <div className="flex flex-col">
-            <span className="font-code-terminal text-body-sm text-on-surface-variant">
-              Annualized Recovered Value:
-            </span>
-            <span className="font-headline-md text-headline-md text-secondary font-bold">
-              ${annualSavings.toLocaleString()}{" "}
-              <span className="font-body-sm text-body-sm font-normal text-on-surface-variant">
-                USD / yr
-              </span>
-            </span>
-          </div>
-
-          {/* Recommended System Tier */}
-          <div className="p-space-md rounded-xl bg-surface-container-highest/60 flex flex-col gap-1 mt-space-xs border border-outline-variant/30">
-            <div className="flex items-center justify-between">
-              <span className="font-code-terminal text-label-caps text-tertiary font-bold">
-                SUGGESTED DEPLOYMENT
-              </span>
-              <span className="font-code-terminal text-body-sm font-bold text-on-surface">
-                {currentTier.cost}
+              <span className="text-2xl sm:text-3xl font-display font-extrabold text-emerald-400 mt-1">
+                ${monthlySavings.toLocaleString()}{" "}
+                <span className="text-xs font-normal font-mono text-slate-400">
+                  USD/mo
+                </span>
               </span>
             </div>
-            <span className="font-body-sm text-body-sm text-on-surface font-semibold">
-              {currentTier.name}
-            </span>
-            <p className="font-code-terminal text-[11px] text-on-surface-variant">
-              {currentTier.desc}
-            </p>
+
+            <div className="p-4 rounded-xl bg-[#0B0F17]/90 border border-white/10 flex flex-col shadow-md">
+              <span className="text-xs font-mono text-slate-400">
+                Annualized Lost Value:
+              </span>
+              <span className="text-2xl sm:text-3xl font-display font-extrabold text-white mt-1">
+                ${annualSavings.toLocaleString()}{" "}
+                <span className="text-xs font-normal font-mono text-slate-400">
+                  USD/yr
+                </span>
+              </span>
+            </div>
           </div>
 
-          {/* Lock in Price CTA */}
-          <a
-            className="w-full py-3 rounded-xl bg-primary text-on-primary font-code-terminal text-body-sm font-bold text-center hover:bg-primary-container transition-all shadow-lg flex items-center justify-center gap-1"
-            href="#demo-form"
-          >
-            <span>Lock in This ROI Architecture</span>
-            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
-          </a>
+          {/* Package Card: Exact Match to Screenshot 2 */}
+          <div className="rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-[#22d3ee]/40 p-6 flex flex-col gap-4 shadow-xl">
+            <div className="flex items-center justify-between">
+              <span className="px-3 py-1 rounded-full bg-[#22d3ee]/10 text-[#22d3ee] font-mono text-xs font-bold border border-[#22d3ee]/30 flex items-center gap-1">
+                <span>★</span>
+                <span>{currentPkg.badge}</span>
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#22d3ee]">
+                  {currentPkg.price}
+                </span>
+                <span className="text-xs font-mono text-slate-400">
+                  Fixed Price &bull; 50% Deposit
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <h3 className="text-base sm:text-lg font-display font-bold text-white">
+                {currentPkg.name}
+              </h3>
+              <p className="text-xs sm:text-[13px] text-slate-300 font-sans leading-relaxed">
+                {currentPkg.desc}
+              </p>
+            </div>
+
+            {/* Feature Checklist */}
+            <div className="flex flex-col gap-2 pt-1 font-mono text-xs text-slate-200">
+              {currentPkg.features.map((feat, idx) => (
+                <div key={idx} className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold">&#10004;</span>
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Lock in CTA */}
+            <a
+              href="#demo-form"
+              className="w-full py-3 rounded-full bg-[#22d3ee] hover:bg-[#38bdf8] text-[#080B11] font-mono text-xs font-bold uppercase tracking-wider text-center transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] flex items-center justify-center gap-2 mt-2"
+            >
+              <span>LOCK IN THIS PACKAGE ({currentPkg.price})</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

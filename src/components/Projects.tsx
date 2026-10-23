@@ -4,140 +4,117 @@ interface Project {
   id: string;
   category: string[];
   tag: string;
-  tagColor: string;
   type: string;
   title: string;
   description: string;
   roi: string;
-  roiIcon: string;
   stack: string;
 }
 
 export const Projects: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const projects: Project[] = [
     {
       id: "mind-dreams",
       category: ["agent", "chatbot"],
-      tag: "GEMINI + RAG INDEX",
-      tagColor: "bg-secondary/10 text-secondary border border-secondary/20",
+      tag: "Gemini Powered + RAG Vector Index",
       type: "AGENT",
-      title: "Mind_Dreams Customer Support & RAG Agent",
+      title: "Mind_Dreams AI Customer Support & RAG Agent",
       description:
-        "Autonomous 24/7 customer support agent indexing company policy with Google Gemini and 3-way Google Sheets sync for orders, refunds, and bank payout tracking.",
-      roi: "VERIFIED ROI: 100% Policy Compliance & Live Sync",
-      roiIcon: "verified",
-      stack: "Next.js 14 • Google Gemini",
+        "Autonomous 24/7 customer support agent indexing company policy with Google Gemini and 3-way real-time Google Sheets sync for orders, refund eligibility, and bank payout logging.",
+      roi: "Verified ROI: 100% Policy Compliance & Live Sync",
+      stack: "Next.js 14 • Google Gemi...",
     },
     {
       id: "omnilead",
       category: ["chatbot", "automation"],
-      tag: "VOICEFLOW + WHATSAPP",
-      tagColor: "bg-primary/10 text-primary border border-primary/20",
+      tag: "Voiceflow + WhatsApp Cloud API",
       type: "CHATBOT",
-      title: "OmniLead 24/7 AI Sales Concierge",
+      title: "OmniLead 24/7 AI Concierge",
       description:
-        "Trained on business FAQs and real-time calendars to qualify incoming leads on WhatsApp and schedule consultations after hours without human staff.",
-      roi: "VERIFIED ROI: +42% After-Hours Conversion Rate",
-      roiIcon: "trending_up",
-      stack: "VoiceFlow • WhatsApp API",
+        "Trained on business FAQs and real-time calendars to qualify incoming leads and schedule consultations after hours.",
+      roi: "Verified ROI: +42% After-Hours Conversion",
+      stack: "Voiceflow • OpenAI GPT-4...",
     },
     {
       id: "lead-routing",
       category: ["automation"],
-      tag: "N8N WEBHOOK PIPELINE",
-      tagColor: "bg-tertiary/10 text-tertiary border border-tertiary/20",
+      tag: "n8n Webhook Pipeline",
       type: "AUTOMATION",
       title: "Zero-Latency Lead Routing Suite",
       description:
-        "Captures ad leads instantly, runs GPT intent scoring, syncs to Google Sheets and CRM, and sends instant Slack/WhatsApp notifications to designated reps.",
-      roi: "VERIFIED ROI: 14 hrs/week Saved Per Sales Rep",
-      roiIcon: "schedule",
-      stack: "n8n • Webhooks • Slack API",
+        "Captures ad leads instantly, runs GPT intent scoring, syncs to Google Sheets, and sends instant Slack/WhatsApp alerts.",
+      roi: "Verified ROI: 14 hrs/week Saved per Rep",
+      stack: "n8n • Webhooks...",
     },
     {
       id: "store-support",
       category: ["agent"],
-      tag: "REACT MULTI-STEP LOOP",
-      tagColor: "bg-secondary/10 text-secondary border border-secondary/20",
+      tag: "ReAct Multi-Step Loop + LangChain",
       type: "AGENT",
       title: "Autonomous Store Support Agent",
       description:
-        "Resolves shipping tracking and return ticket requests autonomously via Shopify API with policy compliance verification and automated ticket resolution.",
-      roi: "VERIFIED ROI: 60% First-Touch Resolution",
-      roiIcon: "task_alt",
-      stack: "Python • LangChain • Shopify",
+        "Resolves shipping tracking and return ticket requests autonomously via Shopify API with policy compliance verification.",
+      roi: "Verified ROI: 60% First-Touch Resolution",
+      stack: "Python • LangChain • Shopify...",
     },
     {
       id: "doc-rag",
       category: ["agent", "ml"],
-      tag: "CHROMADB + EMBEDDINGS",
-      tagColor: "bg-primary-fixed/20 text-primary-fixed border border-primary-fixed/30",
+      tag: "ChromaDB + Ada-002 Embeddings",
       type: "AGENT / RAG",
       title: "Document Intelligence RAG Engine",
       description:
-        "Parses dense 300+ page enterprise compliance PDFs into vector embeddings with sub-3 second cited query responses and zero hallucination boundaries.",
-      roi: "VERIFIED ROI: Sub-3s Cited Accuracy",
-      roiIcon: "speed",
-      stack: "ChromaDB • RecursiveSplitter",
+        "Parses dense 300+ page enterprise compliance PDFs into vector embeddings with sub-3 second cited query responses.",
+      roi: "Verified ROI: Sub-3s Cited Accuracy",
+      stack: "ChromaDB • RecursiveSplitter...",
     },
     {
       id: "churn-scoring",
       category: ["ml"],
-      tag: "DECISION TREES & KNN",
-      tagColor: "bg-tertiary/10 text-tertiary border border-tertiary/20",
+      tag: "Decision Trees & KNN Classifier",
       type: "MACHINE LEARNING",
       title: "Customer Churn & Lead Scoring Portal",
       description:
-        "Analyzes usage telemetry to predict customer churn risks 30 days ahead using ROC-AUC optimized classification models deployed on Streamlit.",
-      roi: "VERIFIED ROI: 89.4% Precision on At-Risk",
-      roiIcon: "query_stats",
-      stack: "Python • Scikit-Learn • Streamlit",
+        "Analyzes usage telemetry to predict customer churn risks 30 days ahead using ROC-AUC optimized classification models.",
+      roi: "Verified ROI: 89.4% Precision on At-Risk",
+      stack: "Python • Scikit-Learn • Streamlit...",
     },
   ];
 
   const filterTabs = [
-    { id: "all", label: "All (6)" },
-    { id: "agent", label: "AI Agents (3)" },
-    { id: "chatbot", label: "Chatbots (2)" },
-    { id: "automation", label: "Automations (2)" },
-    { id: "ml", label: "ML & Data (2)" },
+    { id: "all", label: "All Projects" },
+    { id: "agent", label: "AI Agents" },
+    { id: "chatbot", label: "Chatbots" },
+    { id: "automation", label: "Automations" },
+    { id: "ml", label: "Machine Learning" },
   ];
 
-  const filteredProjects = projects.filter(
-    (p) => selectedCategory === "all" || p.category.includes(selectedCategory)
+  const filtered = projects.filter(
+    (p) => activeFilter === "all" || p.category.includes(activeFilter)
   );
 
   return (
-    <section className="w-full flex flex-col gap-space-xl" id="deployments">
-      {/* Section Title & Dynamic Filter Pills */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-        <div className="flex flex-col gap-space-xs">
-          <div className="inline-flex items-center gap-1 text-primary font-code-terminal text-label-caps">
-            <span className="material-symbols-outlined text-[14px]">verified</span>
-            <span>CURATED CLIENT DELIVERABLES</span>
-          </div>
-          <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">
-            Curated Production Deployments
-          </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant max-w-xl">
-            Real enterprise pipelines engineered for measurable ROI, zero downtime, and seamless automated handoffs.
-          </p>
-        </div>
+    <section className="w-full flex flex-col gap-8" id="deployments">
+      {/* Section Header with Title and Filter Tabs: Exact Match to Screenshot 5 */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
+          Curated Production Deployments
+        </h2>
 
         {/* Filter Tabs */}
-        <div className="flex items-center gap-1.5 p-1 rounded-xl bg-surface-container-low overflow-x-auto border border-outline-variant/30">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1">
           {filterTabs.map((tab) => {
-            const isActive = selectedCategory === tab.id;
+            const isActive = activeFilter === tab.id;
             return (
               <button
                 key={tab.id}
-                onClick={() => setSelectedCategory(tab.id)}
-                className={`filter-btn px-space-md py-1.5 rounded-lg font-code-terminal text-label-caps transition-all whitespace-nowrap ${
+                onClick={() => setActiveFilter(tab.id)}
+                className={`px-4 py-1.5 rounded-full text-xs font-mono transition-all whitespace-nowrap ${
                   isActive
-                    ? "bg-primary-container text-on-primary-container font-semibold shadow-sm"
-                    : "text-on-surface-variant hover:bg-surface-container-high"
+                    ? "bg-[#22d3ee] text-[#080B11] font-bold shadow-[0_0_16px_rgba(34,211,238,0.35)]"
+                    : "bg-[#0B0F17] hover:bg-white/10 text-slate-300 border border-white/10"
                 }`}
               >
                 {tab.label}
@@ -147,49 +124,53 @@ export const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* 2x3 Project Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
-        {filteredProjects.map((p) => (
+      {/* 3-Column Grid of Cards: Exact Match to Screenshot 5 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filtered.map((p) => (
           <div
             key={p.id}
-            className="project-card flex flex-col justify-between rounded-2xl bg-surface-container/60 hover:bg-surface-container/90 transition-all duration-300 p-space-lg shadow-xl group border border-outline-variant/30 hover:border-primary/40 hover:-translate-y-1"
+            className="rounded-2xl bg-[#0B0F17]/90 backdrop-blur-xl border border-white/10 p-6 flex flex-col justify-between shadow-xl hover:border-[#22d3ee]/40 transition-all duration-300 hover:-translate-y-1 group"
           >
-            <div className="flex flex-col gap-space-md">
-              <div className="flex items-center justify-between">
-                <span className={`px-space-sm py-1 rounded font-code-terminal text-label-caps ${p.tagColor}`}>
+            <div className="flex flex-col gap-4">
+              {/* Category Pill and Type Tag */}
+              <div className="flex items-center justify-between gap-2">
+                <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/30 bg-[#22d3ee]/5 truncate max-w-[210px]">
                   {p.tag}
                 </span>
-                <span className="font-code-terminal text-[11px] text-on-surface-variant">
+                <span className="text-[11px] font-mono text-slate-400 shrink-0">
                   {p.type}
                 </span>
               </div>
-              <div className="flex flex-col gap-space-xs">
-                <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+
+              {/* Title & Description */}
+              <div className="flex flex-col gap-2">
+                <h3 className="text-lg font-display font-bold text-white group-hover:text-[#22d3ee] transition-colors leading-snug">
                   {p.title}
                 </h3>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed font-sans">
                   {p.description}
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-col gap-space-md pt-space-lg">
-              <div className="p-space-sm rounded-lg bg-surface-container-lowest flex items-center gap-space-xs border border-outline-variant/20">
-                <span className="material-symbols-outlined text-primary text-[18px]">
-                  {p.roiIcon}
+            <div className="flex flex-col gap-4 pt-6">
+              {/* Verified ROI Badge */}
+              <div className="p-2.5 rounded-xl bg-[#080B11] border border-emerald-500/30 text-emerald-400 font-mono text-xs flex items-center gap-2">
+                <span className="material-symbols-outlined text-[16px] text-emerald-400 shrink-0">
+                  check_circle
                 </span>
-                <span className="font-code-terminal text-label-caps text-primary">
-                  {p.roi}
-                </span>
+                <span className="font-semibold">{p.roi}</span>
               </div>
-              <div className="flex items-center justify-between font-code-terminal text-body-sm text-on-surface-variant pt-1 border-t border-surface-container-highest/40">
-                <span>{p.stack}</span>
+
+              {/* Stack & Details Link */}
+              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pt-1 border-t border-white/5">
+                <span className="truncate max-w-[170px]">{p.stack}</span>
                 <a
-                  className="text-primary hover:underline flex items-center gap-0.5 group-hover:translate-x-0.5 transition-transform"
                   href="#demo-form"
+                  className="text-[#22d3ee] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-0.5 transition-transform shrink-0"
                 >
                   <span>Details</span>
-                  <span className="material-symbols-outlined text-[16px]">chevron_right</span>
+                  <span>&rarr;</span>
                 </a>
               </div>
             </div>

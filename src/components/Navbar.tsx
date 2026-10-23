@@ -5,29 +5,29 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
-  const [activePath, setActivePath] = useState("home");
+  const [activeSection, setActiveSection] = useState("about");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
-        { id: "home", path: "home" },
-        { id: "interactive-agent", path: "agent" },
-        { id: "deployments", path: "projects" },
-        { id: "tech-arsenal", path: "stack" },
-        { id: "roi-calculator", path: "roi" },
-        { id: "experience", path: "about" },
-        { id: "demo-form", path: "contact" },
+        { id: "hero", name: "about" },
+        { id: "interactive-agent", name: "assistant" },
+        { id: "deployments", name: "projects" },
+        { id: "tech-arsenal", name: "arsenal" },
+        { id: "roi-calculator", name: "roi" },
+        { id: "experience", name: "resume" },
+        { id: "demo-form", name: "contact" },
       ];
 
-      const scrollPos = window.scrollY + 220;
+      const scrollPos = window.scrollY + 200;
       for (const s of sections) {
         const el = document.getElementById(s.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPos >= top && scrollPos < top + height) {
-            setActivePath(s.path);
+            setActiveSection(s.name);
             break;
           }
         }
@@ -38,95 +38,99 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "Home", href: "#home", path: "home" },
-    { label: "AI Agent", href: "#interactive-agent", path: "agent" },
-    { label: "Projects", href: "#deployments", path: "projects" },
-    { label: "Stack", href: "#tech-arsenal", path: "stack" },
-    { label: "ROI", href: "#roi-calculator", path: "roi" },
-    { label: "About", href: "#experience", path: "about" },
-    { label: "Contact", href: "#demo-form", path: "contact" },
+  const navLinks = [
+    { label: "About", href: "#hero", id: "about" },
+    {
+      label: "Resume Assistant",
+      href: "#interactive-agent",
+      id: "assistant",
+      isAssistant: true,
+    },
+    { label: "Projects", href: "#deployments", id: "projects" },
+    { label: "Technical Arsenal", href: "#tech-arsenal", id: "arsenal" },
+    { label: "ROI Calculator", href: "#roi-calculator", id: "roi" },
+    { label: "Resume & CV", href: "#experience", id: "resume" },
+    { label: "Contact", href: "#demo-form", id: "contact" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-surface-container-lowest/85 backdrop-blur-xl border-b border-surface-container-highest/30">
-      <div className="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
-        {/* Brand / Verified Architect Pill */}
-        <a href="#home" className="flex items-center gap-2 group shrink-0">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/30 shadow-[0_0_12px_rgba(16,185,129,0.12)]">
-            <div className="relative flex h-2 w-2 items-center justify-center">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#080B11]/80 backdrop-blur-xl border-b border-white/5 shadow-2xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        {/* Brand Profile: Exact Match to Screenshot 1 */}
+        <a href="#hero" className="flex items-center gap-3 group shrink-0">
+          <div className="relative">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-emerald-400/60 p-0.5 bg-[#0B0F17]">
+              <img
+                src="/IMG_0048.JPG"
+                alt="Nadeem Anjum"
+                className="w-full h-full rounded-full object-cover object-top"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "/profile.jpg";
+                }}
+              />
             </div>
-            <div className="flex flex-col">
-              <span className="font-headline-sm text-sm sm:text-base tracking-tight text-on-surface leading-none font-bold">
+            <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-[#080B11]"></span>
+          </div>
+
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <span className="font-display font-extrabold text-white text-base tracking-tight leading-tight">
                 Nadeem Anjum
               </span>
-              <span className="font-label-caps text-[10px] tracking-wider uppercase text-on-surface-variant hidden sm:inline">
-                AI Solutions &amp; Automation Architect
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                AVAILABLE
               </span>
             </div>
+            <span className="font-mono text-[11px] text-[#22d3ee] font-semibold tracking-wider uppercase">
+              AI &amp; AUTOMATION SPECIALIST
+            </span>
           </div>
         </a>
 
-        {/* Center Capsule Nav (Streamlined, short titles, zero collision) */}
-        <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-surface-container-low border border-outline-variant/20">
-          {navItems.map((item) => {
-            const isActive = activePath === item.path;
+        {/* Desktop Navigation Links */}
+        <nav className="hidden xl:flex items-center gap-6 text-sm">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
             return (
               <a
-                key={item.path}
-                href={item.href}
-                onClick={() => setActivePath(item.path)}
-                className={`px-3 py-1 rounded-full text-xs font-code-terminal transition-all whitespace-nowrap ${
-                  isActive
-                    ? "bg-primary-container text-on-primary-container font-semibold shadow-sm"
-                    : "text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+                key={link.id}
+                href={link.href}
+                onClick={() => setActiveSection(link.id)}
+                className={`relative py-1 transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap font-medium text-xs font-mono ${
+                  link.isAssistant
+                    ? "text-[#22d3ee] font-bold"
+                    : isActive
+                    ? "text-white font-bold"
+                    : "text-slate-300 hover:text-white"
                 }`}
               >
-                {item.label}
+                {link.isAssistant && (
+                  <span className="w-2 h-2 rounded-full bg-[#22d3ee] animate-pulse"></span>
+                )}
+                <span>{link.label}</span>
+                {isActive && !link.isAssistant && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#a855f7] rounded-full"></span>
+                )}
               </a>
             );
           })}
         </nav>
 
-        {/* Right Action Items */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Right CTA Button: Exact Match to Screenshot 1 */}
+        <div className="flex items-center gap-3">
           <a
-            className="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-terminal text-xs transition-all border border-outline-variant/30 whitespace-nowrap"
-            href="https://wa.me/923077970277"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="font-label-caps text-[10px] uppercase text-secondary font-bold">WA:</span>
-            <span>+92 307 7970277</span>
-          </a>
-
-          <a
-            className="flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container font-code-terminal text-xs font-bold shadow-[0_0_20px_-4px_rgba(16,185,129,0.35)] hover:bg-primary hover:text-on-primary transition-all group whitespace-nowrap"
             href="#demo-form"
+            className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#38bdf8] hover:from-[#38bdf8] hover:to-[#22d3ee] text-[#080B11] font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] hover:scale-105 active:scale-100 flex items-center gap-1.5 shrink-0"
           >
-            <span>Book 60-Sec Demo</span>
-            <span className="transition-transform group-hover:translate-x-1">→</span>
+            <span>HIRE SPECIALIST</span>
+            <span>&rarr;</span>
           </a>
 
-          {/* Profile Avatar with user's uploaded IMG_0048.JPG */}
-          <div className="w-8 h-8 rounded-full overflow-hidden border border-primary/40 shrink-0 bg-surface-container-highest">
-            <img
-              src="/IMG_0048.JPG"
-              alt="Nadeem Anjum"
-              className="w-full h-full object-cover object-top"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = "/profile.jpg";
-              }}
-            />
-          </div>
-
-          {/* Mobile Menu Hamburger */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-1.5 rounded-full bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors"
-            aria-label="Toggle Navigation"
+            className="xl:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white"
+            aria-label="Toggle Menu"
           >
             <span className="material-symbols-outlined text-[20px]">
               {mobileMenuOpen ? "close" : "menu"}
@@ -137,36 +141,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-surface-container-lowest/95 border-b border-surface-container-highest px-4 py-3 flex flex-col gap-1.5">
-          {navItems.map((item) => (
+        <div className="xl:hidden bg-[#0B0F17]/95 border-b border-white/10 px-4 py-3 flex flex-col gap-2">
+          {navLinks.map((link) => (
             <a
-              key={item.path}
-              href={item.href}
+              key={link.id}
+              href={link.href}
               onClick={() => {
-                setActivePath(item.path);
+                setActiveSection(link.id);
                 setMobileMenuOpen(false);
               }}
-              className={`px-3 py-2 rounded-lg text-xs font-code-terminal transition-colors flex items-center justify-between ${
-                activePath === item.path
-                  ? "bg-primary-container text-on-primary-container font-bold"
-                  : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
+              className={`px-3 py-2 rounded-lg text-xs font-mono transition-colors flex items-center justify-between ${
+                activeSection === link.id
+                  ? "bg-[#22d3ee]/10 text-[#22d3ee] font-bold"
+                  : "text-slate-300 hover:bg-white/5 hover:text-white"
               }`}
             >
-              <span>{item.label}</span>
-              <span className="text-primary text-xs">→</span>
+              <span className="flex items-center gap-2">
+                {link.isAssistant && (
+                  <span className="w-2 h-2 rounded-full bg-[#22d3ee]"></span>
+                )}
+                <span>{link.label}</span>
+              </span>
+              <span className="text-slate-500">&rarr;</span>
             </a>
           ))}
-          <div className="pt-2 border-t border-surface-container-highest flex items-center justify-between">
-            <a
-              href="https://wa.me/923077970277"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-secondary font-code-terminal text-xs flex items-center gap-1"
-            >
-              <span className="material-symbols-outlined text-[15px]">chat</span>
-              <span>+92 307 7970277</span>
-            </a>
-          </div>
         </div>
       )}
     </header>
