@@ -42,10 +42,6 @@ export const Skills: React.FC = () => {
             Industry-grade frameworks, orchestration runtimes, vector storage, and machine learning libraries powering automated client pipelines.
           </p>
         </div>
-        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B0F17] text-slate-300 font-mono text-xs border border-white/10 shrink-0">
-          <span className="w-2 h-2 rounded-full bg-[#22d3ee] animate-pulse"></span>
-          <span>16 PRODUCTION PLATFORMS &bull; LIVE STREAM</span>
-        </div>
       </div>
 
       {/* 2 Rows Moving Right-to-Left with Edge Fade and Hover Pause */}

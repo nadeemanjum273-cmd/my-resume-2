@@ -140,11 +140,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
           {/* Top Form Header */}
           <div className="flex items-center justify-between pb-3 border-b border-white/10 font-mono text-xs">
             <span className="text-slate-400 font-bold tracking-wider">
-              DISCOVERY FORM &bull; SYNCED WITH PROSPECT TRACKER
-            </span>
-            <span className="flex items-center gap-1.5 text-emerald-400 text-[11px] font-bold">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-              <span>Real-Time Sheet Ready</span>
+              DISCOVERY FORM
             </span>
           </div>
 
@@ -271,7 +267,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
                 ) : (
                   <>
                     <span className="material-symbols-outlined text-[16px]">send</span>
-                    <span>SEND REQUEST &amp; REAL-TIME SYNC TO GOOGLE SHEET</span>
+                    <span>SEND REQUEST</span>
                   </>
                 )}
               </button>

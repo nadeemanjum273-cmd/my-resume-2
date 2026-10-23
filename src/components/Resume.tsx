@@ -39,7 +39,7 @@ export const Resume: React.FC = () => {
                   auto_awesome
                 </span>
                 <h3 className="font-display font-bold text-base sm:text-lg lg:text-xl text-white tracking-tight">
-                  Mind_Dreams — AI Customer Support &amp; RAG Agent
+                  Mind_Dreams — AI Customer Support Agent
                 </h3>
               </div>
               <span className="px-3 py-1 rounded-full bg-[#082f49]/70 border border-[#0284c7]/50 text-[#38bdf8] font-mono text-[11px] sm:text-xs font-semibold shrink-0">
@@ -73,15 +73,15 @@ export const Resume: React.FC = () => {
               href="https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#22d3ee] hover:text-[#38bdf8] font-mono text-[11px] sm:text-xs transition-colors pt-1 group break-all sm:break-normal"
+              className="inline-flex items-center gap-1.5 text-[#22d3ee] hover:text-[#38bdf8] font-mono text-[11px] sm:text-xs transition-colors pt-1 group break-words"
             >
-              <span className="material-symbols-outlined text-[16px] text-[#22d3ee] shrink-0">
+              <span className="material-symbols-outlined text-[15px] text-[#22d3ee] shrink-0">
                 terminal
               </span>
               <span className="underline-offset-4 group-hover:underline">
                 github.com/nadeemanjum273-cmd/Mind_Dream-Agent
               </span>
-              <span className="text-[13px] shrink-0">&nearr;</span>
+              <span className="text-xs shrink-0 font-bold">↗</span>
             </a>
           </div>
 
@@ -110,27 +110,43 @@ export const Resume: React.FC = () => {
               Architects and deploys production-ready 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3–20 staff).
             </p>
 
-            {/* Bullet Points */}
-            <ul className="flex flex-col gap-2 pt-1 text-slate-300 text-xs sm:text-sm font-sans">
-              <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>
-                <span>
+            {/* Skill Tags */}
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-0.5">
+              <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
+                Voiceflow &amp; WhatsApp API
+              </span>
+              <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
+                n8n Webhook Pipelines
+              </span>
+              <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
+                Autonomous ReAct Agents
+              </span>
+              <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
+                100% IP Client Transfer
+              </span>
+            </div>
+
+            {/* Key Deliverables Points */}
+            <div className="flex flex-col gap-2 pt-1 text-slate-300 text-xs sm:text-sm font-sans">
+              <div className="flex items-start gap-2.5">
+                <span className="text-[#22d3ee] text-xs mt-0.5 shrink-0 font-bold">›</span>
+                <span className="leading-relaxed">
                   Integrated Voiceflow with WhatsApp Cloud API to capture after-hours qualified inquiries (+42% conversion).
                 </span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>
-                <span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="text-[#22d3ee] text-xs mt-0.5 shrink-0 font-bold">›</span>
+                <span className="leading-relaxed">
                   Engineered n8n webhook pipelines orchestrating real-time lead routing and CRM synchronization.
                 </span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>
-                <span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <span className="text-[#22d3ee] text-xs mt-0.5 shrink-0 font-bold">›</span>
+                <span className="leading-relaxed">
                   Authored clean, documented deployment handoffs with 100% intellectual property transfer to clients.
                 </span>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
           {/* Node 3: Graduation in Computer Science (Location removed per user instruction) */}

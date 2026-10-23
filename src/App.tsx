@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B11] text-slate-100 font-sans selection:bg-[#22d3ee] selection:text-black relative overflow-x-hidden cyber-grid">
+    <div className="min-h-screen bg-[#080B11] text-slate-100 font-sans selection:bg-[#22d3ee] selection:text-black relative overflow-x-hidden">
       {/* 1. Dynamic Three.js Cosmic Moving Stars Background Canvas ("not remove back ground moving effect") */}
       <JugnuBackground />
 
