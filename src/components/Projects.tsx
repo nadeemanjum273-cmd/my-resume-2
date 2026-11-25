@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Video } from "lucide-react";
+import SurveillanceDemoDock from "./SurveillanceDemoDock";
 
 export type ProjectDemoId = "campus-ai" | "farm-security";
 
@@ -15,16 +17,35 @@ interface Project {
   deliverables: string[];
   techTags: string[];
   githubUrl?: string;
-  demoId?: ProjectDemoId;
+  demoPath?: string;
 }
 
 interface ProjectsProps {
-  onOpenDemo?: (demoId: ProjectDemoId) => void;
+  navigateTo?: (path: string) => void;
 }
 
-export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
+export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleNavigate = (path: string) => {
+    if (navigateTo) {
+      navigateTo(path);
+    } else {
+      window.location.href = path;
+    }
+  };
+
+  const handleDemoNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+      return;
+    }
+    e.preventDefault();
+    handleNavigate(path);
+  };
 
   const projects: Project[] = [
     {
@@ -46,7 +67,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
         "Automated CSV/Excel and Supabase live database synchronization with searchable zone log explorer",
       ],
       techTags: ["Computer Vision", "React", "TypeScript", "Supabase", "Excel / CSV Sync", "CCTV IP Feeds"],
-      demoId: "campus-ai",
+      demoPath: "/demo/campus-ai",
     },
     {
       id: "farm-security-ai",
@@ -67,7 +88,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
         "Verified Excel (.CSV) log explorer split across Chaki Gate, Animal Farm, and Home Entrance zones",
       ],
       techTags: ["Computer Vision", "False-Alarm Filtering", "React", "TypeScript", "Excel / CSV Sync", "CCTV IP Feeds"],
-      demoId: "farm-security",
+      demoPath: "/demo/farm-security",
     },
     {
       id: "mind-dreams",
@@ -233,6 +254,46 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
         </div>
       </div>
 
+      {/* Featured AI Smart Surveillance Showcase Card */}
+      <div className="group/showcase relative overflow-hidden rounded-3xl bg-slate-900/60 backdrop-blur-md border border-white/10 p-6 sm:p-8 transition-all duration-500 hover:border-white/20">
+        {/* Soft Ambient Gradient Glow on Hover */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-1 opacity-0 group-hover/showcase:opacity-100 transition-opacity duration-500 bg-[radial-gradient(650px_circle_at_25%_0%,rgba(34,211,238,0.14),transparent_55%),radial-gradient(650px_circle_at_85%_100%,rgba(52,211,153,0.14),transparent_55%)]"
+        />
+
+        <div className="relative z-10 flex flex-col gap-6">
+          {/* Sleek Live Interactive Demos Label Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-300 shadow-[0_0_16px_rgba(52,211,153,0.2)]">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                LIVE DEMOS
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-300">
+                <Video className="h-3.5 w-3.5 text-cyan-400" />
+                Live Interactive Demos &bull; Computer Vision Suite
+              </span>
+            </div>
+            <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
+              CCTV AI &bull; Real-Time Excel Sync
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2 max-w-3xl">
+            <h3 className="text-xl sm:text-2xl font-display font-extrabold text-white tracking-tight">
+              AI Smart Surveillance &amp; Automated Excel Logging
+            </h3>
+            <p className="text-sm text-slate-300 leading-relaxed font-sans">
+              Launch our interactive surveillance sandboxes directly from the home screen—inspect live detection logs, zone filters, false-alarm rejection, and one-click CSV/Excel exports.
+            </p>
+          </div>
+
+          {/* Dual Sleek Interactive Demo Launch Dock */}
+          <SurveillanceDemoDock onNavigate={handleNavigate} />
+        </div>
+      </div>
+
       {/* 3-Column Grid of Cards: Exact Match to Screenshot with Shining Edges */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((p) => (
@@ -276,17 +337,17 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
               <div className="flex items-center justify-between gap-2 font-mono text-xs text-slate-400 pt-1 border-t border-white/10">
                 <span className="truncate max-w-[140px]">{p.stack}</span>
                 <div className="flex items-center gap-3 shrink-0">
-                  {p.demoId && onOpenDemo && (
-                    <button
-                      type="button"
+                  {p.demoPath && (
+                    <a
+                      href={p.demoPath}
                       onClick={(e) => {
                         e.stopPropagation();
-                        onOpenDemo(p.demoId!);
+                        handleDemoNavigation(e, p.demoPath!);
                       }}
                       className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 hover:bg-emerald-500/25 font-bold transition-colors"
                     >
                       Live Demo
-                    </button>
+                    </a>
                   )}
                   <button
                     type="button"
@@ -404,20 +465,20 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
 
             {/* Footer Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 border-t border-white/10">
-              {selectedProject.demoId && onOpenDemo && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    const demoId = selectedProject.demoId!;
+              {selectedProject.demoPath && (
+                <a
+                  href={selectedProject.demoPath}
+                  onClick={(e) => {
+                    const demoPath = selectedProject.demoPath!;
                     setSelectedProject(null);
-                    onOpenDemo(demoId);
+                    handleDemoNavigation(e, demoPath);
                   }}
                   className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-400/50 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[16px]">play_circle</span>
                   <span>Launch Interactive Demo</span>
                   <span>&rarr;</span>
-                </button>
+                </a>
               )}
 
               {selectedProject.githubUrl && (

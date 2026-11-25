@@ -14,11 +14,6 @@ import { ScrollReveal } from "./components/ScrollReveal";
 import CampusAiDemo from "./components/CampusAiDemo";
 import FarmSecurityDemo from "./components/FarmSecurityDemo";
 
-const DEMO_ROUTES: Record<ProjectDemoId, string> = {
-  "campus-ai": "/demo/campus-ai",
-  "farm-security": "/demo/farm-security",
-};
-
 const DEMO_ROUTE_ALIASES: Record<string, ProjectDemoId> = {
   "/demo/campus-ai": "campus-ai",
   "/campus-ai": "campus-ai",
@@ -55,13 +50,13 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const openDemo = (demoId: ProjectDemoId) => {
-    const targetRoute = DEMO_ROUTES[demoId];
-    if (window.location.pathname !== targetRoute) {
-      window.history.pushState({}, "", targetRoute);
+  const navigateTo = (path: string) => {
+    const cleanPath = path.split("#")[0] || "/";
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, "", path);
     }
-    setActiveDemo(demoId);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveDemo(getDemoFromPath(cleanPath));
+    window.scrollTo(0, 0);
   };
 
   const closeDemoAndScrollTo = (sectionId: string) => {
@@ -126,7 +121,7 @@ export default function App() {
 
             {/* 3. Curated Production Deployments (Screenshot 5: 3-column bento) */}
             <ScrollReveal yOffset={45}>
-              <Projects onOpenDemo={openDemo} />
+              <Projects navigateTo={navigateTo} />
             </ScrollReveal>
 
             {/* 4. Technical Arsenal (2-Row Moving Platforms Marquee) */}
