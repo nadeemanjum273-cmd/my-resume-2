@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+export type ProjectDemoId = "campus-ai" | "farm-security";
+
 interface Project {
   id: string;
   category: string[];
@@ -13,13 +15,60 @@ interface Project {
   deliverables: string[];
   techTags: string[];
   githubUrl?: string;
+  demoId?: ProjectDemoId;
 }
 
-export const Projects: React.FC = () => {
+interface ProjectsProps {
+  onOpenDemo?: (demoId: ProjectDemoId) => void;
+}
+
+export const Projects: React.FC<ProjectsProps> = ({ onOpenDemo }) => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const projects: Project[] = [
+    {
+      id: "eduguard-campus-ai",
+      category: ["agent", "ml", "automation"],
+      tag: "CCTV AI + Excel & Supabase Sync",
+      type: "COMPUTER VISION",
+      title: "EduGuard AI: Smart Campus & Exam Surveillance",
+      description:
+        "Transforms campus CCTV cameras into an automated intelligence suite covering Parking Detection, Classroom Whiteboard Tracking, and Exam Hall Anti-Cheating Excel logs.",
+      roi: "Verified ROI: 98.4% Detection & Live Excel Sync",
+      stack: "Computer Vision • Supabase...",
+      fullOverview:
+        "Production-ready smart campus and exam surveillance platform built for universities, colleges, and schools. Connects to existing IP/CCTV feeds to automate gate parking logs, student attendance and teacher whiteboard tracking, and real-time exam hall anti-cheating incident logging synced directly to Excel and Supabase.",
+      deliverables: [
+        "Smart Parking Detection logging vehicle entries, exits, and unauthorized parking at campus gates",
+        "Classroom & Whiteboard AI tracking automated student attendance and verifying teacher lecture activity",
+        "Exam Hall Anti-Cheating detection flagging suspicious head-turns and paper sharing with instant alerts",
+        "Automated CSV/Excel and Supabase live database synchronization with searchable zone log explorer",
+      ],
+      techTags: ["Computer Vision", "React", "TypeScript", "Supabase", "Excel / CSV Sync", "CCTV IP Feeds"],
+      demoId: "campus-ai",
+    },
+    {
+      id: "farm-security-ai",
+      category: ["agent", "ml", "automation"],
+      tag: "Zero False-Alarm + Excel Sync",
+      type: "COMPUTER VISION",
+      title: "Smart Commercial, Home & Animal Farm AI Security",
+      description:
+        "Logs Chaki gate unloading (Gattu), animal carts, livestock zones, and home gate entries into Excel while filtering out insects, spiders, leaves, birds, and stray cats.",
+      roi: "Verified ROI: 0 False-Alarm Excel Entries",
+      stack: "Computer Vision • Excel Sync...",
+      fullOverview:
+        "Precision computer vision security suite engineered for real-world rural, commercial, and residential sites including flour mills (Chaki), animal farms, and private homes. Eliminates 200+ daily motion-camera false alarms by filtering out locusts, spiders, wind-blown foliage, birds, and stray cats while logging verified gate and livestock events directly to Excel.",
+      deliverables: [
+        "Commercial Chaki Gate tracking for flour sack unloading (Gattu) and animal cart arrivals",
+        "Animal Farm zone monitoring for cattle/livestock movement and caretaker shed entry rules",
+        "Noise-rejection filter ignoring insects, spiders on camera lenses, moving leaves, and stray animals",
+        "Verified Excel (.CSV) log explorer split across Chaki Gate, Animal Farm, and Home Entrance zones",
+      ],
+      techTags: ["Computer Vision", "False-Alarm Filtering", "React", "TypeScript", "Excel / CSV Sync", "CCTV IP Feeds"],
+      demoId: "farm-security",
+    },
     {
       id: "mind-dreams",
       category: ["agent", "chatbot"],
@@ -223,20 +272,34 @@ export const Projects: React.FC = () => {
                 <span className="font-semibold">{p.roi}</span>
               </div>
 
-              {/* Stack & Details Button: Hits Details Modal */}
-              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pt-1 border-t border-white/10">
-                <span className="truncate max-w-[170px]">{p.stack}</span>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedProject(p);
-                  }}
-                  className="text-[#22d3ee] hover:text-[#38bdf8] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform shrink-0"
-                >
-                  <span>Details</span>
-                  <span>&rarr;</span>
-                </button>
+              {/* Stack & Details / Live Demo Buttons */}
+              <div className="flex items-center justify-between gap-2 font-mono text-xs text-slate-400 pt-1 border-t border-white/10">
+                <span className="truncate max-w-[140px]">{p.stack}</span>
+                <div className="flex items-center gap-3 shrink-0">
+                  {p.demoId && onOpenDemo && (
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenDemo(p.demoId!);
+                      }}
+                      className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 hover:bg-emerald-500/25 font-bold transition-colors"
+                    >
+                      Live Demo
+                    </button>
+                  )}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProject(p);
+                    }}
+                    className="text-[#22d3ee] hover:text-[#38bdf8] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform shrink-0"
+                  >
+                    <span>Details</span>
+                    <span>&rarr;</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -341,6 +404,22 @@ export const Projects: React.FC = () => {
 
             {/* Footer Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 border-t border-white/10">
+              {selectedProject.demoId && onOpenDemo && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const demoId = selectedProject.demoId!;
+                    setSelectedProject(null);
+                    onOpenDemo(demoId);
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-400/50 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
+                >
+                  <span className="material-symbols-outlined text-[16px]">play_circle</span>
+                  <span>Launch Interactive Demo</span>
+                  <span>&rarr;</span>
+                </button>
+              )}
+
               {selectedProject.githubUrl && (
                 <a
                   href={selectedProject.githubUrl}

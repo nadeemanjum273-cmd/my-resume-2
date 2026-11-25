@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { Toast } from "./components/Toast";
 import { Hero } from "./components/Hero";
 import { PocSimulator } from "./components/PocSimulator";
-import { Projects } from "./components/Projects";
+import { Projects, ProjectDemoId } from "./components/Projects";
 import { Skills } from "./components/Skills";
 import { Calculator } from "./components/Calculator";
 import { Resume } from "./components/Resume";
@@ -11,10 +11,40 @@ import { Contact } from "./components/Contact";
 import { VideoModal } from "./components/VideoModal";
 import { JugnuBackground } from "./components/JugnuBackground";
 import { ScrollReveal } from "./components/ScrollReveal";
+import CampusAiDemo from "./components/CampusAiDemo";
+import FarmSecurityDemo from "./components/FarmSecurityDemo";
+
+const DEMO_ROUTES: Record<ProjectDemoId, string> = {
+  "campus-ai": "/demo/campus-ai",
+  "farm-security": "/demo/farm-security",
+};
+
+const DEMO_ROUTE_ALIASES: Record<string, ProjectDemoId> = {
+  "/demo/campus-ai": "campus-ai",
+  "/campus-ai": "campus-ai",
+  "/demo/farm-security": "farm-security",
+  "/farm-security": "farm-security",
+};
+
+function getDemoFromPath(pathname: string): ProjectDemoId | null {
+  const normalized = pathname.replace(/\/+$/, "").toLowerCase() || "/";
+  return DEMO_ROUTE_ALIASES[normalized] ?? null;
+}
 
 export default function App() {
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [activeDemo, setActiveDemo] = useState<ProjectDemoId | null>(() =>
+    getDemoFromPath(window.location.pathname)
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setActiveDemo(getDemoFromPath(window.location.pathname));
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   const triggerToast = (msg: string) => {
     setToastMsg(msg);
@@ -24,6 +54,41 @@ export default function App() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const openDemo = (demoId: ProjectDemoId) => {
+    const targetRoute = DEMO_ROUTES[demoId];
+    if (window.location.pathname !== targetRoute) {
+      window.history.pushState({}, "", targetRoute);
+    }
+    setActiveDemo(demoId);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const closeDemoAndScrollTo = (sectionId: string) => {
+    window.history.pushState({}, "", `/#${sectionId}`);
+    setActiveDemo(null);
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }, 60);
+  };
+
+  if (activeDemo === "campus-ai") {
+    return (
+      <CampusAiDemo
+        onBack={() => closeDemoAndScrollTo("deployments")}
+        onBookDemo={() => closeDemoAndScrollTo("demo-form")}
+      />
+    );
+  }
+
+  if (activeDemo === "farm-security") {
+    return (
+      <FarmSecurityDemo
+        onBack={() => closeDemoAndScrollTo("deployments")}
+        onBookDemo={() => closeDemoAndScrollTo("demo-form")}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#080B11] text-slate-100 font-sans selection:bg-[#22d3ee] selection:text-black relative overflow-x-hidden">
@@ -61,7 +126,7 @@ export default function App() {
 
             {/* 3. Curated Production Deployments (Screenshot 5: 3-column bento) */}
             <ScrollReveal yOffset={45}>
-              <Projects />
+              <Projects onOpenDemo={openDemo} />
             </ScrollReveal>
 
             {/* 4. Technical Arsenal (2-Row Moving Platforms Marquee) */}
