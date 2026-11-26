@@ -92,6 +92,28 @@ const SAMPLE_LOGS: ExamLog[] = [
   },
 ];
 
+const LIVE_DASHBOARD_URL = 'https://university-ai-monitoring.vercel.app/demo';
+
+function LaunchDashboardButton({ compact = false }: { compact?: boolean }) {
+  return (
+    <a
+      href={LIVE_DASHBOARD_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400 font-semibold text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(52,211,153,0.65)] hover:brightness-105 ${
+        compact ? 'px-3.5 py-2 text-xs sm:text-sm' : 'px-5 py-3 text-sm sm:text-base'
+      }`}
+    >
+      <span className="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center rounded-full bg-slate-950/90 p-1.5">
+        <span className="absolute inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-emerald-400 opacity-75" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+      </span>
+      <span>Launch Live AI Dashboard</span>
+      <ExternalLink className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+    </a>
+  );
+}
+
 /**
  * Interactive EduGuard AI smart campus & exam surveillance demo view.
  */
@@ -129,25 +151,31 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
     document.body.removeChild(link);
   };
 
+  const scrollToVideoWalkthrough = () => {
+    document.getElementById('campus-video-walkthrough')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#070B14] text-slate-100 selection:bg-cyan-500/30">
       {/* Top Bar */}
       <header className="sticky top-0 z-30 border-b border-slate-800/80 bg-[#070B14]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6">
           <button
             type="button"
             onClick={onBack}
             className="inline-flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-900/70 px-3.5 py-2 text-sm font-medium text-slate-300 transition hover:border-cyan-500/50 hover:text-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Portfolio
+            <span className="hidden sm:inline">Back to Portfolio</span>
+            <span className="sm:hidden">Back</span>
           </button>
 
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
+          <div className="flex items-center gap-3">
+            <span className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
               Supabase + Excel Live Sync Ready
             </span>
+            <LaunchDashboardButton compact />
           </div>
         </div>
       </header>
@@ -168,10 +196,25 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
             <strong className="text-slate-200">Classroom Attendance & Teacher Whiteboard Tracking</strong>, and{' '}
             <strong className="text-slate-200">Exam Hall Anti-Cheating Excel Logging</strong>.
           </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3.5">
+            <LaunchDashboardButton />
+            <button
+              type="button"
+              onClick={scrollToVideoWalkthrough}
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:bg-slate-800 hover:text-white sm:text-base"
+            >
+              <Video className="h-4 w-4 text-cyan-400" />
+              <span>Watch Video Walkthrough</span>
+            </button>
+          </div>
         </div>
 
         {/* YouTube Video Walkthrough */}
-        <section className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+        <section
+          id="campus-video-walkthrough"
+          className="mb-12 scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6"
+        >
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Video className="h-5 w-5 text-cyan-400" />
