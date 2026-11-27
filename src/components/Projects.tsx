@@ -8,6 +8,7 @@ export type ProjectKind = "Client Build" | "Personal Project" | "Demo";
 interface Project {
   id: string;
   projectType?: ProjectKind;
+  hidden?: boolean;
   category: string[];
   tag: string;
   type: string;
@@ -124,6 +125,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "omnilead",
+      hidden: true,
       category: ["chatbot", "automation"],
       tag: "Voiceflow + WhatsApp Cloud API",
       type: "CHATBOT",
@@ -144,6 +146,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "lead-routing",
+      hidden: true,
       category: ["automation"],
       tag: "n8n Webhook Pipeline",
       type: "AUTOMATION",
@@ -164,6 +167,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "store-support",
+      hidden: true,
       category: ["agent"],
       tag: "ReAct Multi-Step Loop + LangChain",
       type: "AGENT",
@@ -184,6 +188,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "doc-rag",
+      projectType: "Personal Project",
       category: ["agent", "ml"],
       tag: "ChromaDB + Embeddings",
       type: "AGENT / RAG",
@@ -204,6 +209,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "churn-scoring",
+      projectType: "Personal Project",
       category: ["ml"],
       tag: "Decision Trees & KNN Classifier",
       type: "MACHINE LEARNING",
@@ -233,7 +239,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
   ];
 
   const filtered = projects.filter(
-    (p) => activeFilter === "all" || p.category.includes(activeFilter)
+    (p) => !p.hidden && (activeFilter === "all" || p.category.includes(activeFilter))
   );
 
   return (
