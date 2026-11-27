@@ -23,9 +23,10 @@ This repository contains the single-page portfolio, project showcase, interactiv
 - **Client Builds:**
   - **EduGuard AI: Smart Campus & Exam Surveillance** (`/demo/campus-ai`) — Interactive sample detection log explorer with zone filters, CSV export, and an external link to the campus dashboard (`https://university-ai-monitoring.vercel.app/demo`).
   - **Smart Commercial, Home & Animal Farm AI Security** (`/demo/farm-security`) — Interactive sample noise-filter comparison and zone CSV log exporter (`Chaki Gate`, `Animal Farm`, `Home Entrance`).
-- **Personal Project:**
-  - **Mind_Dreams AI Customer Support** (`https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent`).
-- Additional prototype and ML case-study cards (including Customer Churn & Lead Scoring Portal with `89.4%` precision measured on test data).
+- **Personal Projects:**
+  - **Mind_Dreams AI Customer Support** (`Next.js 14`, `Google Gemini API`, `Google Sheets API`, `https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent`).
+  - **Document Intelligence RAG Engine** (`Streamlit`, `Google Gemini`, `ChromaDB`, `LangChain Core`, `Pandas`, `openpyxl`, `docx2txt`).
+  - **Customer Churn & Lead Scoring Portal** (`89.4%` precision measured on test data).
 
 ### 3. Technical Arsenal & Savings Estimator
 - Grouped skill tags across **Generative AI & LLMs**, **Automation & n8n**, **Data Science & ML**, and **Full-Stack & Databases**.

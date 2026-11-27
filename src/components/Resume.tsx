@@ -61,13 +61,13 @@ export const Resume: React.FC = () => {
                 Next.js 14
               </span>
               <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
-                Google Gemini AI
+                Google Gemini API
               </span>
               <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
-                LangChain RAG
+                Google Sheets API
               </span>
               <span className="px-2.5 sm:px-3 py-1 rounded-lg bg-[#080B11] border border-white/10 font-mono text-[11px] sm:text-xs text-slate-300">
-                Google Sheets API v4
+                Tailwind CSS
               </span>
             </div>
 
