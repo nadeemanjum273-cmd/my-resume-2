@@ -147,7 +147,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
       category: ["automation"],
       tag: "n8n Webhook Pipeline",
       type: "AUTOMATION",
-      title: "Zero-Latency Lead Routing Suite",
+      title: "Lead Routing Automation Suite",
       description:
         "Captures ad leads via webhooks, runs GPT intent scoring, syncs to Google Sheets, and dispatches Slack/WhatsApp alerts.",
       keyResult: "Key Result: Automated webhook scoring, dedupe & CRM sync",
