@@ -109,7 +109,7 @@ function LaunchDashboardButton({ compact = false }: { compact?: boolean }) {
         <span className="absolute inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-emerald-400 opacity-75" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
       </span>
-      <span>Launch Live AI Dashboard</span>
+      <span>View Sample Dashboard</span>
       <ExternalLink className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
