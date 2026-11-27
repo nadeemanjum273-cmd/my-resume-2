@@ -20,8 +20,8 @@ export default function SurveillanceDemoDock({ onNavigate }: SurveillanceDemoDoc
       {/* Top Status Header */}
       <div className="mb-3 flex items-center justify-between">
         <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-          <Radio className="h-3.5 w-3.5 animate-pulse text-cyan-400" />
-          Interactive Live Demos
+          <Radio className="h-3.5 w-3.5 text-cyan-400" />
+          Interactive Sample Demos
         </span>
         <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-medium text-slate-300">
           2 Solutions
@@ -70,7 +70,7 @@ export default function SurveillanceDemoDock({ onNavigate }: SurveillanceDemoDoc
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
               </div>
               <p className="text-[11px] text-slate-400">
-                Zero False Alarms • Excel Logging
+                Noise-Filtered CCTV • Excel Logging
               </p>
             </div>
           </div>

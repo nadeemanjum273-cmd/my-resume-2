@@ -279,20 +279,19 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
         />
 
         <div className="relative z-10 flex flex-col gap-6">
-          {/* Sleek Live Interactive Demos Label Bar */}
+          {/* Sleek Sample Interactive Demos Label Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-300 shadow-[0_0_16px_rgba(52,211,153,0.2)]">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                LIVE DEMOS
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-cyan-300">
+                SAMPLE DEMOS
               </span>
               <span className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-300">
                 <Video className="h-3.5 w-3.5 text-cyan-400" />
-                Live Interactive Demos &bull; Computer Vision Suite
+                Interactive Sample Demos &bull; Computer Vision Suite
               </span>
             </div>
             <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
-              CCTV AI &bull; Real-Time Excel Sync
+              CCTV AI &bull; CSV Export Preview
             </span>
           </div>
 
@@ -301,7 +300,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
               AI Smart Surveillance &amp; Automated Excel Logging
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed font-sans">
-              Launch our interactive surveillance sandboxes directly from the home screen—inspect live detection logs, zone filters, false-alarm rejection, and one-click CSV/Excel exports.
+              Launch our interactive sample demos directly from the home screen—inspect sample detection logs, zone filters, noise filtering, and one-click CSV/Excel exports.
             </p>
           </div>
 
@@ -369,7 +368,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                       }}
                       className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 hover:bg-emerald-500/25 font-bold transition-colors"
                     >
-                      Live Demo
+                      Interactive Sample Demo
                     </a>
                   )}
                   <button
@@ -504,7 +503,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                   className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-400/50 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[16px]">play_circle</span>
-                  <span>Launch Interactive Demo</span>
+                  <span>Interactive Sample Demo</span>
                   <span>&rarr;</span>
                 </a>
               )}

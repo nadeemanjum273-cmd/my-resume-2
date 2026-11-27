@@ -25,3 +25,9 @@ export const SITE_LINKS = {
 
 export const GOOGLE_SHEETS_WEBHOOK_URL: string =
   import.meta.env.VITE_GOOGLE_SHEETS_WEBHOOK_URL || "";
+
+/** Optional YouTube video IDs for demo walkthroughs (left empty until real IDs are provided). */
+export const DEMO_VIDEOS: { campusVideoId: string; farmVideoId: string } = {
+  campusVideoId: "",
+  farmVideoId: "",
+};
