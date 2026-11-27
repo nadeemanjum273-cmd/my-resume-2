@@ -1,6 +1,4 @@
 import React from "react";
-import { Github } from "lucide-react";
-import { SITE_LINKS } from "../data/portfolioConfig";
 
 export const Resume: React.FC = () => {
   const handlePrint = () => {
@@ -15,57 +13,37 @@ export const Resume: React.FC = () => {
           Experience &amp; Qualifications
         </h2>
 
-        <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
-          <a
-            href={SITE_LINKS.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
-          >
-            <Github className="w-4 h-4 text-[#22d3ee]" />
-            <span>GitHub</span>
-          </a>
-
-          {SITE_LINKS.hasCvPdf ? (
-            <a
-              href={SITE_LINKS.cvPdfPath}
-              download={SITE_LINKS.cvDownloadFilename}
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
-            >
-              <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">download</span>
-              <span>Download CV (PDF)</span>
-            </a>
-          ) : (
-            <button
-              type="button"
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
-            >
-              <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">print</span>
-              <span>Print / Save CV (PDF)</span>
-            </button>
-          )}
-        </div>
+        {/* Print / Save CV (PDF) Button */}
+        <button
+          onClick={handlePrint}
+          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0 self-start sm:self-auto"
+        >
+          <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">print</span>
+          <span>Print / Save CV (PDF)</span>
+        </button>
       </div>
 
       {/* Main 2-Column Split: Timeline & Client Delivery Promises */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column (7 Cols): Experience & Education Timeline */}
         <div className="lg:col-span-7 flex flex-col gap-10 relative pl-5 sm:pl-6 border-l-2 border-white/10 ml-1 sm:ml-2">
-          {/* Node 1: Mind_Dreams — AI Customer Support & RAG Agent */}
+          {/* Node 1: Mind_Dreams — Personal Project */}
           <div className="relative flex flex-col gap-3">
             {/* Timeline Cyan Ringed Dot */}
             <span className="absolute -left-[29px] sm:-left-[33px] top-1.5 w-4 h-4 rounded-full bg-[#080B11] border-2 border-[#22d3ee] shadow-[0_0_12px_rgba(34,211,238,0.6)]"></span>
 
-            {/* Header: Title & Date Badge */}
+            {/* Header: Title, Personal Project Badge & Date Badge */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="material-symbols-outlined text-[#22d3ee] text-[20px] shrink-0">
                   auto_awesome
                 </span>
                 <h3 className="font-display font-bold text-base sm:text-lg lg:text-xl text-white tracking-tight">
-                  Mind_Dreams — AI Customer Support Agent
+                  Mind_Dreams — AI Customer Support Chatbot
                 </h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-400/40 text-purple-300 font-mono text-[10px] font-bold">
+                  Personal Project
+                </span>
               </div>
               <span className="px-3 py-1 rounded-full bg-[#082f49]/70 border border-[#0284c7]/50 text-[#38bdf8] font-mono text-[11px] sm:text-xs font-semibold shrink-0">
                 Oct 2026
@@ -74,7 +52,7 @@ export const Resume: React.FC = () => {
 
             {/* Description */}
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              24/7 AI customer support chatbot and RAG policy engine built with Google Gemini, Next.js 14, and 3-way Google Sheets synchronization for order lookups and refund validation.
+              Personal project: 24/7 AI customer support chatbot built with Google Gemini, Next.js 14, and 3-way Google Sheets synchronization for order lookups, refund eligibility checks, and payout logging.
             </p>
 
             {/* Skill Tags */}

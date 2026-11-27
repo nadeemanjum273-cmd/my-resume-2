@@ -45,7 +45,7 @@ export const PocSimulator: React.FC<PocSimulatorProps> = ({ onTriggerToast }) =>
 
       if (q.includes("mind_dreams") || q.includes("mind")) {
         responseText =
-          "Mind_Dreams is an AI Customer Support system built with Google Gemini, Next.js 14, and 3-way Google Sheets synchronization for orders, refund eligibility, and automated bank payout logging.";
+          "Mind_Dreams is a personal project: a 24/7 AI Customer Support chatbot built with Google Gemini, Next.js 14, and 3-way Google Sheets synchronization for orders, refund eligibility, and payout logging.";
       } else if (q.includes("education") || q.includes("degree")) {
         responseText =
           "Nadeem graduated in Computer Science from Multan, Pakistan with foundations in data structures, algorithms, and relational databases, alongside AI & Python ML coursework (Scikit-Learn and LLM applications).";

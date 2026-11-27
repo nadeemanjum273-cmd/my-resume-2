@@ -38,7 +38,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
           <img
             className="w-full h-full object-cover"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGldZAjrPBTBwdqL9TTtUHKZqcbEjUp-zDUAbEtz23BGu4oKisJCl6MhDloQAqc_yzjt1DoSyjZ-K4Co0qBzw7ggio2tSxr0AnyqGoHAFagQ64KS5JYyKJN7vIqGvE0GUh_0cncbPPZudstTfgraKGCoTiJYGPQuMiLKs03ZUnc0WWZnR5GyTuk56GtshI6f-fkuN2HoYAkPpRENmGAs-leuvVhk3qAn8A4VAie94DGO06fOWMLj0"
-            alt="Interactive AI & n8n Production Pipeline Demo"
+            alt="Interactive AI & n8n Pipeline Walkthrough"
           />
           <div className="absolute inset-0 bg-surface-container-lowest/70 backdrop-blur-[2px] flex flex-col items-center justify-center gap-space-sm p-space-md text-center">
             <a
@@ -55,7 +55,7 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
               Interactive AI &amp; n8n Pipeline Walkthrough
             </span>
             <p className="font-code-terminal text-body-sm text-on-surface-variant max-w-md">
-              Request an architectural walkthrough of Mind_Dreams support agent with Google Sheets sync.
+              Request an architectural walkthrough of my Mind_Dreams personal project (Google Gemini support chatbot with 3-way Google Sheets sync).
             </p>
             <div className="flex items-center gap-2 mt-2">
               <span className="px-3 py-1 rounded-full bg-primary/20 text-primary font-code-terminal text-[11px] border border-primary/30">
