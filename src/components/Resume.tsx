@@ -49,7 +49,7 @@ export const Resume: React.FC = () => {
 
             {/* Description */}
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              Production-grade 24/7 AI customer support chatbot and RAG policy engine built with Google Gemini, Next.js 14, and real-time 3-way Google Sheets synchronization for automated order lookups and refund validation.
+              24/7 AI customer support chatbot and RAG policy engine built with Google Gemini, Next.js 14, and 3-way Google Sheets synchronization for order lookups and refund validation.
             </p>
 
             {/* Skill Tags */}
@@ -107,7 +107,7 @@ export const Resume: React.FC = () => {
 
             {/* Description */}
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
-              Architects and deploys production-ready 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3–20 staff).
+              Architects and deploys 24/7 lead qualification chatbots, webhook pipelines, and autonomous ReAct agents for small-to-medium enterprises (3–20 staff).
             </p>
 
             {/* Skill Tags */}
@@ -131,7 +131,7 @@ export const Resume: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <span className="text-[#22d3ee] text-xs mt-0.5 shrink-0 font-bold">›</span>
                 <span className="leading-relaxed">
-                  Integrated Voiceflow with WhatsApp Cloud API to capture after-hours qualified inquiries (+42% conversion).
+                  Integrated Voiceflow with WhatsApp Cloud API to capture and qualify after-hours inbound inquiries.
                 </span>
               </div>
               <div className="flex items-start gap-2.5">

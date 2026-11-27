@@ -175,7 +175,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
             <div>
               <h2 className="text-xl font-bold text-white">Why Standard Cameras Fail vs. Our AI Filter</h2>
               <p className="mt-1 text-sm text-slate-400">
-                Standard motion cameras flood your logs with 200+ false alerts daily. Our Excel sheet only records real events.
+                Illustrative comparison: standard motion cameras trigger frequent noise alerts, while our Excel sheet logs only relevant zone activity.
               </p>
             </div>
             <button
@@ -183,7 +183,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
               onClick={() => setShowNoiseComparison(!showNoiseComparison)}
               className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/20"
             >
-              {showNoiseComparison ? 'Showing Live Filter Breakdown' : 'Show Filter Breakdown'}
+              {showNoiseComparison ? 'Showing Sample Filter Breakdown' : 'Show Filter Breakdown'}
             </button>
           </div>
 
@@ -194,7 +194,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-sm font-semibold text-rose-400">Automatically Filtered Out (0 Excel Entries)</span>
                   <span className="rounded-full bg-rose-500/10 px-2.5 py-0.5 font-mono text-xs text-rose-300">
-                    222 Ignored Today
+                    Sample: 222 Ignored
                   </span>
                 </div>
                 <div className="space-y-2.5">
@@ -207,7 +207,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
                         <XCircle className="h-4 w-4 text-rose-400" />
                         <span>{item.name}</span>
                       </div>
-                      <span className="font-mono text-slate-500">{item.count} ignored</span>
+                      <span className="font-mono text-slate-500">{item.count} sample</span>
                     </div>
                   ))}
                 </div>
@@ -216,9 +216,9 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
               {/* Verified Logged Column */}
               <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/10 p-5">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-emerald-400">Verified Real Events (Logged to Excel)</span>
+                  <span className="text-sm font-semibold text-emerald-400">Target Real Events (Logged to Excel)</span>
                   <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-300">
-                    100% Clean Sheet
+                    Illustrative Output
                   </span>
                 </div>
                 <div className="space-y-2.5 text-xs">

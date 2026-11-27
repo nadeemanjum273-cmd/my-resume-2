@@ -1,4 +1,5 @@
 import React from "react";
+import { HERO_STATS } from "../data/portfolioConfig";
 
 interface HeroProps {
   onTriggerToast?: (msg: string) => void;
@@ -21,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
 
         {/* Subtitle with exact bold highlights */}
         <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl font-sans">
-          I build production-grade <strong className="text-white font-bold">24/7 Lead Chatbots</strong>,{" "}
+          I build custom <strong className="text-white font-bold">24/7 Lead Chatbots</strong>,{" "}
           <strong className="text-white font-bold">Autonomous Agents</strong>, and{" "}
           <strong className="text-white font-bold">n8n Workflow Automations</strong> backed by deep Data Science &amp; Python ML foundations.
         </p>
@@ -42,43 +43,18 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
           </a>
         </div>
 
-        {/* 4 Metric KPI Cards: Exact Match to Screenshot with Stunning Shining Edges */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
-          <div className="shining-card p-3.5 flex flex-col gap-1">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-white leading-none relative z-10">
-              15+
-            </span>
-            <span className="text-[11px] font-mono text-slate-400 relative z-10">
-              Automations Built
-            </span>
-          </div>
-
-          <div className="shining-card p-3.5 flex flex-col gap-1">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#38bdf8] leading-none relative z-10">
-              6+
-            </span>
-            <span className="text-[11px] font-mono text-slate-400 relative z-10">
-              Production Builds
-            </span>
-          </div>
-
-          <div className="shining-card p-3.5 flex flex-col gap-1">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#34d399] leading-none relative z-10">
-              &lt; 48h
-            </span>
-            <span className="text-[11px] font-mono text-slate-400 relative z-10">
-              POC Turnaround
-            </span>
-          </div>
-
-          <div className="shining-card p-3.5 flex flex-col gap-1">
-            <span className="text-2xl sm:text-3xl font-display font-extrabold text-[#c084fc] leading-none relative z-10">
-              100%
-            </span>
-            <span className="text-[11px] font-mono text-slate-400 relative z-10">
-              IP Client Transfer
-            </span>
-          </div>
+        {/* 3 Confirmed Metric KPI Cards from portfolioConfig */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
+          {HERO_STATS.map((stat) => (
+            <div key={stat.label} className="shining-card p-3.5 flex flex-col gap-1">
+              <span className={`text-2xl sm:text-3xl font-display font-extrabold leading-none relative z-10 ${stat.accentClass}`}>
+                {stat.value}
+              </span>
+              <span className="text-[11px] font-mono text-slate-400 relative z-10">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 
