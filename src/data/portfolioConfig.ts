@@ -7,7 +7,7 @@ export interface HeroStatItem {
 /** Editable hero stats displayed on the main landing section. */
 export const HERO_STATS: HeroStatItem[] = [
   { value: "15+", label: "Automations Built", accentClass: "text-white" },
-  { value: "6+", label: "Production Builds", accentClass: "text-[#38bdf8]" },
+  { value: "6+", label: "Projects Built", accentClass: "text-[#38bdf8]" },
   { value: "48h", label: "POC Delivery", accentClass: "text-[#34d399]" },
 ];
 

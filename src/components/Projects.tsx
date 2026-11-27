@@ -7,7 +7,7 @@ export type ProjectKind = "Client Build" | "Personal Project" | "Demo";
 
 interface Project {
   id: string;
-  projectType: ProjectKind;
+  projectType?: ProjectKind;
   category: string[];
   tag: string;
   type: string;
@@ -124,7 +124,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "omnilead",
-      projectType: "Demo",
       category: ["chatbot", "automation"],
       tag: "Voiceflow + WhatsApp Cloud API",
       type: "CHATBOT",
@@ -145,7 +144,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "lead-routing",
-      projectType: "Demo",
       category: ["automation"],
       tag: "n8n Webhook Pipeline",
       type: "AUTOMATION",
@@ -166,7 +164,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "store-support",
-      projectType: "Demo",
       category: ["agent"],
       tag: "ReAct Multi-Step Loop + LangChain",
       type: "AGENT",
@@ -187,7 +184,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "doc-rag",
-      projectType: "Personal Project",
       category: ["agent", "ml"],
       tag: "ChromaDB + Embeddings",
       type: "AGENT / RAG",
@@ -208,7 +204,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     },
     {
       id: "churn-scoring",
-      projectType: "Personal Project",
       category: ["ml"],
       tag: "Decision Trees & KNN Classifier",
       type: "MACHINE LEARNING",
@@ -321,11 +316,13 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
               {/* Category Pill, Build Type Label, and Domain Tag */}
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div className="flex items-center gap-2 min-w-0">
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 ${PROJECT_KIND_STYLES[p.projectType]}`}
-                  >
-                    {p.projectType}
-                  </span>
+                  {p.projectType && (
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 ${PROJECT_KIND_STYLES[p.projectType]}`}
+                    >
+                      {p.projectType}
+                    </span>
+                  )}
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 shadow-[0_0_12px_rgba(34,211,238,0.2)] truncate max-w-[160px] font-medium">
                     {p.tag}
                   </span>
@@ -403,11 +400,13 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${PROJECT_KIND_STYLES[selectedProject.projectType]}`}
-                  >
-                    {selectedProject.projectType}
-                  </span>
+                  {selectedProject.projectType && (
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${PROJECT_KIND_STYLES[selectedProject.projectType]}`}
+                    >
+                      {selectedProject.projectType}
+                    </span>
+                  )}
                   <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 font-medium">
                     {selectedProject.tag}
                   </span>
