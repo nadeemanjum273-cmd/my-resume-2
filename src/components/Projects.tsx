@@ -33,30 +33,7 @@ interface ProjectsProps {
   navigateTo?: (path: string) => void;
 }
 
-export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const handleNavigate = (path: string) => {
-    if (navigateTo) {
-      navigateTo(path);
-    } else {
-      window.location.href = path;
-    }
-  };
-
-  const handleDemoNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    path: string
-  ) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
-      return;
-    }
-    e.preventDefault();
-    handleNavigate(path);
-  };
-
-  const projects: Project[] = [
+export const PROJECTS: Project[] = [
     {
       id: "eduguard-campus-ai",
       projectType: "Client Build",
@@ -228,7 +205,32 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
       ],
       techTags: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit", "Matplotlib", "ROC-AUC Validation"],
     },
-  ];
+];
+
+export const VISIBLE_PROJECT_COUNT = PROJECTS.filter((p) => !p.hidden).length;
+
+export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleNavigate = (path: string) => {
+    if (navigateTo) {
+      navigateTo(path);
+    } else {
+      window.location.href = path;
+    }
+  };
+
+  const handleDemoNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+      return;
+    }
+    e.preventDefault();
+    handleNavigate(path);
+  };
 
   const filterTabs = [
     { id: "all", label: "All Projects" },
@@ -238,7 +240,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     { id: "ml", label: "Machine Learning" },
   ];
 
-  const filtered = projects.filter(
+  const filtered = PROJECTS.filter(
     (p) => !p.hidden && (activeFilter === "all" || p.category.includes(activeFilter))
   );
 
