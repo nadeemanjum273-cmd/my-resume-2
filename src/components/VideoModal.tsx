@@ -1,4 +1,5 @@
 import React from "react";
+import { SITE_LINKS } from "../data/portfolioConfig";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -37,11 +38,11 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
           <img
             className="w-full h-full object-cover"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGldZAjrPBTBwdqL9TTtUHKZqcbEjUp-zDUAbEtz23BGu4oKisJCl6MhDloQAqc_yzjt1DoSyjZ-K4Co0qBzw7ggio2tSxr0AnyqGoHAFagQ64KS5JYyKJN7vIqGvE0GUh_0cncbPPZudstTfgraKGCoTiJYGPQuMiLKs03ZUnc0WWZnR5GyTuk56GtshI6f-fkuN2HoYAkPpRENmGAs-leuvVhk3qAn8A4VAie94DGO06fOWMLj0"
-            alt="Interactive AI & n8n Production Pipeline Demo"
+            alt="Interactive AI & n8n Pipeline Walkthrough"
           />
           <div className="absolute inset-0 bg-surface-container-lowest/70 backdrop-blur-[2px] flex flex-col items-center justify-center gap-space-sm p-space-md text-center">
             <a
-              href="https://wa.me/923077970277?text=Hi%20Nadeem%2C%20I%20would%20like%20to%20see%20the%20live%20architecture%20walkthrough%20demo"
+              href={`${SITE_LINKS.whatsappUrl}?text=Hi%20Nadeem%2C%20I%20would%20like%20to%20see%20the%20live%20architecture%20walkthrough%20demo`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-16 h-16 rounded-full bg-primary hover:bg-primary-container transition-all flex items-center justify-center text-on-primary shadow-2xl group hover:scale-110"
@@ -51,17 +52,17 @@ export const VideoModal: React.FC<VideoModalProps> = ({ isOpen, onClose }) => {
               </span>
             </a>
             <span className="font-headline-sm text-headline-sm text-on-surface font-bold">
-              Interactive AI &amp; n8n Production Pipeline Demo
+              Interactive AI &amp; n8n Pipeline Walkthrough
             </span>
             <p className="font-code-terminal text-body-sm text-on-surface-variant max-w-md">
-              Streaming live architectural walkthrough of Mind_Dreams support agent with automated Google Sheets sync.
+              Request an architectural walkthrough of my Mind_Dreams personal project (Google Gemini support chatbot with 3-way Google Sheets sync).
             </p>
             <div className="flex items-center gap-2 mt-2">
               <span className="px-3 py-1 rounded-full bg-primary/20 text-primary font-code-terminal text-[11px] border border-primary/30">
-                1080p 60fps Walkthrough
+                60-Sec Walkthrough
               </span>
               <span className="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant font-code-terminal text-[11px]">
-                Direct WhatsApp Stream
+                Request via WhatsApp
               </span>
             </div>
           </div>

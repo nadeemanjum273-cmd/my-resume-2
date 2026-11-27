@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
               <span className="font-display font-extrabold text-white text-sm sm:text-base tracking-tight leading-tight truncate">
                 Nadeem Anjum
               </span>
-              <span className="px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shrink-0">
+              <span className="hidden sm:inline-block px-1.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shrink-0">
                 AVAILABLE
               </span>
             </div>
@@ -122,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onTriggerToast }) => {
             href="#demo-form"
             className="px-2.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-[#22d3ee] to-[#38bdf8] hover:from-[#38bdf8] hover:to-[#22d3ee] text-[#080B11] font-mono text-[10px] sm:text-xs font-bold uppercase tracking-tight sm:tracking-wider transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.35)] hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] hover:scale-105 active:scale-100 flex items-center gap-1 shrink-0 whitespace-nowrap"
           >
-            <span>HIRE SPECIALIST</span>
+            <span>Hire Specialist</span>
             <span className="hidden sm:inline">&rarr;</span>
           </a>
 

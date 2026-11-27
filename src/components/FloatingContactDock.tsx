@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Mail, MessageSquare, Linkedin, Github, ArrowUpRight } from "lucide-react";
+import { SITE_LINKS } from "../data/portfolioConfig";
 
 interface FloatingContactDockProps {
   onTriggerToast?: (msg: string) => void;
@@ -16,8 +17,8 @@ export const FloatingContactDock: React.FC<FloatingContactDockProps> = ({
     {
       id: "email",
       name: "Direct Email",
-      value: "nadeemanjum273@gmail.com",
-      href: "mailto:nadeemanjum273@gmail.com?subject=AI%20Automation%20Inquiry%20-%20Nadeem%20Anjum&body=Hi%20Nadeem,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20an%20AI%20Automation%20/%20Chatbot%20project.%0D%0A%0D%0ACompany%20/%20Website:%20%0D%0AKey%20Bottleneck:%20",
+      value: SITE_LINKS.email,
+      href: `mailto:${SITE_LINKS.email}?subject=AI%20Automation%20Inquiry%20-%20Nadeem%20Anjum&body=Hi%20Nadeem,%0D%0A%0D%0AI%20am%20interested%20in%20discussing%20an%20AI%20Automation%20/%20Chatbot%20project.%0D%0A%0D%0ACompany%20/%20Website:%20%0D%0AKey%20Bottleneck:%20`,
       icon: Mail,
       actionText: "Send Mail",
       borderColor: "hover:border-emerald-400",
@@ -28,8 +29,8 @@ export const FloatingContactDock: React.FC<FloatingContactDockProps> = ({
     {
       id: "whatsapp",
       name: "WhatsApp Business",
-      value: "+92 307 7978277",
-      href: "https://wa.me/923077978277?text=Hello%20Nadeem!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20AI%20project.",
+      value: SITE_LINKS.whatsappDisplay,
+      href: `${SITE_LINKS.whatsappUrl}?text=Hello%20Nadeem!%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20AI%20project.`,
       icon: MessageSquare,
       actionText: "Chat Now",
       borderColor: "hover:border-emerald-400",
@@ -41,7 +42,7 @@ export const FloatingContactDock: React.FC<FloatingContactDockProps> = ({
       id: "linkedin",
       name: "LinkedIn Profile",
       value: "in/nadeem-anjum-b23b1a269",
-      href: "https://www.linkedin.com/in/nadeem-anjum-b23b1a269",
+      href: SITE_LINKS.linkedin,
       icon: Linkedin,
       actionText: "Connect",
       borderColor: "hover:border-teal-400",
@@ -53,7 +54,7 @@ export const FloatingContactDock: React.FC<FloatingContactDockProps> = ({
       id: "github",
       name: "GitHub Repositories",
       value: "nadeemanjum273-cmd",
-      href: "https://github.com/nadeemanjum273-cmd",
+      href: SITE_LINKS.github,
       icon: Github,
       actionText: "View Code",
       borderColor: "hover:border-white/40",

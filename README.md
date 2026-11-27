@@ -1,92 +1,74 @@
-# Nadeem Anjum — AI Solutions Architect & Automation Specialist
+# Nadeem Anjum — AI Solutions & Automation Portfolio
 
-> **Production-grade Portfolio & Interactive RAG Resume Assistant** built with React 18, TypeScript, Tailwind CSS, Google Gemini RAG, interactive 3D perspective physics, n8n pipeline visualizer, and bidirectional Google Sheets integration.
-
----
-
-## 🌟 Overview
-
-This repository houses the personal portfolio, credentials showcase, and interactive RAG assistant for **Nadeem Anjum**, an **AI Solutions Architect & Automation Specialist** based in Multan, Pakistan.
-
-The application serves as a high-converting, interactive client acquisition platform demonstrating real-world AI engineering competencies, from autonomous 24/7 customer support agents (Mind_Dreams) to enterprise webhook automations and machine learning models.
+Personal portfolio and client inquiry web app for **Nadeem Anjum** (AI Solutions Architect & Automation Specialist, Multan, Pakistan), built with **React 18, TypeScript, Tailwind CSS, and Vite**.
 
 ---
 
-## 🚀 Key Features & Modules
+## Overview
 
-### 1. 🤖 My Resume Assistant (Autonomous RAG Knowledge Agent)
-- In-memory semantic keyword vector matcher indexing Nadeem's full background, credentials, and project details.
-- Real-time Q&A answering inquiries about:
-  - **Mind_Dreams** (Gemini LLM, policy chunking, 3-way Google Sheets sync)
-  - **OmniLead** (Voiceflow + WhatsApp Cloud API concierge)
-  - **Computer Science Graduation** & data science specializations
-  - **Client Delivery Guarantees** (50% deposit rule, 100% IP transfer, 4-day SLA)
-  - **Implementation Packages** ($350 FAQ Bot, $650 Lead Bot, $1,200 Enterprise Automation)
-- Live RAG Vector Retrieval log displaying real-time query vector matches, source files, and cosine similarity scores.
-
-### 2. 🌌 Bioluminescent "Jugnu" & Starry Sky Canvas
-- Custom HTML5 Canvas rendering 130+ twinkling cosmic stars, shooting meteors, and glowing fireflies (*Jugnu*) with ambient organic floating paths.
-
-### 3. 🎯 Interactive 3D Perspective Tilt Physics
-- Mouse-tracking GPU-accelerated cards with dynamic radial light highlights and smooth spring reset.
-
-### 4. 💼 Production Deployments & Case Studies
-- **Mind_Dreams — AI Customer Support & RAG Agent (Oct 2026)**
-- **OmniLead 24/7 AI Concierge**
-- **Zero-Latency Lead Routing Suite (n8n)**
-- **Autonomous Invoice Extractor (FastAPI + LangChain)**
-- **Predictive Churn Engine (Python + XGBoost + SHAP)**
-
-### 5. 📊 Interactive Client ROI & Savings Calculator
-- Dynamic slider calculating monthly staff hours saved, gross savings, net ROI, and automatic package recommendations.
-
-### 6. 📋 Real-Time Google Sheets Integration (`Linkdin Prospect_tracker`)
-- Inbound discovery form mapped 1-to-1 to Google Sheets columns (`Prospect Name`, `Company Name`, `Role`, `Staff Count`, `Bottleneck`, `Target AI Pillar`, etc.).
-- Direct real-time synchronization via Google Apps Script Web App.
-
-### 7. 📄 Printable CV & PDF Export
-- Structured, printer-friendly CSS layout enabling clean PDF export directly from the browser.
+This repository contains the single-page portfolio, project showcase, interactive sample demos, savings estimator, CV view, and Google Sheets discovery form for remote AI automation and software work.
 
 ---
 
-## 🛠️ Technical Stack
+## Implemented Modules
 
-- **Frontend Core:** React 18, TypeScript, Vite
-- **Styling & Effects:** Tailwind CSS v3, Glassmorphism, Custom Canvas API, 3D CSS Transforms
-- **Icons:** Lucide React
-- **Integrations:** Google Sheets API / Apps Script, WhatsApp Business Click-to-Chat, Google Maps API
-- **AI Architectures:** Google Gemini, LangChain RAG, n8n Webhook Pipelines, Voiceflow
+### 1. Ask About My Work (Guided Q&A)
+- Client-side keyword matching (`String.includes`) returning pre-written replies from CV and project details across four topics:
+  - **Mind_Dreams** (Personal Project — 24/7 AI customer support chatbot built with Google Gemini, Next.js 14, and 3-way Google Sheets sync)
+  - **Education & Qualifications** (Computer Science graduation and AI/ML coursework)
+  - **Contact & Delivery Terms** (WhatsApp `+92 307 7978277`, email, 48h POC delivery, 50% deposit rule, 100% IP transfer)
+  - **Packages & Pricing** (Tier 1 `$350`, Tier 2 `$650`, Tier 3 `$1,200`)
+
+### 2. Selected Builds & Interactive Sample Demos
+- **Client Builds:**
+  - **EduGuard AI: Smart Campus & Exam Surveillance** (`/demo/campus-ai`) — Interactive sample detection log explorer with zone filters, CSV export, and an external link to the campus dashboard (`https://university-ai-monitoring.vercel.app/demo`).
+  - **Smart Commercial, Home & Animal Farm AI Security** (`/demo/farm-security`) — Interactive sample noise-filter comparison and zone CSV log exporter (`Chaki Gate`, `Animal Farm`, `Home Entrance`).
+- **Personal Projects:**
+  - **Mind_Dreams AI Customer Support** (`Next.js 14`, `Google Gemini API`, `Google Sheets API`, `https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent`).
+  - **Document Intelligence RAG Engine** (`Streamlit`, `Google Gemini`, `ChromaDB`, `LangChain Core`, `Pandas`, `openpyxl`, `docx2txt`).
+  - **Customer Churn & Lead Scoring Portal** (`89.4%` precision measured on test data).
+
+### 3. Technical Arsenal & Savings Estimator
+- Grouped skill tags across **Generative AI & LLMs**, **Automation & n8n**, **Data Science & ML**, and **Full-Stack & Databases**.
+- Interactive weekly-hours savings calculator (`hours * 30 * 4` monthly estimate) mapped to Tier 1–3 packages.
+
+### 4. Experience, Printable CV & Discovery Form
+- Timeline of **Mind_Dreams (Personal Project, Oct 2026)**, **Independent AI Automation Consultant (2026 — Present)**, **Graduation in Computer Science**, and **Data Science & AI Fellow**, plus a browser-printable CV view (`window.print()`).
+- Discovery form with 3 required fields (`Name`, `Email or WhatsApp`, `Bottleneck to Automate`), collapsible optional fields (`Company`, `Role`, `Staff Count`, `AI Pillar`), a hidden `website` honeypot field, and `fetch` submission (`Content-Type: text/plain`, `mode: "no-cors"`) to a configured Google Apps Script Web App URL (`VITE_GOOGLE_SHEETS_WEBHOOK_URL`), followed by a **Send Details on WhatsApp** link.
 
 ---
 
-## 💻 Local Development Setup
+## Tech Stack
+
+- **Frontend:** React 18, TypeScript, Vite, Tailwind CSS v3
+- **Icons & Visuals:** Lucide React, Material Symbols, HTML5/Three.js particle background (`JugnuBackground`)
+- **Integrations:** Google Apps Script Web App (`VITE_GOOGLE_SHEETS_WEBHOOK_URL`), WhatsApp click-to-chat
+
+---
+
+## Local Development
 
 ### Prerequisites
-- Node.js (v18.x or later)
-- npm or yarn
+- Node.js (v18 or later)
+- npm
 
-### Installation
+### Setup & Commands
 
 ```bash
 # Clone the repository
-git clone https://github.com/nadeemanjum273-cmd/My-Resume.git
-
-# Navigate into project directory
-cd My-Resume
+git clone https://github.com/nadeemanjum273-cmd/my-resume-2.git
+cd my-resume-2
 
 # Install dependencies
 npm install
 
-# Start local development server
+# Configure Google Apps Script Web App URL in .env.local
+cp .env.example .env.local
+
+# Start local dev server (http://localhost:3000)
 npm run dev
-```
 
-The application will be live at `http://localhost:3000/`.
-
-### Production Build
-
-```bash
-# Type-check and compile optimized bundle
+# Type-check and build for production
 npm run build
 
 # Preview production build locally
@@ -95,16 +77,10 @@ npm run preview
 
 ---
 
-## 📬 Contact & Connect
+## Contact
 
-- **Engineer:** Nadeem Anjum
-- **Role:** AI Solutions Architect & Automation Specialist
-- **WhatsApp Business:** [+92 307 7978277](https://wa.me/923077978277)
+- **WhatsApp:** [+92 307 7978277](https://wa.me/923077978277)
 - **Email:** [nadeemanjum273@gmail.com](mailto:nadeemanjum273@gmail.com)
 - **LinkedIn:** [linkedin.com/in/nadeem-anjum-b23b1a269](https://www.linkedin.com/in/nadeem-anjum-b23b1a269)
 - **GitHub:** [github.com/nadeemanjum273-cmd](https://github.com/nadeemanjum273-cmd)
-- **Location:** 66000 Multan, Punjab, Pakistan (Available for Worldwide Remote Contracts)
-
----
-
-&copy; 2026 Nadeem Anjum. All rights reserved.
+- **Location:** 66000 Multan, Punjab, Pakistan (Available for Remote Worldwide Contracts)

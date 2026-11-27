@@ -12,6 +12,7 @@ import {
   Search,
   ExternalLink,
 } from 'lucide-react';
+import { DEMO_VIDEOS } from '../data/portfolioConfig';
 
 interface ExamLog {
   id: string;
@@ -20,7 +21,7 @@ interface ExamLog {
   event: string;
   subject: string;
   confidence: string;
-  excelStatus: 'Synced to Excel & DB';
+  excelStatus: 'Sample CSV Row';
   severity: 'info' | 'warning' | 'alert';
 }
 
@@ -37,7 +38,7 @@ const SAMPLE_LOGS: ExamLog[] = [
     event: 'Student Looking Back / Head Turn Detected (Seat #14)',
     subject: 'CS-301 Midterm Exam',
     confidence: '98.4%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'alert',
   },
   {
@@ -47,7 +48,7 @@ const SAMPLE_LOGS: ExamLog[] = [
     event: 'Teacher Active at Whiteboard (Lecture Started)',
     subject: 'Room 104 • Prof. Ahmed',
     confidence: '99.1%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'info',
   },
   {
@@ -57,7 +58,7 @@ const SAMPLE_LOGS: ExamLog[] = [
     event: 'Automated Student Attendance Marked (42/45 Present)',
     subject: 'Room 104 • Batch 2024',
     confidence: '97.8%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'info',
   },
   {
@@ -67,17 +68,17 @@ const SAMPLE_LOGS: ExamLog[] = [
     event: 'Registered Faculty Vehicle Entry (LEA-4921)',
     subject: 'Main North Gate Cam-01',
     confidence: '99.5%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'info',
   },
   {
     id: 'LOG-1037',
     timestamp: '2026-11-25 08:41:03',
     zone: 'Exam Hall',
-    event: 'Invigilator / Teacher Patrol Verified',
+    event: 'Invigilator / Teacher Patrol Logged',
     subject: 'Exam Hall B',
     confidence: '98.9%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'info',
   },
   {
@@ -87,7 +88,7 @@ const SAMPLE_LOGS: ExamLog[] = [
     event: 'Suspicious Hand/Paper Exchange Flagged (Row 3)',
     subject: 'PHY-202 Final Paper',
     confidence: '96.7%',
-    excelStatus: 'Synced to Excel & DB',
+    excelStatus: 'Sample CSV Row',
     severity: 'warning',
   },
 ];
@@ -108,7 +109,7 @@ function LaunchDashboardButton({ compact = false }: { compact?: boolean }) {
         <span className="absolute inline-flex h-2.5 w-2.5 animate-ping rounded-full bg-emerald-400 opacity-75" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
       </span>
-      <span>Launch Live AI Dashboard</span>
+      <span>View Sample Dashboard</span>
       <ExternalLink className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </a>
   );
@@ -155,6 +156,8 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
     document.getElementById('campus-video-walkthrough')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const videoId = DEMO_VIDEOS.campusVideoId.trim();
+
   return (
     <div className="min-h-screen bg-[#070B14] text-slate-100 selection:bg-cyan-500/30">
       {/* Top Bar */}
@@ -171,9 +174,8 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
           </button>
 
           <div className="flex items-center gap-3">
-            <span className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-              Supabase + Excel Live Sync Ready
+            <span className="hidden md:inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-300">
+              Interactive Sample Demo
             </span>
             <LaunchDashboardButton compact />
           </div>
@@ -199,41 +201,44 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
 
           <div className="mt-6 flex flex-wrap items-center gap-3.5">
             <LaunchDashboardButton />
-            <button
-              type="button"
-              onClick={scrollToVideoWalkthrough}
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:bg-slate-800 hover:text-white sm:text-base"
-            >
-              <Video className="h-4 w-4 text-cyan-400" />
-              <span>Watch Video Walkthrough</span>
-            </button>
+            {videoId && (
+              <button
+                type="button"
+                onClick={scrollToVideoWalkthrough}
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/80 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-400/50 hover:bg-slate-800 hover:text-white sm:text-base"
+              >
+                <Video className="h-4 w-4 text-cyan-400" />
+                <span>Watch Video Walkthrough</span>
+              </button>
+            )}
           </div>
         </div>
 
-        {/* YouTube Video Walkthrough */}
-        <section
-          id="campus-video-walkthrough"
-          className="mb-12 scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6"
-        >
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <Video className="h-5 w-5 text-cyan-400" />
-              <h2 className="text-lg font-semibold text-white">Live System Video Walkthrough</h2>
+        {/* YouTube Video Walkthrough (rendered only when campusVideoId is configured) */}
+        {videoId && (
+          <section
+            id="campus-video-walkthrough"
+            className="mb-12 scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6"
+          >
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Video className="h-5 w-5 text-cyan-400" />
+                <h2 className="text-lg font-semibold text-white">System Video Walkthrough</h2>
+              </div>
+              <span className="text-xs text-slate-400">AI detection &amp; dashboard walkthrough</span>
             </div>
-            <span className="text-xs text-slate-400">Real-time AI detection & dashboard demo</span>
-          </div>
 
-          {/* REPLACE YOUR_CAMPUS_YOUTUBE_ID WITH YOUR ACTUAL YOUTUBE VIDEO ID */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-slate-800 bg-black">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube.com/embed/YOUR_CAMPUS_YOUTUBE_ID"
-              title="EduGuard AI Campus Surveillance Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </section>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-slate-800 bg-black">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="EduGuard AI Campus Surveillance Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        )}
 
         {/* 3 Core Modules */}
         <section className="mb-12 grid gap-5 md:grid-cols-3">
@@ -272,9 +277,9 @@ export default function CampusAiDemo({ onBack, onBookDemo }: CampusAiDemoProps) 
         <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-7">
           <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <div>
-              <h2 className="text-xl font-bold text-white">Interactive Detection & Excel Log Explorer</h2>
+              <h2 className="text-xl font-bold text-white">Interactive Sample Demo &amp; CSV Log Explorer</h2>
               <p className="mt-1 text-sm text-slate-400">
-                Filter by camera zone or download a sample Excel (.csv) report generated by the AI engine.
+                Sample detection logs — filter by camera zone or download a sample Excel (.csv) report.
               </p>
             </div>
             <button

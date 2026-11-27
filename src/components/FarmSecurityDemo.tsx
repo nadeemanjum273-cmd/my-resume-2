@@ -13,6 +13,7 @@ import {
   Sparkles,
   ExternalLink,
 } from 'lucide-react';
+import { DEMO_VIDEOS } from '../data/portfolioConfig';
 
 interface SecurityEntry {
   id: string;
@@ -20,7 +21,7 @@ interface SecurityEntry {
   location: 'Chaki Gate' | 'Animal Farm' | 'Home Entrance';
   event: string;
   details: string;
-  status: 'Verified Entry Logged';
+  status: 'Sample Entry Logged';
 }
 
 interface FarmSecurityDemoProps {
@@ -28,14 +29,14 @@ interface FarmSecurityDemoProps {
   onBookDemo?: () => void;
 }
 
-const VERIFIED_ENTRIES: SecurityEntry[] = [
+const SAMPLE_ENTRIES: SecurityEntry[] = [
   {
     id: 'ENT-408',
     timestamp: '2026-11-25 11:22:14',
     location: 'Chaki Gate',
     event: 'Flour Sack Unloading (Gattu Activity)',
     details: 'Commercial Gate Cam • 14 Sacks Unloaded',
-    status: 'Verified Entry Logged',
+    status: 'Sample Entry Logged',
   },
   {
     id: 'ENT-407',
@@ -43,7 +44,7 @@ const VERIFIED_ENTRIES: SecurityEntry[] = [
     location: 'Chaki Gate',
     event: 'Animal Cart Arrival at Commercial Door',
     details: 'Loading Bay Zone • Driver + Cart Logged',
-    status: 'Verified Entry Logged',
+    status: 'Sample Entry Logged',
   },
   {
     id: 'ENT-406',
@@ -51,7 +52,7 @@ const VERIFIED_ENTRIES: SecurityEntry[] = [
     location: 'Animal Farm',
     event: 'Livestock Movement Detected in Pen Area',
     details: 'Farm Zone 02 • Cattle Entered Target Area',
-    status: 'Verified Entry Logged',
+    status: 'Sample Entry Logged',
   },
   {
     id: 'ENT-405',
@@ -59,7 +60,7 @@ const VERIFIED_ENTRIES: SecurityEntry[] = [
     location: 'Home Entrance',
     event: 'Human Entry at Main Entrance Gate',
     details: 'Main Gate Cam • Clear Person Detection',
-    status: 'Verified Entry Logged',
+    status: 'Sample Entry Logged',
   },
   {
     id: 'ENT-404',
@@ -67,7 +68,7 @@ const VERIFIED_ENTRIES: SecurityEntry[] = [
     location: 'Animal Farm',
     event: 'Farm Caretaker Entered Animal Shed',
     details: 'Farm Zone 01 • Routine Morning Check',
-    status: 'Verified Entry Logged',
+    status: 'Sample Entry Logged',
   },
 ];
 
@@ -79,18 +80,19 @@ const IGNORED_NOISE_ITEMS = [
 ];
 
 /**
- * Interactive Commercial Chaki, Home & Animal Farm AI Security demo view.
+ * Interactive Commercial Chaki, Home & Animal Farm AI Security sample demo view.
  */
 export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDemoProps) {
   const [selectedLocation, setSelectedLocation] = useState<'All' | 'Chaki Gate' | 'Animal Farm' | 'Home Entrance'>('All');
   const [showNoiseComparison, setShowNoiseComparison] = useState(true);
+  const videoId = DEMO_VIDEOS.farmVideoId.trim();
 
-  const filteredEntries = VERIFIED_ENTRIES.filter(
+  const filteredEntries = SAMPLE_ENTRIES.filter(
     (entry) => selectedLocation === 'All' || entry.location === selectedLocation
   );
 
   const handleDownloadExcelLog = () => {
-    const headers = ['Entry ID', 'Timestamp', 'Location Zone', 'Verified Event', 'Details', 'Excel Sheet Status'];
+    const headers = ['Entry ID', 'Timestamp', 'Location Zone', 'Sample Event', 'Details', 'CSV Status'];
     const rows = filteredEntries.map((e) => [
       e.id,
       e.timestamp,
@@ -103,7 +105,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'Smart_Chaki_Farm_Verified_Entries.csv');
+    link.setAttribute('download', 'Smart_Chaki_Farm_Sample_Entries.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -125,7 +127,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
 
           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
             <Sparkles className="h-3.5 w-3.5" />
-            Zero False-Alarm AI Filtering Active
+            Interactive Sample Demo
           </span>
         </div>
       </header>
@@ -141,41 +143,42 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
             Smart Commercial, Home & <span className="text-emerald-400">Animal Farm AI Security</span>
           </h1>
           <p className="mt-4 text-base leading-relaxed text-slate-400 sm:text-lg">
-            Precision computer vision trained for real-world environments. Automatically logs{' '}
+            Computer vision trained for outdoor and commercial environments. Automatically logs{' '}
             <strong className="text-slate-200">gate entries, flour sack unloading (Gattu), animal carts, and livestock movement</strong>{' '}
-            into Excel—while completely ignoring insects, spiders, moving leaves, birds, and stray cats.
+            into Excel—while filtering out insects, spiders, moving leaves, birds, and stray cats.
           </p>
         </div>
 
-        {/* YouTube Video Embed */}
-        <section className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-2">
-              <Video className="h-5 w-5 text-emerald-400" />
-              <h2 className="text-lg font-semibold text-white">Live Field Deployment Video (Chaki & Farm Gate)</h2>
+        {/* YouTube Video Embed (rendered only when farmVideoId is configured) */}
+        {videoId && (
+          <section className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/50 p-4 sm:p-6">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <Video className="h-5 w-5 text-emerald-400" />
+                <h2 className="text-lg font-semibold text-white">Field Deployment Video (Chaki &amp; Farm Gate)</h2>
+              </div>
+              <span className="text-xs text-slate-400">Footage showing zone logging &amp; noise filtering</span>
             </div>
-            <span className="text-xs text-slate-400">Real footage showing accurate logging & noise rejection</span>
-          </div>
 
-          {/* REPLACE YOUR_FARM_YOUTUBE_ID WITH YOUR ACTUAL YOUTUBE VIDEO ID */}
-          <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-slate-800 bg-black">
-            <iframe
-              className="h-full w-full"
-              src="https://www.youtube.com/embed/YOUR_FARM_YOUTUBE_ID"
-              title="Commercial Chaki & Animal Farm AI Security Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </section>
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-slate-800 bg-black">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="Commercial Chaki & Animal Farm AI Security Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </section>
+        )}
 
-        {/* Zero False Alarm Comparison Simulator */}
+        {/* Noise Filter Comparison Demo */}
         <section className="mb-12 rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold text-white">Why Standard Cameras Fail vs. Our AI Filter</h2>
               <p className="mt-1 text-sm text-slate-400">
-                Standard motion cameras flood your logs with 200+ false alerts daily. Our Excel sheet only records real events.
+                Illustrative comparison: standard motion cameras trigger frequent noise alerts, while our Excel sheet logs only relevant zone activity.
               </p>
             </div>
             <button
@@ -183,7 +186,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
               onClick={() => setShowNoiseComparison(!showNoiseComparison)}
               className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-xs font-semibold text-emerald-300 transition hover:bg-emerald-500/20"
             >
-              {showNoiseComparison ? 'Showing Live Filter Breakdown' : 'Show Filter Breakdown'}
+              {showNoiseComparison ? 'Showing Sample Filter Breakdown' : 'Show Filter Breakdown'}
             </button>
           </div>
 
@@ -194,7 +197,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-sm font-semibold text-rose-400">Automatically Filtered Out (0 Excel Entries)</span>
                   <span className="rounded-full bg-rose-500/10 px-2.5 py-0.5 font-mono text-xs text-rose-300">
-                    222 Ignored Today
+                    Sample: 222 Ignored
                   </span>
                 </div>
                 <div className="space-y-2.5">
@@ -207,18 +210,18 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
                         <XCircle className="h-4 w-4 text-rose-400" />
                         <span>{item.name}</span>
                       </div>
-                      <span className="font-mono text-slate-500">{item.count} ignored</span>
+                      <span className="font-mono text-slate-500">{item.count} sample</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Verified Logged Column */}
+              {/* Sample Logged Column */}
               <div className="rounded-xl border border-emerald-500/20 bg-emerald-950/10 p-5">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-emerald-400">Verified Real Events (Logged to Excel)</span>
+                  <span className="text-sm font-semibold text-emerald-400">Target Events (Logged to CSV / Excel)</span>
                   <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 font-mono text-xs text-emerald-300">
-                    100% Clean Sheet
+                    Illustrative Output
                   </span>
                 </div>
                 <div className="space-y-2.5 text-xs">
@@ -256,13 +259,13 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
           )}
         </section>
 
-        {/* Verified Excel Output Viewer */}
+        {/* Sample Excel Output Viewer */}
         <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-7">
           <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <div>
-              <h2 className="text-xl font-bold text-white">Verified Excel Entry Log Preview</h2>
+              <h2 className="text-xl font-bold text-white">Interactive Sample Demo &amp; CSV Log Preview</h2>
               <p className="mt-1 text-sm text-slate-400">
-                Switch between Chaki Gate, Animal Farm, and Home Entrance to inspect the clean Excel entries.
+                Switch between Chaki Gate, Animal Farm, and Home Entrance to inspect sample CSV entries.
               </p>
             </div>
             <button
@@ -271,7 +274,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-emerald-400"
             >
               <Download className="h-4 w-4" />
-              Download Verified Excel (.CSV)
+              Download Sample Excel (.CSV)
             </button>
           </div>
 
@@ -310,8 +313,8 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
                   <th className="px-4 py-3">Entry ID</th>
                   <th className="px-4 py-3">Timestamp</th>
                   <th className="px-4 py-3">Location</th>
-                  <th className="px-4 py-3">Verified Activity</th>
-                  <th className="px-4 py-3">Excel Status</th>
+                  <th className="px-4 py-3">Sample Activity</th>
+                  <th className="px-4 py-3">CSV Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/70 bg-slate-900/30">
@@ -343,7 +346,7 @@ export default function FarmSecurityDemo({ onBack, onBookDemo }: FarmSecurityDem
           {/* Bottom CTA */}
           <div className="mt-8 flex flex-col items-center justify-between gap-4 rounded-xl border border-emerald-500/20 bg-gradient-to-r from-emerald-500/10 via-slate-900 to-cyan-500/10 p-5 sm:flex-row">
             <div>
-              <h3 className="text-base font-semibold text-white">Need Zero-False-Alarm AI for your Shop, Home, or Farm?</h3>
+              <h3 className="text-base font-semibold text-white">Need Filtered CCTV AI for your Shop, Home, or Farm?</h3>
               <p className="text-xs text-slate-400">Custom detection zones with automatic local Excel entry logging.</p>
             </div>
             <a

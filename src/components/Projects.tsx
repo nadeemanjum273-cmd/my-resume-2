@@ -3,15 +3,18 @@ import { Video } from "lucide-react";
 import SurveillanceDemoDock from "./SurveillanceDemoDock";
 
 export type ProjectDemoId = "campus-ai" | "farm-security";
+export type ProjectKind = "Client Build" | "Personal Project" | "Demo";
 
 interface Project {
   id: string;
+  projectType?: ProjectKind;
+  hidden?: boolean;
   category: string[];
   tag: string;
   type: string;
   title: string;
   description: string;
-  roi: string;
+  keyResult: string;
   stack: string;
   fullOverview: string;
   deliverables: string[];
@@ -20,9 +23,191 @@ interface Project {
   demoPath?: string;
 }
 
+const PROJECT_KIND_STYLES: Record<ProjectKind, string> = {
+  "Client Build": "bg-emerald-500/15 text-emerald-300 border-emerald-400/40",
+  "Personal Project": "bg-purple-500/15 text-purple-300 border-purple-400/40",
+  Demo: "bg-amber-500/15 text-amber-300 border-amber-400/40",
+};
+
 interface ProjectsProps {
   navigateTo?: (path: string) => void;
 }
+
+export const PROJECTS: Project[] = [
+    {
+      id: "eduguard-campus-ai",
+      projectType: "Client Build",
+      category: ["agent", "ml", "automation"],
+      tag: "CCTV AI + Excel & Supabase Sync",
+      type: "COMPUTER VISION",
+      title: "EduGuard AI: Smart Campus & Exam Surveillance",
+      description:
+        "Transforms campus CCTV cameras into an automated intelligence suite covering Parking Detection, Classroom Whiteboard Tracking, and Exam Hall Anti-Cheating Excel logs.",
+      keyResult: "Key Result: Automated gate, classroom & exam Excel logging",
+      stack: "Computer Vision • Supabase...",
+      fullOverview:
+        "Smart campus and exam surveillance platform built for universities, colleges, and schools. Connects to existing IP/CCTV feeds to automate gate parking logs, student attendance and teacher whiteboard tracking, and exam hall monitoring synced directly to Excel and Supabase.",
+      deliverables: [
+        "Smart Parking Detection logging vehicle entries, exits, and unauthorized parking at campus gates",
+        "Classroom & Whiteboard AI tracking automated student attendance and teacher lecture activity",
+        "Exam Hall Anti-Cheating detection flagging suspicious head-turns and paper sharing with alerts",
+        "Automated CSV/Excel and Supabase database synchronization with searchable zone log explorer",
+      ],
+      techTags: ["Computer Vision", "React", "TypeScript", "Supabase", "Excel / CSV Sync", "CCTV IP Feeds"],
+      demoPath: "/demo/campus-ai",
+    },
+    {
+      id: "farm-security-ai",
+      projectType: "Client Build",
+      category: ["agent", "ml", "automation"],
+      tag: "Noise-Filtered CCTV + Excel Sync",
+      type: "COMPUTER VISION",
+      title: "Smart Commercial, Home & Animal Farm AI Security",
+      description:
+        "Logs Chaki gate unloading (Gattu), animal carts, livestock zones, and home gate entries into Excel while filtering out insects, spiders, leaves, birds, and stray cats.",
+      keyResult: "Key Result: Filtered gate, farm & home activity synced to Excel",
+      stack: "Computer Vision • Excel Sync...",
+      fullOverview:
+        "Computer vision security suite engineered for rural, commercial, and residential sites including flour mills (Chaki), animal farms, and private homes. Filters out insects, spiders, wind-blown foliage, birds, and stray cats while logging gate and livestock events directly to Excel.",
+      deliverables: [
+        "Commercial Chaki Gate tracking for flour sack unloading (Gattu) and animal cart arrivals",
+        "Animal Farm zone monitoring for cattle/livestock movement and caretaker shed entry rules",
+        "Noise-rejection filter ignoring insects, spiders on camera lenses, moving leaves, and stray animals",
+        "Excel (.CSV) log explorer split across Chaki Gate, Animal Farm, and Home Entrance zones",
+      ],
+      techTags: ["Computer Vision", "False-Alarm Filtering", "React", "TypeScript", "Excel / CSV Sync", "CCTV IP Feeds"],
+      demoPath: "/demo/farm-security",
+    },
+    {
+      id: "mind-dreams",
+      projectType: "Personal Project",
+      category: ["agent", "chatbot"],
+      tag: "Gemini + Google Sheets Sync",
+      type: "CHATBOT",
+      title: "Mind_Dreams AI Customer Support",
+      description:
+        "Personal project: 24/7 AI customer support chatbot built with Google Gemini, Next.js 14, and 3-way Google Sheets sync for orders, refund eligibility, and payout logging.",
+      keyResult: "Key Result: Policy-grounded Gemini chatbot with 3-way Sheets sync",
+      stack: "Next.js 14 • Google Gemi...",
+      fullOverview:
+        "Personal project: 24/7 AI customer support chatbot built with Google Gemini and Next.js 14. Indexes company policies and runs 3-way Google Sheets synchronization for order status lookups, refund policy eligibility checks, and payout logging.",
+      deliverables: [
+        "Google Gemini API with contextual prompt grounding and business policy rules",
+        "3-way Google Sheets database synchronization reducing recurring third-party SaaS costs",
+        "Policy lookup engine matching shipping terms and return FAQs",
+        "Human escalation triggers for edge cases requiring staff intervention",
+      ],
+      techTags: ["Next.js 14", "Google Gemini API", "Google Sheets API", "Tailwind CSS", "Framer Motion"],
+      githubUrl: "https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent",
+    },
+    {
+      id: "omnilead",
+      hidden: true,
+      category: ["chatbot", "automation"],
+      tag: "Voiceflow + WhatsApp Cloud API",
+      type: "CHATBOT",
+      title: "OmniLead 24/7 AI Concierge",
+      description:
+        "Trained on business FAQs and calendars to qualify incoming leads and schedule consultations after hours.",
+      keyResult: "Key Result: 24/7 Voiceflow + WhatsApp lead & booking flow",
+      stack: "Voiceflow • OpenAI GPT-4...",
+      fullOverview:
+        "Omnichannel lead qualification chatbot prototype spanning web widgets and the WhatsApp Cloud API. Engages inbound traffic after hours, qualifies prospect budgets and project timelines, and syncs bookings into Google Calendar.",
+      deliverables: [
+        "Meta WhatsApp Business Cloud API webhook integration with automated response dispatch",
+        "Conversational qualification funnel capturing budget, urgency, and bottleneck details",
+        "Two-way Google Calendar integration with meeting confirmations and reminder triggers",
+        "Instant alert dispatch to sales teams via Telegram and Slack webhooks",
+      ],
+      techTags: ["Voiceflow", "WhatsApp Cloud API", "OpenAI GPT-4o", "Google Calendar API", "Webhooks"],
+    },
+    {
+      id: "lead-routing",
+      hidden: true,
+      category: ["automation"],
+      tag: "n8n Webhook Pipeline",
+      type: "AUTOMATION",
+      title: "Lead Routing Automation Suite",
+      description:
+        "Captures ad leads via webhooks, runs GPT intent scoring, syncs to Google Sheets, and dispatches Slack/WhatsApp alerts.",
+      keyResult: "Key Result: Automated webhook scoring, dedupe & CRM sync",
+      stack: "n8n • Webhooks...",
+      fullOverview:
+        "Event-driven n8n automation workflow capturing inbound ad leads from Meta, Google Ads, and custom webhooks. Executes GPT intent scoring, deduplicates records, and routes leads to CRM tables and sales channels.",
+      deliverables: [
+        "Self-hosted n8n workflow architecture avoiding per-execution SaaS markups",
+        "Webhook ingress validation with retry logic and dead-letter error handling",
+        "GPT-powered intent grading sorting prospects into warm, hot, and nurture sequences",
+        "Bidirectional sync to Google Sheets and CRM databases with instant Slack pings",
+      ],
+      techTags: ["n8n Workflows", "REST Webhooks", "Google Sheets API", "Slack Webhooks", "PostgreSQL"],
+    },
+    {
+      id: "store-support",
+      hidden: true,
+      category: ["agent"],
+      tag: "ReAct Multi-Step Loop + LangChain",
+      type: "AGENT",
+      title: "Autonomous Store Support Agent",
+      description:
+        "Automates shipping tracking and return ticket checks via Shopify API with policy rule verification.",
+      keyResult: "Key Result: Multi-step LangChain agent for Shopify ticket checks",
+      stack: "Python • LangChain • Shopify...",
+      fullOverview:
+        "Ecommerce support agent built on a multi-step ReAct (Reasoning + Acting) loop. Interfaces with Shopify Admin REST & GraphQL APIs to look up order tracking, validate return eligibility windows, and draft return responses.",
+      deliverables: [
+        "LangChain ReAct agent supporting multi-step API tool selection and execution",
+        "Shopify fulfillment, inventory, and order status lookups via GraphQL",
+        "Automated refund eligibility validation against purchase timestamps and policy rules",
+        "Structured audit trails logged for store admin review",
+      ],
+      techTags: ["Python", "LangChain", "Shopify GraphQL API", "FastAPI", "Docker"],
+    },
+    {
+      id: "doc-rag",
+      projectType: "Personal Project",
+      category: ["agent", "ml"],
+      tag: "ChromaDB + Google Gemini",
+      type: "AGENT / RAG",
+      title: "Document Intelligence RAG Engine",
+      description:
+        "Indexes store policies, product spreadsheets, and documents (.txt, .xlsx, .docx) into ChromaDB for grounded Google Gemini Q&A.",
+      keyResult: "Key Result: ChromaDB retrieval across policy & catalog docs",
+      stack: "Streamlit • ChromaDB • Gemini...",
+      fullOverview:
+        "Personal project built with Streamlit, Google Gemini, ChromaDB, and LangChain Core. Ingests structured and text policy/catalog files (.txt, .xlsx, .docx) into a persistent ChromaDB store for grounded product and policy responses.",
+      deliverables: [
+        "Persistent ChromaDB store managed via langchain-chroma and langchain-core",
+        "Multi-format catalog and policy ingestion with Pandas, openpyxl, and docx2txt",
+        "Google Gemini inference with automatic fallback models and retry handling",
+        "Streamlit chat interface grounded in catalog and store policy context",
+      ],
+      techTags: ["Streamlit", "Google Gemini", "ChromaDB", "LangChain Core", "Pandas", "openpyxl", "docx2txt"],
+    },
+    {
+      id: "churn-scoring",
+      projectType: "Personal Project",
+      category: ["ml"],
+      tag: "Decision Trees & KNN Classifier",
+      type: "MACHINE LEARNING",
+      title: "Customer Churn & Lead Scoring Portal",
+      description:
+        "Analyzes usage telemetry to flag customer churn risk patterns using ROC-AUC evaluated classification models.",
+      keyResult: "Measured on test data: 89.4% precision",
+      stack: "Python • Scikit-Learn • Streamlit...",
+      fullOverview:
+        "Predictive machine learning pipeline integrated with a responsive Streamlit analytics dashboard. Trained on multi-feature customer telemetry including login frequency, seat utilization decay, support ticket escalation rates, and billing cycles to flag at-risk accounts.",
+      deliverables: [
+        "Trained supervised Decision Tree and KNN Classification models (measured on test data: 89.4% precision)",
+        "Automated data preprocessing, outlier clipping, and missing telemetry imputation pipelines",
+        "Interactive feature importance charts highlighting leading indicators of account churn",
+        "Automated export workflow pushing prioritized accounts to customer success sheets",
+      ],
+      techTags: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit", "Matplotlib", "ROC-AUC Validation"],
+    },
+];
+
+export const VISIBLE_PROJECT_COUNT = PROJECTS.filter((p) => !p.hidden).length;
 
 export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -47,172 +232,6 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     handleNavigate(path);
   };
 
-  const projects: Project[] = [
-    {
-      id: "eduguard-campus-ai",
-      category: ["agent", "ml", "automation"],
-      tag: "CCTV AI + Excel & Supabase Sync",
-      type: "COMPUTER VISION",
-      title: "EduGuard AI: Smart Campus & Exam Surveillance",
-      description:
-        "Transforms campus CCTV cameras into an automated intelligence suite covering Parking Detection, Classroom Whiteboard Tracking, and Exam Hall Anti-Cheating Excel logs.",
-      roi: "Verified ROI: 98.4% Detection & Live Excel Sync",
-      stack: "Computer Vision • Supabase...",
-      fullOverview:
-        "Production-ready smart campus and exam surveillance platform built for universities, colleges, and schools. Connects to existing IP/CCTV feeds to automate gate parking logs, student attendance and teacher whiteboard tracking, and real-time exam hall anti-cheating incident logging synced directly to Excel and Supabase.",
-      deliverables: [
-        "Smart Parking Detection logging vehicle entries, exits, and unauthorized parking at campus gates",
-        "Classroom & Whiteboard AI tracking automated student attendance and verifying teacher lecture activity",
-        "Exam Hall Anti-Cheating detection flagging suspicious head-turns and paper sharing with instant alerts",
-        "Automated CSV/Excel and Supabase live database synchronization with searchable zone log explorer",
-      ],
-      techTags: ["Computer Vision", "React", "TypeScript", "Supabase", "Excel / CSV Sync", "CCTV IP Feeds"],
-      demoPath: "/demo/campus-ai",
-    },
-    {
-      id: "farm-security-ai",
-      category: ["agent", "ml", "automation"],
-      tag: "Zero False-Alarm + Excel Sync",
-      type: "COMPUTER VISION",
-      title: "Smart Commercial, Home & Animal Farm AI Security",
-      description:
-        "Logs Chaki gate unloading (Gattu), animal carts, livestock zones, and home gate entries into Excel while filtering out insects, spiders, leaves, birds, and stray cats.",
-      roi: "Verified ROI: 0 False-Alarm Excel Entries",
-      stack: "Computer Vision • Excel Sync...",
-      fullOverview:
-        "Precision computer vision security suite engineered for real-world rural, commercial, and residential sites including flour mills (Chaki), animal farms, and private homes. Eliminates 200+ daily motion-camera false alarms by filtering out locusts, spiders, wind-blown foliage, birds, and stray cats while logging verified gate and livestock events directly to Excel.",
-      deliverables: [
-        "Commercial Chaki Gate tracking for flour sack unloading (Gattu) and animal cart arrivals",
-        "Animal Farm zone monitoring for cattle/livestock movement and caretaker shed entry rules",
-        "Noise-rejection filter ignoring insects, spiders on camera lenses, moving leaves, and stray animals",
-        "Verified Excel (.CSV) log explorer split across Chaki Gate, Animal Farm, and Home Entrance zones",
-      ],
-      techTags: ["Computer Vision", "False-Alarm Filtering", "React", "TypeScript", "Excel / CSV Sync", "CCTV IP Feeds"],
-      demoPath: "/demo/farm-security",
-    },
-    {
-      id: "mind-dreams",
-      category: ["agent", "chatbot"],
-      tag: "Gemini Powered + RAG Vector Index",
-      type: "AGENT",
-      title: "Mind_Dreams AI Customer Support",
-      description:
-        "Autonomous 24/7 customer support agent indexing company policy with Google Gemini and 3-way real-time Google Sheets sync for orders, refund eligibility, and bank payout logging.",
-      roi: "Verified ROI: 100% Policy Compliance & Live Sync",
-      stack: "Next.js 14 • Google Gemi...",
-      fullOverview:
-        "Production-grade 24/7 AI customer support ecosystem built with Google Gemini and Next.js 14. Automatically indexes company policies and runs real-time 3-way Google Sheets synchronization for automated order status lookups, refund policy eligibility calculations, and audit-logged operations.",
-      deliverables: [
-        "Google Gemini 1.5 API with contextual prompt grounding and strict business policy guardrails",
-        "Live 3-way Google Sheets database synchronization eliminating recurring third-party SaaS fees",
-        "Semantic RAG policy engine with vector search across shipping terms and return FAQs",
-        "Automated human escalation triggers for edge cases requiring staff intervention",
-      ],
-      techTags: ["Next.js 14", "Google Gemini AI", "LangChain RAG", "Google Sheets API v4", "Tailwind CSS"],
-      githubUrl: "https://github.com/nadeemanjum273-cmd/Mind_Dream-Agent",
-    },
-    {
-      id: "omnilead",
-      category: ["chatbot", "automation"],
-      tag: "Voiceflow + WhatsApp Cloud API",
-      type: "CHATBOT",
-      title: "OmniLead 24/7 AI Concierge",
-      description:
-        "Trained on business FAQs and real-time calendars to qualify incoming leads and schedule consultations after hours.",
-      roi: "Verified ROI: +42% After-Hours Conversion",
-      stack: "Voiceflow • OpenAI GPT-4...",
-      fullOverview:
-        "Omnichannel 24/7 lead qualification chatbot deployed across custom web widgets and the official WhatsApp Cloud API. Engages inbound traffic 24 hours a day, qualifies prospect budgets and project timelines, and synchronizes bookings directly into Google Calendar.",
-      deliverables: [
-        "Official Meta WhatsApp Business Cloud API webhook integration with real-time response dispatch",
-        "Conversational qualification funnel capturing budget, urgency, and bottleneck details",
-        "Two-way Google Calendar integration with automatic meeting confirmations and reminder triggers",
-        "Real-time instant alert dispatch to sales teams via Telegram and Slack webhooks",
-      ],
-      techTags: ["Voiceflow", "WhatsApp Cloud API", "OpenAI GPT-4o", "Google Calendar API", "Webhooks"],
-    },
-    {
-      id: "lead-routing",
-      category: ["automation"],
-      tag: "n8n Webhook Pipeline",
-      type: "AUTOMATION",
-      title: "Zero-Latency Lead Routing Suite",
-      description:
-        "Captures ad leads instantly, runs GPT intent scoring, syncs to Google Sheets, and sends instant Slack/WhatsApp alerts.",
-      roi: "Verified ROI: 14 hrs/week Saved per Rep",
-      stack: "n8n • Webhooks...",
-      fullOverview:
-        "High-velocity event-driven n8n automation pipeline capturing inbound ad leads from Meta, Google Ads, and custom webhooks. Executes instant GPT intent scoring, dedupes records, and orchestrates zero-latency lead routing to CRM tables in under 500 milliseconds.",
-      deliverables: [
-        "Self-hosted n8n instance delivering 99.9% uptime with zero recurring per-execution platform fees",
-        "Webhook ingress validation with automatic retry logic and dead-letter queue error handling",
-        "GPT-powered intent grading sorting prospects into warm, hot, and nurture sales sequences",
-        "Direct bidirectional sync to Google Sheets and CRM databases with instant sales Slack pings",
-      ],
-      techTags: ["n8n Workflows", "REST Webhooks", "Google Sheets API", "Slack Webhooks", "PostgreSQL"],
-    },
-    {
-      id: "store-support",
-      category: ["agent"],
-      tag: "ReAct Multi-Step Loop + LangChain",
-      type: "AGENT",
-      title: "Autonomous Store Support Agent",
-      description:
-        "Resolves shipping tracking and return ticket requests autonomously via Shopify API with policy compliance verification.",
-      roi: "Verified ROI: 60% First-Touch Resolution",
-      stack: "Python • LangChain • Shopify...",
-      fullOverview:
-        "Autonomous ecommerce support agent running on a multi-step ReAct (Reasoning + Acting) loop. Directly interfaces with Shopify Admin REST & GraphQL APIs to independently resolve order tracking requests, validate return eligibility windows, and issue return labels.",
-      deliverables: [
-        "LangChain ReAct autonomous agent capable of multi-step API tool selection and execution",
-        "Real-time Shopify fulfillment, inventory, and order status lookups via GraphQL",
-        "Automated refund eligibility validation against timestamped purchase records and policy rules",
-        "Reduces first-touch ticket load by 60% with full audit trails logged for store admins",
-      ],
-      techTags: ["Python", "LangChain", "Shopify GraphQL API", "FastAPI", "Docker"],
-    },
-    {
-      id: "doc-rag",
-      category: ["agent", "ml"],
-      tag: "ChromaDB + Ada-002 Embeddings",
-      type: "AGENT / RAG",
-      title: "Document Intelligence RAG Engine",
-      description:
-        "Parses dense 300+ page enterprise compliance PDFs into vector embeddings with sub-3 second cited query responses.",
-      roi: "Verified ROI: Sub-3s Cited Accuracy",
-      stack: "ChromaDB • RecursiveSplitter...",
-      fullOverview:
-        "Enterprise document intelligence engine powered by ChromaDB vector storage and semantic embeddings. Ingests dense compliance manuals, PDF policies, and technical handbooks, returning sub-3-second cited answers with page numbers and exact quotes.",
-      deliverables: [
-        "Recursive character splitting preserving contextual semantic chunk boundaries",
-        "High-performance ChromaDB vector database index for zero-latency semantic retrieval",
-        "Strict citation grounding ensuring every sentence links back to an exact source page number",
-        "Contextual compression layer eliminating hallucinations on complex technical queries",
-      ],
-      techTags: ["ChromaDB", "OpenAI text-embedding-3", "Python", "LangChain", "Streamlit"],
-    },
-    {
-      id: "churn-scoring",
-      category: ["ml"],
-      tag: "Decision Trees & KNN Classifier",
-      type: "MACHINE LEARNING",
-      title: "Customer Churn & Lead Scoring Portal",
-      description:
-        "Analyzes usage telemetry to predict customer churn risks 30 days ahead using ROC-AUC optimized classification models.",
-      roi: "Verified ROI: 89.4% Precision on At-Risk",
-      stack: "Python • Scikit-Learn • Streamlit...",
-      fullOverview:
-        "A high-precision predictive machine learning pipeline integrated with a responsive Streamlit analytics dashboard. Trained on multi-feature customer telemetric data including login frequency, seat utilization decay, support ticket escalation rates, and billing cycles to accurately forecast client churn up to 30 days before contract cancellation.",
-      deliverables: [
-        "Trained supervised Decision Tree and KNN Classification algorithms achieving 89.4% precision on at-risk profiles",
-        "Engineered automated data preprocessing, outlier clipping, and missing telemetry imputation pipelines",
-        "Built interactive feature importance charts identifying the primary leading indicators of account abandonment",
-        "Configured automated alert notifications to export daily prioritized accounts directly to customer success sheets",
-      ],
-      techTags: ["Python", "Scikit-Learn", "Pandas", "NumPy", "Streamlit", "Matplotlib", "ROC-AUC Validation"],
-    },
-  ];
-
   const filterTabs = [
     { id: "all", label: "All Projects" },
     { id: "agent", label: "AI Agents" },
@@ -221,8 +240,8 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
     { id: "ml", label: "Machine Learning" },
   ];
 
-  const filtered = projects.filter(
-    (p) => activeFilter === "all" || p.category.includes(activeFilter)
+  const filtered = PROJECTS.filter(
+    (p) => !p.hidden && (activeFilter === "all" || p.category.includes(activeFilter))
   );
 
   return (
@@ -230,7 +249,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
       {/* Section Header with Title and Filter Tabs: Exact Match to Screenshot 5 */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-white tracking-tight">
-          Curated Production Deployments
+          Selected Builds &amp; Case Studies
         </h2>
 
         {/* Filter Tabs */}
@@ -263,20 +282,19 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
         />
 
         <div className="relative z-10 flex flex-col gap-6">
-          {/* Sleek Live Interactive Demos Label Bar */}
+          {/* Sleek Sample Interactive Demos Label Bar */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
             <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-emerald-300 shadow-[0_0_16px_rgba(52,211,153,0.2)]">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                LIVE DEMOS
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/35 bg-cyan-500/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wider text-cyan-300">
+                SAMPLE DEMOS
               </span>
               <span className="inline-flex items-center gap-1.5 font-mono text-xs text-slate-300">
                 <Video className="h-3.5 w-3.5 text-cyan-400" />
-                Live Interactive Demos &bull; Computer Vision Suite
+                Interactive Sample Demos &bull; Computer Vision Suite
               </span>
             </div>
             <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
-              CCTV AI &bull; Real-Time Excel Sync
+              CCTV AI &bull; CSV Export Preview
             </span>
           </div>
 
@@ -285,7 +303,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
               AI Smart Surveillance &amp; Automated Excel Logging
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed font-sans">
-              Launch our interactive surveillance sandboxes directly from the home screen—inspect live detection logs, zone filters, false-alarm rejection, and one-click CSV/Excel exports.
+              Launch our interactive sample demos directly from the home screen—inspect sample detection logs, zone filters, noise filtering, and one-click CSV/Excel exports.
             </p>
           </div>
 
@@ -303,12 +321,21 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             className="shining-card p-6 flex flex-col justify-between group cursor-pointer hover:border-[#22d3ee]/60 transition-all duration-300"
           >
             <div className="flex flex-col gap-4 relative z-10">
-              {/* Category Pill and Type Tag */}
-              <div className="flex items-center justify-between gap-2">
-                <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 shadow-[0_0_12px_rgba(34,211,238,0.2)] truncate max-w-[210px] font-medium">
-                  {p.tag}
-                </span>
-                <span className="text-[11px] font-mono text-slate-400 shrink-0 font-semibold tracking-wider">
+              {/* Category Pill, Build Type Label, and Domain Tag */}
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-2 min-w-0">
+                  {p.projectType && (
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 ${PROJECT_KIND_STYLES[p.projectType]}`}
+                    >
+                      {p.projectType}
+                    </span>
+                  )}
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 shadow-[0_0_12px_rgba(34,211,238,0.2)] truncate max-w-[160px] font-medium">
+                    {p.tag}
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-400 shrink-0 font-semibold tracking-wider">
                   {p.type}
                 </span>
               </div>
@@ -325,12 +352,12 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             </div>
 
             <div className="flex flex-col gap-4 pt-6 relative z-10">
-              {/* Verified ROI Badge with Glowing Emerald Border */}
+              {/* Key Result Badge */}
               <div className="p-2.5 rounded-xl bg-[#080B11]/90 border border-emerald-400/50 shadow-[0_0_14px_rgba(52,211,153,0.2)] text-emerald-400 font-mono text-xs flex items-center gap-2 group-hover:border-emerald-400 transition-colors">
                 <span className="material-symbols-outlined text-[16px] text-emerald-400 shrink-0">
                   check_circle
                 </span>
-                <span className="font-semibold">{p.roi}</span>
+                <span className="font-semibold">{p.keyResult}</span>
               </div>
 
               {/* Stack & Details / Live Demo Buttons */}
@@ -346,7 +373,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                       }}
                       className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 hover:bg-emerald-500/25 font-bold transition-colors"
                     >
-                      Live Demo
+                      Interactive Sample Demo
                     </a>
                   )}
                   <button
@@ -381,6 +408,13 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             <div className="flex items-start justify-between gap-4 pb-4 border-b border-white/10">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 flex-wrap">
+                  {selectedProject.projectType && (
+                    <span
+                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${PROJECT_KIND_STYLES[selectedProject.projectType]}`}
+                    >
+                      {selectedProject.projectType}
+                    </span>
+                  )}
                   <span className="px-3 py-1 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 font-medium">
                     {selectedProject.tag}
                   </span>
@@ -429,17 +463,17 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
               </div>
             )}
 
-            {/* Verified ROI Badge */}
+            {/* Key Result Badge */}
             <div className="p-3.5 rounded-2xl bg-[#080B11] border border-emerald-400/50 shadow-[0_0_18px_rgba(52,211,153,0.15)] flex items-center gap-3">
               <span className="material-symbols-outlined text-emerald-400 text-[22px] shrink-0">
                 check_circle
               </span>
               <div className="flex flex-col">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                  Performance &amp; ROI Metric
+                  Key Result
                 </span>
                 <span className="text-emerald-400 font-mono font-bold text-xs sm:text-sm">
-                  {selectedProject.roi}
+                  {selectedProject.keyResult}
                 </span>
               </div>
             </div>
@@ -448,7 +482,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
             {selectedProject.techTags && (
               <div className="flex flex-col gap-2">
                 <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 font-bold">
-                  Production Technologies
+                  Technologies Used
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.techTags.map((tech, idx) => (
@@ -476,7 +510,7 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
                   className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-400/50 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2"
                 >
                   <span className="material-symbols-outlined text-[16px]">play_circle</span>
-                  <span>Launch Interactive Demo</span>
+                  <span>Interactive Sample Demo</span>
                   <span>&rarr;</span>
                 </a>
               )}
