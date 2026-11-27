@@ -22,7 +22,7 @@ export const SITE_LINKS = {
   linkedin: "https://www.linkedin.com/in/nadeem-anjum-b23b1a269",
   cvPdfPath: "/Nadeem-Anjum-CV.pdf",
   cvDownloadFilename: "Nadeem-Anjum-CV.pdf",
-  hasCvPdf: false,
+  hasCvPdf: true,
 } as const;
 
 export const GOOGLE_SHEETS_WEBHOOK_URL: string =
