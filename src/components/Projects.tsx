@@ -1,9 +1,20 @@
-import React, { useState } from "react";
-import { Video } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  FileSearch,
+  GraduationCap,
+  ShieldCheck,
+  Video,
+  Workflow,
+} from "lucide-react";
 import SurveillanceDemoDock from "./SurveillanceDemoDock";
 
 export type ProjectDemoId = "campus-ai" | "farm-security";
 export type ProjectKind = "Client Build" | "Personal Project" | "Demo";
+
+type ProjectAccent = "cyan" | "emerald" | "purple" | "sky";
 
 interface Project {
   id: string;
@@ -13,6 +24,8 @@ interface Project {
   tag: string;
   type: string;
   title: string;
+  compactSubtitle: string;
+  accent: ProjectAccent;
   description: string;
   keyResult: string;
   stack: string;
@@ -21,6 +34,49 @@ interface Project {
   techTags: string[];
   githubUrl?: string;
   demoPath?: string;
+}
+
+const ACCENT_CARD_STYLES: Record<
+  ProjectAccent,
+  { card: string; iconBox: string; arrow: string }
+> = {
+  cyan: {
+    card: "border-cyan-400/25 bg-gradient-to-br from-cyan-500/10 via-slate-900/90 to-indigo-500/10 hover:border-cyan-400/70 hover:shadow-[0_0_28px_-6px_rgba(34,211,238,0.45)]",
+    iconBox: "border-cyan-400/30 bg-cyan-500/15 text-cyan-300",
+    arrow: "text-cyan-300",
+  },
+  emerald: {
+    card: "border-emerald-400/25 bg-gradient-to-br from-emerald-500/10 via-slate-900/90 to-teal-500/10 hover:border-emerald-400/70 hover:shadow-[0_0_28px_-6px_rgba(52,211,153,0.45)]",
+    iconBox: "border-emerald-400/30 bg-emerald-500/15 text-emerald-300",
+    arrow: "text-emerald-300",
+  },
+  purple: {
+    card: "border-purple-400/25 bg-gradient-to-br from-purple-500/10 via-slate-900/90 to-indigo-500/10 hover:border-purple-400/70 hover:shadow-[0_0_28px_-6px_rgba(168,85,247,0.45)]",
+    iconBox: "border-purple-400/30 bg-purple-500/15 text-purple-300",
+    arrow: "text-purple-300",
+  },
+  sky: {
+    card: "border-sky-400/25 bg-gradient-to-br from-sky-500/10 via-slate-900/90 to-cyan-500/10 hover:border-sky-400/70 hover:shadow-[0_0_28px_-6px_rgba(56,189,248,0.45)]",
+    iconBox: "border-sky-400/30 bg-sky-500/15 text-sky-300",
+    arrow: "text-sky-300",
+  },
+};
+
+function getProjectIcon(id: string) {
+  switch (id) {
+    case "eduguard-campus-ai":
+      return GraduationCap;
+    case "farm-security-ai":
+      return ShieldCheck;
+    case "mind-dreams":
+      return Bot;
+    case "doc-rag":
+      return FileSearch;
+    case "churn-scoring":
+      return BarChart3;
+    default:
+      return Workflow;
+  }
 }
 
 const PROJECT_KIND_STYLES: Record<ProjectKind, string> = {
@@ -41,6 +97,8 @@ export const PROJECTS: Project[] = [
       tag: "CCTV AI + Excel & Supabase Sync",
       type: "COMPUTER VISION",
       title: "EduGuard AI: Smart Campus & Exam Surveillance",
+      compactSubtitle: "Parking • Whiteboard • Anti-Cheating",
+      accent: "cyan",
       description:
         "Transforms campus CCTV cameras into an automated intelligence suite covering Parking Detection, Classroom Whiteboard Tracking, and Exam Hall Anti-Cheating Excel logs.",
       keyResult: "Key Result: Automated gate, classroom & exam Excel logging",
@@ -63,6 +121,8 @@ export const PROJECTS: Project[] = [
       tag: "Noise-Filtered CCTV + Excel Sync",
       type: "COMPUTER VISION",
       title: "Smart Commercial, Home & Animal Farm AI Security",
+      compactSubtitle: "Noise-Filtered CCTV • Excel Logging",
+      accent: "emerald",
       description:
         "Logs Chaki gate unloading (Gattu), animal carts, livestock zones, and home gate entries into Excel while filtering out insects, spiders, leaves, birds, and stray cats.",
       keyResult: "Key Result: Filtered gate, farm & home activity synced to Excel",
@@ -85,6 +145,8 @@ export const PROJECTS: Project[] = [
       tag: "Gemini + Google Sheets Sync",
       type: "CHATBOT",
       title: "Mind_Dreams AI Customer Support",
+      compactSubtitle: "24/7 Chatbot • Gemini • 3-Way Sheets Sync",
+      accent: "sky",
       description:
         "Personal project: 24/7 AI customer support chatbot built with Google Gemini, Next.js 14, and 3-way Google Sheets sync for orders, refund eligibility, and payout logging.",
       keyResult: "Key Result: Policy-grounded Gemini chatbot with 3-way Sheets sync",
@@ -107,6 +169,8 @@ export const PROJECTS: Project[] = [
       tag: "Voiceflow + WhatsApp Cloud API",
       type: "CHATBOT",
       title: "OmniLead 24/7 AI Concierge",
+      compactSubtitle: "Voiceflow • WhatsApp Cloud • Calendar Booking",
+      accent: "cyan",
       description:
         "Trained on business FAQs and calendars to qualify incoming leads and schedule consultations after hours.",
       keyResult: "Key Result: 24/7 Voiceflow + WhatsApp lead & booking flow",
@@ -128,6 +192,8 @@ export const PROJECTS: Project[] = [
       tag: "n8n Webhook Pipeline",
       type: "AUTOMATION",
       title: "Lead Routing Automation Suite",
+      compactSubtitle: "n8n Webhooks • Intent Scoring • CRM Sync",
+      accent: "purple",
       description:
         "Captures ad leads via webhooks, runs GPT intent scoring, syncs to Google Sheets, and dispatches Slack/WhatsApp alerts.",
       keyResult: "Key Result: Automated webhook scoring, dedupe & CRM sync",
@@ -149,6 +215,8 @@ export const PROJECTS: Project[] = [
       tag: "ReAct Multi-Step Loop + LangChain",
       type: "AGENT",
       title: "Autonomous Store Support Agent",
+      compactSubtitle: "Shopify GraphQL • LangChain • Return Checks",
+      accent: "sky",
       description:
         "Automates shipping tracking and return ticket checks via Shopify API with policy rule verification.",
       keyResult: "Key Result: Multi-step LangChain agent for Shopify ticket checks",
@@ -170,6 +238,8 @@ export const PROJECTS: Project[] = [
       tag: "ChromaDB + Google Gemini",
       type: "AGENT / RAG",
       title: "Document Intelligence RAG Engine",
+      compactSubtitle: "PDF/Docx Q&A • ChromaDB • Grounded AI",
+      accent: "purple",
       description:
         "Indexes store policies, product spreadsheets, and documents (.txt, .xlsx, .docx) into ChromaDB for grounded Google Gemini Q&A.",
       keyResult: "Key Result: ChromaDB retrieval across policy & catalog docs",
@@ -191,6 +261,8 @@ export const PROJECTS: Project[] = [
       tag: "Decision Trees & KNN Classifier",
       type: "MACHINE LEARNING",
       title: "Customer Churn & Lead Scoring Portal",
+      compactSubtitle: "ML Churn Prediction • 89.4% Precision",
+      accent: "emerald",
       description:
         "Analyzes usage telemetry to flag customer churn risk patterns using ROC-AUC evaluated classification models.",
       keyResult: "Measured on test data: 89.4% precision",
@@ -212,6 +284,17 @@ export const VISIBLE_PROJECT_COUNT = PROJECTS.filter((p) => !p.hidden).length;
 export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject]);
 
   const handleNavigate = (path: string) => {
     if (navigateTo) {
@@ -312,86 +395,41 @@ export const Projects: React.FC<ProjectsProps> = ({ navigateTo }) => {
         </div>
       </div>
 
-      {/* 3-Column Grid of Cards: Exact Match to Screenshot with Shining Edges */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((p) => (
-          <div
-            key={p.id}
-            onClick={() => setSelectedProject(p)}
-            className="shining-card p-6 flex flex-col justify-between group cursor-pointer hover:border-[#22d3ee]/60 transition-all duration-300"
-          >
-            <div className="flex flex-col gap-4 relative z-10">
-              {/* Category Pill, Build Type Label, and Domain Tag */}
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <div className="flex items-center gap-2 min-w-0">
-                  {p.projectType && (
-                    <span
-                      className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border shrink-0 ${PROJECT_KIND_STYLES[p.projectType]}`}
-                    >
-                      {p.projectType}
-                    </span>
-                  )}
-                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono text-[#22d3ee] border border-[#22d3ee]/40 bg-[#22d3ee]/10 shadow-[0_0_12px_rgba(34,211,238,0.2)] truncate max-w-[160px] font-medium">
-                    {p.tag}
-                  </span>
+      {/* 2-Column Compact Horizontal Grid Matching Top Surveillance Dock Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {filtered.map((p) => {
+          const Icon = getProjectIcon(p.id);
+          const accentStyles = ACCENT_CARD_STYLES[p.accent];
+          return (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setSelectedProject(p)}
+              className={`group relative flex items-center justify-between gap-4 overflow-hidden rounded-xl border p-4 text-left transition-all duration-300 hover:-translate-y-0.5 ${accentStyles.card}`}
+            >
+              <div className="flex items-center gap-3.5 min-w-0 flex-1">
+                <div
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border transition-transform duration-300 group-hover:scale-105 ${accentStyles.iconBox}`}
+                >
+                  <Icon className="h-5 w-5" />
                 </div>
-                <span className="text-[10px] font-mono text-slate-400 shrink-0 font-semibold tracking-wider">
-                  {p.type}
-                </span>
-              </div>
 
-              {/* Title & Description */}
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-display font-bold text-white group-hover:text-[#22d3ee] transition-colors leading-snug">
-                  {p.title}
-                </h3>
-                <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed font-sans">
-                  {p.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4 pt-6 relative z-10">
-              {/* Key Result Badge */}
-              <div className="p-2.5 rounded-xl bg-[#080B11]/90 border border-emerald-400/50 shadow-[0_0_14px_rgba(52,211,153,0.2)] text-emerald-400 font-mono text-xs flex items-center gap-2 group-hover:border-emerald-400 transition-colors">
-                <span className="material-symbols-outlined text-[16px] text-emerald-400 shrink-0">
-                  check_circle
-                </span>
-                <span className="font-semibold">{p.keyResult}</span>
-              </div>
-
-              {/* Stack & Details / Live Demo Buttons */}
-              <div className="flex items-center justify-between gap-2 font-mono text-xs text-slate-400 pt-1 border-t border-white/10">
-                <span className="truncate max-w-[140px]">{p.stack}</span>
-                <div className="flex items-center gap-3 shrink-0">
-                  {p.demoPath && (
-                    <a
-                      href={p.demoPath}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDemoNavigation(e, p.demoPath!);
-                      }}
-                      className="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 hover:bg-emerald-500/25 font-bold transition-colors"
-                    >
-                      Interactive Sample Demo
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedProject(p);
-                    }}
-                    className="text-[#22d3ee] hover:text-[#38bdf8] hover:underline flex items-center gap-1 font-bold group-hover:translate-x-1 transition-transform shrink-0"
-                  >
-                    <span>Details</span>
-                    <span>&rarr;</span>
-                  </button>
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-white truncate group-hover:text-cyan-200 transition-colors">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 truncate mt-0.5">
+                    {p.compactSubtitle}
+                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
+
+              <ArrowRight
+                className={`h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1 ${accentStyles.arrow}`}
+              />
+            </button>
+          );
+        })}
       </div>
 
       {/* Project Details Modal */}
