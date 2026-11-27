@@ -63,15 +63,30 @@ body, * {
   transform: translateY(-2px);
 }
 
-/* Print Styles for Resume */
+/* Print Styles for Resume (#experience) */
 @media print {
-  nav, footer, #demo, #calculator, #contact, #location-map, button {
+  header,
+  nav,
+  footer,
+  canvas,
+  #hero,
+  #interactive-agent,
+  #deployments,
+  #tech-arsenal,
+  #roi-calculator,
+  #demo-form,
+  button {
     display: none !important;
   }
-  #resume {
+  #experience {
     display: block !important;
     background: white !important;
     color: black !important;
+  }
+  #experience * {
+    color: black !important;
+    background: transparent !important;
+    box-shadow: none !important;
   }
   body {
     background: white !important;

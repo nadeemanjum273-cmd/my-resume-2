@@ -1,4 +1,6 @@
 import React from "react";
+import { Github } from "lucide-react";
+import { SITE_LINKS } from "../data/portfolioConfig";
 
 export const Resume: React.FC = () => {
   const handlePrint = () => {
@@ -13,14 +15,37 @@ export const Resume: React.FC = () => {
           Experience &amp; Qualifications
         </h2>
 
-        {/* Print / Save CV (PDF) Button */}
-        <button
-          onClick={handlePrint}
-          className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0 self-start sm:self-auto"
-        >
-          <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">print</span>
-          <span>Print / Save CV (PDF)</span>
-        </button>
+        <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+          <a
+            href={SITE_LINKS.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
+          >
+            <Github className="w-4 h-4 text-[#22d3ee]" />
+            <span>GitHub</span>
+          </a>
+
+          {SITE_LINKS.hasCvPdf ? (
+            <a
+              href={SITE_LINKS.cvPdfPath}
+              download={SITE_LINKS.cvDownloadFilename}
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
+            >
+              <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">download</span>
+              <span>Download CV (PDF)</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono text-xs font-medium transition-all border border-white/15 hover:border-white/30 shadow-md shrink-0"
+            >
+              <span className="material-symbols-outlined text-[18px] text-[#22d3ee]">print</span>
+              <span>Print / Save CV (PDF)</span>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Main 2-Column Split: Timeline & Client Delivery Promises */}

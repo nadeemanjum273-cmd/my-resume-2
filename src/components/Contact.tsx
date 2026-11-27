@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SITE_LINKS } from "../data/portfolioConfig";
 
 interface ContactProps {
   onTriggerToast?: (msg: string) => void;
@@ -19,9 +20,9 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("nadeemanjum273@gmail.com");
+    navigator.clipboard.writeText(SITE_LINKS.email);
     if (onTriggerToast) {
-      onTriggerToast("Email copied to clipboard: nadeemanjum273@gmail.com");
+      onTriggerToast(`Email copied to clipboard: ${SITE_LINKS.email}`);
     }
   };
 
@@ -76,13 +77,13 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
                   </span>
                 </div>
                 <span className="font-mono text-xs text-slate-400">
-                  +92 307 7970277
+                  {SITE_LINKS.whatsappDisplay}
                 </span>
               </div>
             </div>
 
             <a
-              href="https://wa.me/923077970277"
+              href={SITE_LINKS.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-3.5 py-1.5 rounded-full border border-white/20 hover:border-emerald-400 text-slate-300 hover:text-emerald-400 font-mono text-xs transition-colors flex items-center gap-1 relative z-10"
@@ -99,7 +100,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
                 <span className="material-symbols-outlined text-[20px]">mail</span>
               </div>
               <span className="font-mono text-xs text-slate-300 truncate max-w-[170px]">
-                nadeemanjum273@gmail.com
+                {SITE_LINKS.email}
               </span>
             </div>
 
@@ -114,7 +115,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
           {/* Social Links Row */}
           <div className="grid grid-cols-2 gap-3">
             <a
-              href="https://linkedin.com"
+              href={SITE_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl bg-[#0B0F17]/90 border border-white/10 hover:border-[#22d3ee]/40 text-slate-300 hover:text-white font-mono text-xs flex items-center justify-between transition-colors shadow-sm"
@@ -124,7 +125,7 @@ export const Contact: React.FC<ContactProps> = ({ onTriggerToast }) => {
             </a>
 
             <a
-              href="https://github.com"
+              href={SITE_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl bg-[#0B0F17]/90 border border-white/10 hover:border-[#22d3ee]/40 text-slate-300 hover:text-white font-mono text-xs flex items-center justify-between transition-colors shadow-sm"

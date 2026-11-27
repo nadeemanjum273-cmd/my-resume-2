@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Download, MessageSquareText, FolderKanban } from "lucide-react";
+import { ArrowRight, Download, Github, MessageSquareText, FolderKanban } from "lucide-react";
 import { HERO_STATS, SITE_LINKS } from "../data/portfolioConfig";
 
 interface HeroProps {
@@ -59,9 +59,19 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
               className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-white font-mono font-medium text-xs uppercase tracking-wider transition-all border border-white/20 hover:border-[#22d3ee]/50 shadow-sm"
             >
               <Download className="w-4 h-4 text-[#22d3ee] shrink-0" />
-              <span>Download CV</span>
+              <span>Print / Save CV</span>
             </button>
           )}
+
+          <a
+            href={SITE_LINKS.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-slate-200 hover:text-white font-mono font-medium text-xs uppercase tracking-wider transition-all border border-white/15 hover:border-white/35 shadow-sm"
+          >
+            <Github className="w-4 h-4 text-slate-300 shrink-0" />
+            <span>GitHub</span>
+          </a>
         </div>
 
         {/* Demoted Tertiary Navigation Links */}
