@@ -1,5 +1,6 @@
 import React from "react";
-import { HERO_STATS } from "../data/portfolioConfig";
+import { ArrowRight, Download, MessageSquareText, FolderKanban } from "lucide-react";
+import { HERO_STATS, SITE_LINKS } from "../data/portfolioConfig";
 
 interface HeroProps {
   onTriggerToast?: (msg: string) => void;
@@ -27,19 +28,60 @@ export const Hero: React.FC<HeroProps> = ({ onTriggerToast, onOpenVideoModal }) 
           <strong className="text-white font-bold">n8n Workflow Automations</strong> backed by deep Data Science &amp; Python ML foundations.
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap items-center gap-4 pt-1">
+        {/* Primary & Secondary CTA Buttons */}
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 pt-1">
+          <a
+            href="#demo-form"
+            className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-[#22d3ee] to-[#a855f7] text-[#080B11] font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.5)] hover:scale-[1.02] active:scale-100"
+          >
+            <span>Start an AI Automation Project</span>
+            <ArrowRight className="w-4 h-4 shrink-0" />
+          </a>
+
+          {SITE_LINKS.hasCvPdf ? (
+            <a
+              href={SITE_LINKS.cvPdfPath}
+              download={SITE_LINKS.cvDownloadFilename}
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-white font-mono font-medium text-xs uppercase tracking-wider transition-all border border-white/20 hover:border-[#22d3ee]/50 shadow-sm"
+            >
+              <Download className="w-4 h-4 text-[#22d3ee] shrink-0" />
+              <span>Download CV</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                if (onTriggerToast) {
+                  onTriggerToast("Opening printable CV view (Save as PDF).");
+                }
+                window.print();
+              }}
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-white font-mono font-medium text-xs uppercase tracking-wider transition-all border border-white/20 hover:border-[#22d3ee]/50 shadow-sm"
+            >
+              <Download className="w-4 h-4 text-[#22d3ee] shrink-0" />
+              <span>Download CV</span>
+            </button>
+          )}
+        </div>
+
+        {/* Demoted Tertiary Navigation Links */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-mono text-slate-400">
           <a
             href="#interactive-agent"
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#22d3ee] to-[#a855f7] text-[#080B11] font-mono font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.5)] hover:scale-105 active:scale-100"
+            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-[#22d3ee] transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-[#22d3ee]"
           >
-            Launch Portfolio Chatbot
+            <MessageSquareText className="w-3.5 h-3.5 text-[#22d3ee]" />
+            <span>Launch Portfolio Chatbot</span>
           </a>
+          <span className="text-slate-600" aria-hidden="true">
+            &bull;
+          </span>
           <a
             href="#deployments"
-            className="px-6 py-3 rounded-xl bg-[#0B0F17] hover:bg-white/10 text-white font-mono font-medium text-xs tracking-wider transition-all border border-white/20 hover:border-white/40 shadow-sm"
+            className="inline-flex items-center gap-1.5 text-slate-300 hover:text-[#22d3ee] transition-colors underline underline-offset-4 decoration-white/20 hover:decoration-[#22d3ee]"
           >
-            Explore Projects
+            <FolderKanban className="w-3.5 h-3.5 text-[#a855f7]" />
+            <span>Explore Projects</span>
           </a>
         </div>
 
